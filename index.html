@@ -614,7 +614,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .est-after .est-text{color:#166534}
 
 /* ── FINAL CTA ── */
-.final-cta{background:linear-gradient(135deg,#7C3AED,#4F46E5);border-radius:16px;padding:32px 40px;color:#fff;text-align:center;display:none}
+.final-cta{background:linear-gradient(135deg,#7C3AED,#4F46E5);border-radius:16px;padding:20px 24px;color:#fff;text-align:center;display:none}
 .final-cta.show{display:block}
 .fc-title{font-size:18px;font-weight:800;margin-bottom:8px}
 .fc-sub{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.6}
@@ -802,7 +802,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .atab-panel.on{display:block}
 
 /* ── PREVIEW RANK TOGGLE ── */
-.preview-strip{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1.5px dashed var(--border);border-radius:8px;padding:7px 11px;margin-top:9px;cursor:pointer;transition:.2s;user-select:none}
+.preview-strip{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1.5px dashed var(--border);border-radius:8px;padding:8px 12px;margin-top:9px;cursor:pointer;transition:.2s;user-select:none;min-height:38px}
 .preview-strip:hover{border-color:#7C3AED;background:var(--surface3)}
 .preview-strip.on{background:#F5F3FF;border-color:#7C3AED;border-style:solid}
 [data-theme="dark"] .preview-strip.on{background:#1A1040}
@@ -811,7 +811,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .preview-strip.on .ptog{background:#7C3AED}
 .ptog::after{content:'';position:absolute;width:12px;height:12px;background:#fff;border-radius:50%;top:2px;left:2px;transition:transform .25s;box-shadow:0 1px 2px rgba(0,0,0,.2)}
 .preview-strip.on .ptog::after{transform:translateX(12px)}
-.prev-label{font-size:11px;color:var(--text3);font-weight:500;flex:1;display:flex;align-items:center;gap:5px}
+.prev-label{font-size:11px;color:var(--text3);font-weight:500;flex:1;display:flex;align-items:center;gap:5px;white-space:nowrap}
 .preview-strip.on .prev-label{color:#7C3AED;font-weight:600}
 .prev-gain-tag{font-size:10px;font-weight:700;color:var(--text3);background:var(--surface3);padding:1px 7px;border-radius:5px;flex-shrink:0;transition:.2s}
 .preview-strip.on .prev-gain-tag{background:#EDE9FE;color:#7C3AED}
@@ -858,11 +858,61 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .pa-enhance-note{font-size:10px;color:var(--text3);line-height:1.4}
 
 /* ── INLINE SERP EXPAND ── */
-.preview-expand{max-height:0;overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1)}
-.preview-expand.open{max-height:420px}
+.preview-expand{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
+.preview-expand.open{max-height:1100px}
 
-.mini-serp{background:var(--surface2);border:1.5px solid #C4B5FD;border-radius:10px;overflow:hidden;margin-top:8px;margin-bottom:2px}
-[data-theme="dark"] .mini-serp{border-color:#4C1D95}
+.mini-serp{background:transparent;margin-top:12px;margin-bottom:4px;display:flex;flex-direction:column;align-items:center}
+[data-theme="dark"] .mini-serp{}
+
+/* ── PHONE FRAME ── */
+.phone-frame{width:100%;max-width:100%;background:#fff;border:10px solid #1C1C1E;border-radius:50px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.28),0 8px 24px rgba(0,0,0,.12),inset 0 0 0 1px rgba(255,255,255,.08);position:relative}
+[data-theme="dark"] .phone-frame{background:#0F172A;border-color:#0C0C0E;box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.phone-statusbar{background:#1C1C1E;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex-shrink:0;position:relative}
+.psb-time{font-size:10px;font-weight:700;color:#fff}
+.psb-icons{display:flex;align-items:center;gap:4px;font-size:9px;color:#fff}
+.phone-screen{background:var(--surface,#fff);overflow:hidden}
+[data-theme="dark"] .phone-screen{background:#0F172A}
+.phone-serp-header{background:linear-gradient(90deg,#3B0D8C,#6B21C1);padding:8px 10px;display:flex;align-items:center;gap:6px}
+.psh-logo{background:#F5A200;width:16px;height:16px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0}
+.psh-search{flex:1;background:rgba(255,255,255,.2);border-radius:12px;padding:4px 8px;font-size:9px;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:4px}
+.phone-serp-meta{padding:5px 10px;font-size:9px;color:var(--text3);border-bottom:1px solid var(--border2);display:flex;justify-content:space-between}
+.phone-cards{padding:5px 8px 5px 8px;display:flex;flex-direction:column;gap:4px;max-height:480px;overflow-y:hidden}
+
+/* phone scroll-up animation */
+@keyframes skelScrollUp{
+  0%  {transform:translateY(0);opacity:1}
+  100%{transform:translateY(-200px);opacity:0}
+}
+@keyframes skelDropIn{
+  0%  {transform:translateY(40px);opacity:0}
+  100%{transform:translateY(0);opacity:1}
+}
+@keyframes yourCardRise{
+  0%   {transform:translateY(160px) scale(.96);opacity:0}
+  55%  {transform:translateY(-10px) scale(1.02);opacity:1}
+  80%  {transform:translateY(4px) scale(.99)}
+  100% {transform:translateY(0) scale(1);opacity:1;box-shadow:0 0 0 2px #7C3AED,0 6px 20px rgba(124,58,237,.25)}
+}
+/* scroll-past phase: top 2 skeletons scroll up and off */
+.phone-cards.rising .ms-card:nth-child(1){animation:skelScrollUp .45s ease-in forwards;animation-delay:.1s}
+.phone-cards.rising .ms-card:nth-child(2){animation:skelScrollUp .45s ease-in forwards;animation-delay:.2s}
+/* your card rises from below */
+.phone-cards.rising .ms-your{animation:yourCardRise 1s cubic-bezier(.34,1.56,.64,1) forwards;animation-delay:.55s;opacity:0}
+/* bottom skeletons drop in after your card settles */
+.phone-cards.rising .ms-card:nth-child(4):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:.9s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(5):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.0s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(6):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.1s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(7):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.2s;opacity:0}
+.phone-cards::-webkit-scrollbar{display:none}
+.phone-indicator{background:var(--surface2,#F8FAFC);padding:4px 10px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border2)}
+[data-theme="dark"] .phone-indicator{background:#161B22}
+.pi-tier{font-size:9px;font-weight:700;display:flex;align-items:center;gap:4px}
+.pi-pts{font-size:9px;font-weight:700;color:#7C3AED;background:#EDE9FE;padding:2px 6px;border-radius:6px}
+.phone-home-bar{background:#1C1C1E;height:28px;display:flex;align-items:center;justify-content:center}
+.phb-line{width:100px;height:4px;background:rgba(255,255,255,.5);border-radius:4px}
+.phone-vis-header{padding:8px 10px 4px;display:flex;align-items:center;justify-content:space-between}
+.pvh-label{font-size:9px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px}
+.pvh-change{font-size:10px;font-weight:700;display:flex;align-items:center;gap:4px}
 
 .ms-header{padding:9px 12px;background:linear-gradient(135deg,var(--purple-xpale,#F5F3FF),#EEF2FF);border-bottom:1px solid #C4B5FD;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
 [data-theme="dark"] .ms-header{background:linear-gradient(135deg,#1A1040,#1E1B4B);border-color:#4C1D95}
@@ -876,15 +926,18 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 
 .ms-cards{display:flex;flex-direction:column;gap:0;padding:6px 8px 6px 30px;position:relative}
 
-.ms-card{display:grid;grid-template-columns:52px 1fr;border-radius:7px;overflow:hidden;border:1px solid var(--border);background:var(--surface);margin-bottom:5px;position:relative}
+.ms-card{display:grid;grid-template-columns:32px 1fr;border-radius:5px;overflow:hidden;border:1px solid var(--border);background:var(--surface);margin-bottom:2px;position:relative}
 .ms-card:last-child{margin-bottom:0}
 .ms-num{position:absolute;left:-22px;top:50%;transform:translateY(-50%);font-size:9px;font-weight:700;color:var(--text3);width:18px;text-align:right}
 .ms-num.yours{color:#7C3AED;font-weight:800}
+.ms-dot{position:absolute;left:-16px;top:50%;transform:translateY(-50%);width:8px;height:8px;border-radius:50%;background:#D1D5DB;flex-shrink:0}
+.ms-dot.ms-dot-you{width:10px;height:10px;background:#7C3AED;left:-17px;box-shadow:0 0 6px rgba(124,58,237,.4)}
+[data-theme="dark"] .ms-dot{background:#374151}
 
 /* skeleton card */
-.ms-photo{height:52px;background:var(--sk1);overflow:hidden}
+.ms-photo{height:28px;background:var(--sk1);overflow:hidden}
 .ms-photo .sk{width:100%;height:100%;border-radius:0}
-.ms-body{padding:6px 8px;display:flex;flex-direction:column;justify-content:space-between}
+.ms-body{padding:3px 6px;display:flex;flex-direction:column;justify-content:space-between}
 .ms-sk-line{height:8px;border-radius:3px;margin-bottom:4px}
 .ms-sk-line:last-child{margin-bottom:0;width:60%}
 .ms-sk-row{display:flex;gap:4px;margin-bottom:3px}
@@ -893,7 +946,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 
 /* your card */
 .ms-your{border:1.5px solid #7C3AED;box-shadow:0 0 0 2px rgba(124,58,237,.12);background:var(--surface)}
-.ms-your-photo{height:52px;background:linear-gradient(135deg,#E8ECF0,#D1D5DB);display:flex;align-items:center;justify-content:center;font-size:18px;position:relative}
+.ms-your-photo{height:28px;background:linear-gradient(135deg,#E8ECF0,#D1D5DB);display:flex;align-items:center;justify-content:center;font-size:18px;position:relative}
 [data-theme="dark"] .ms-your-photo{background:linear-gradient(135deg,#21262D,#2D333B)}
 .ms-your-badge{position:absolute;top:3px;right:3px;background:#7C3AED;color:#fff;font-size:7px;font-weight:700;padding:1px 4px;border-radius:3px}
 .ms-your-body{padding:5px 8px;display:flex;flex-direction:column;gap:2px}
@@ -1190,7 +1243,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     </svg>
   </div>
   <div class="hdr-center">
-    <div class="page-title">✨ ListIQ <span style="font-size:11px;font-weight:500;opacity:.75">(AI Listing Analyzer)</span></div>
+    <div class="page-title">✨ ListIQ <span style="font-size:11px;font-weight:500;opacity:.75">(Listing Analyzer)</span></div>
   </div>
   <div class="hdr-right">
     <label class="dm-label" onclick="toggleDark()">
@@ -1310,7 +1363,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div style="display:flex;flex-direction:column;gap:5px">
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Property facing direction</div>
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Age of property</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Amenities (0 of 12 filled)</div>
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Amenities (0 of 35 filled)</div>
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Floor plan / layout</div>
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Parking details</div>
         </div>
@@ -1403,7 +1456,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           <div class="sc-label">Listing Score</div>
           <div class="sc-grade" id="scGrade">🟡 Average</div>
           <div class="sc-desc">Your listing is in the <strong>bottom 15%</strong> of similar properties in Sector 22 Dwarka.<br/>Estimated time to first inquiry: <strong>45+ days</strong></div>
-          <div class="sc-cta" onclick="applyAllFixes()">⚡ Apply all AI fixes</div>
         </div>
       </div>
 
@@ -1434,7 +1486,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">✅ Completeness</div>
+            <div class="dim-label">🏠 Amenities</div>
             <div class="dim-score" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimComp"></div></div>
@@ -1460,7 +1512,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           🔧 AI Recommendations
           <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px">6 issues found</span>
         </div>
-        <button class="apply-all-btn" onclick="applyAllFixes()">⚡ Fix All with AI</button>
+        
       </div>
       <div class="issue-list">
 
@@ -1475,8 +1527,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="issue-impact impact-red">📉 Missing photos = 68% fewer leads</div>
             <div class="preview-strip" id="prev1" onclick="togglePreview(1)">
               <div class="ptog"></div>
-              <div class="prev-label">👁 Preview rank impact</div>
-              <div class="prev-gain-tag">+15 pts</div>
+              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-gain-tag">+9 pts</div>
               <div class="prev-rank-change" id="prank1"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp1"><div class="mini-serp" id="mserp1"></div></div>
@@ -1497,14 +1549,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="issue-impact impact-orange">🏆 Verified listings get 2x more enquiries</div>
             <div class="preview-strip" id="prev2" onclick="togglePreview(2)">
               <div class="ptog"></div>
-              <div class="prev-label">👁 Preview rank impact</div>
+              <div class="prev-label">🔍 Search page impact</div>
               <div class="prev-gain-tag">+10 pts</div>
               <div class="prev-rank-change" id="prank2"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp2"><div class="mini-serp" id="mserp2"></div></div>
           </div>
           <div class="issue-action">
-            <button class="fix-btn ai" id="issue2VerifyBtn" onclick="openVerifyModal()">✓ Verify Now</button>
+            <button class="fix-btn" id="issue2VerifyBtn" onclick="openVerifyModal()">Verify Now</button>
           </div>
         </div>
 
@@ -1519,8 +1571,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="issue-impact impact-orange">⏱ Overpriced listings take 3x longer to sell</div>
             <div class="preview-strip" id="prev4" onclick="togglePreview(4)">
               <div class="ptog"></div>
-              <div class="prev-label">👁 Preview rank impact</div>
-              <div class="prev-gain-tag">+8 pts</div>
+              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-gain-tag">Quality ↑</div>
               <div class="prev-rank-change" id="prank4"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp4"><div class="mini-serp" id="mserp4"></div></div>
@@ -1560,6 +1612,28 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </div>
         </div>
 
+        <div class="issue-item" id="issue6">
+          <div class="issue-icon ic-orange">🏠</div>
+          <div class="issue-body">
+            <div class="issue-title">
+              0 of 35 amenities filled
+              <span class="sev-pill sev-orange">HIGH</span>
+            </div>
+            <div class="issue-desc">Amenities section is completely empty. Buyers heavily filter by amenities. You likely have society amenities: <strong>lift, parking, security, power backup, water supply</strong> — and furnishings: <strong>gas pipeline, light, AC, fan, modular kitchen, geyser</strong> — none are marked. Select any one to get +5 pts.</div>
+            <div class="issue-impact impact-orange">🔽 Drops search ranking by ~40%</div>
+            <div class="preview-strip" id="prev6" onclick="togglePreview(6)">
+              <div class="ptog"></div>
+              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-gain-tag">+5 pts</div>
+              <div class="prev-rank-change" id="prank6"><span></span><span class="prev-arrow">↑</span></div>
+            </div>
+            <div class="preview-expand" id="pexp6"><div class="mini-serp" id="mserp6"></div></div>
+          </div>
+          <div class="issue-action">
+            <button class="fix-btn ai" onclick="fixIssue(6,'✨ AI auto-filled 8 amenities based on CGHS society profile')">✨ Auto-fill</button>
+          </div>
+        </div>
+
         <div class="issue-item" id="issue3">
           <div class="issue-icon ic-red">📝</div>
           <div class="issue-body">
@@ -1571,8 +1645,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="issue-impact impact-red">📉 Short descriptions get 5x fewer saves</div>
             <div class="preview-strip" id="prev3" onclick="togglePreview(3)">
               <div class="ptog"></div>
-              <div class="prev-label">👁 Preview rank impact</div>
-              <div class="prev-gain-tag">+20 pts</div>
+              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-gain-tag">Quality ↑</div>
               <div class="prev-rank-change" id="prank3"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp3"><div class="mini-serp" id="mserp3"></div></div>
@@ -1596,8 +1670,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="issue-impact impact-orange">👻 Invisible to 42% of searchers</div>
             <div class="preview-strip" id="prev5" onclick="togglePreview(5)">
               <div class="ptog"></div>
-              <div class="prev-label">👁 Preview rank impact</div>
-              <div class="prev-gain-tag">+5 pts</div>
+              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-gain-tag">Quality ↑</div>
               <div class="prev-rank-change" id="prank5"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp5"><div class="mini-serp" id="mserp5"></div></div>
@@ -1607,49 +1681,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </div>
         </div>
 
-        <div class="issue-item" id="issue6">
-          <div class="issue-icon ic-orange">🏠</div>
-          <div class="issue-body">
-            <div class="issue-title">
-              0 of 12 amenities filled
-              <span class="sev-pill sev-orange">HIGH</span>
-            </div>
-            <div class="issue-desc">Amenities section is completely empty. Buyers heavily filter by amenities. You likely have: lift, parking, security, power backup, water supply — none are marked. This drops your completeness score significantly.</div>
-            <div class="issue-impact impact-orange">🔽 Drops search ranking by ~40%</div>
-            <div class="preview-strip" id="prev6" onclick="togglePreview(6)">
-              <div class="ptog"></div>
-              <div class="prev-label">👁 Preview rank impact</div>
-              <div class="prev-gain-tag">+10 pts</div>
-              <div class="prev-rank-change" id="prank6"><span></span><span class="prev-arrow">↑</span></div>
-            </div>
-            <div class="preview-expand" id="pexp6"><div class="mini-serp" id="mserp6"></div></div>
-          </div>
-          <div class="issue-action">
-            <button class="fix-btn ai" onclick="fixIssue(6,'✨ AI auto-filled 8 amenities based on CGHS society profile')">✨ Auto-fill</button>
-          </div>
-        </div>
-
-        <div class="issue-item" id="issue7">
-          <div class="issue-icon ic-yellow">🔑</div>
-          <div class="issue-body">
-            <div class="issue-title">
-              SEO keywords missing
-              <span class="sev-pill sev-yellow">MEDIUM</span>
-            </div>
-            <div class="issue-desc">Your listing doesn't contain high-search keywords. Buyers searching for <em>"metro nearby", "CGHS society Dwarka", "east-facing 2BHK"</em> won't find your listing.</div>
-            <div class="issue-impact impact-yellow">📊 Adding keywords = 40% more search visibility</div>
-            <div class="preview-strip" id="prev7" onclick="togglePreview(7)">
-              <div class="ptog"></div>
-              <div class="prev-label">👁 Preview rank impact</div>
-              <div class="prev-gain-tag">+5 pts</div>
-              <div class="prev-rank-change" id="prank7"><span></span><span class="prev-arrow">↑</span></div>
-            </div>
-            <div class="preview-expand" id="pexp7"><div class="mini-serp" id="mserp7"></div></div>
-          </div>
-          <div class="issue-action">
-            <button class="fix-btn ai" onclick="fixIssue(7,'✨ Keywords added to description automatically')">✨ Add Keywords</button>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -1803,7 +1834,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </tr>
           <tr>
             <td>Amenities filled</td>
-            <td class="you-cell">0 / 12</td>
+            <td class="you-cell">0 / 35</td>
             <td class="mkt-cell">8.2 / 12</td>
           </tr>
           <tr>
@@ -1834,23 +1865,28 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       </div><!-- /apanel3 -->
     </div><!-- /analysis-tabs-wrap -->
 
+
     <!-- Final CTA -->
     <div class="final-cta" id="finalCta">
       <div class="fc-title">🚀 Apply All Improvements</div>
-      <div class="fc-sub">AI has identified 6 improvements that will transform your listing from ignored to inquired. Apply all with one click.</div>
+      <div class="fc-sub">Fix all 6 issues to transform your listing score and get more enquiries.</div>
       <div class="fc-score-row">
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#EF4444">28</div>
+          <div class="fc-score-num" style="color:#EF4444">13</div>
           <div class="fc-score-label">Current score</div>
         </div>
         <div class="fc-arrow">→</div>
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#4ADE80">84</div>
-          <div class="fc-score-label">After AI fixes</div>
+          <div class="fc-score-num" style="color:#4ADE80">37</div>
+          <div class="fc-score-label">Max score</div>
         </div>
       </div>
-      <button class="fc-btn" onclick="applyAllFixes()">✨ Apply All AI Improvements</button>
+      <button class="fc-btn" onclick="applyAllFixes()">⚡ Apply All Improvements</button>
     </div>
+      </div>
+      
+    </div>
+
 
   </div><!-- /right-col -->
 
@@ -2085,7 +2121,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <script>
 let analysisComplete = false;
 let fixesApplied = 0;
-const totalFixes = 7;
+const totalFixes = 6;
 
 // ── New scoring system ──
 const MAX_SCORE = 37;
@@ -2630,7 +2666,7 @@ function updateScore() {
 
 function applyAllFixes() {
   if(!analysisComplete) { toast('Please analyze your listing first'); return; }
-  [1,2,3,4,5,6,7].forEach((n,i) => setTimeout(() => fixIssue(n, `Fix ${n} applied`), i*300));
+  [1,2,3,4,5,6].forEach((n,i) => setTimeout(() => fixIssue(n, `Fix ${n} applied`), i*300));
   setTimeout(() => {
     generateDescSilent();
     toast('🚀 All 6 improvements applied! Score: 84/100');
@@ -2804,7 +2840,7 @@ function enhancePhotoCard(id) {
 }
 
 // ── Preview rank impact (side panel) ──
-const previewGains = {1:15, 2:10, 3:20, 4:8, 5:5, 6:10, 7:5};
+const previewGains = {1:15, 2:10, 3:8, 4:20, 5:5, 6:10};
 
 function getBaseScore()    { return 28 + (fixesApplied * 9); }
 function getPreviewRank(s) { return Math.max(1, Math.round(41 - ((s - 28) / 56) * 40)); }
@@ -2872,7 +2908,7 @@ function togglePreview(n) {
   const panel = document.getElementById('sideDrawer');
   const wasAlreadyOpen = !!(panel && panel.classList.contains('is-open'));
 
-  [1,2,3,4,5,6,7].forEach(k => {
+  [1,2,3,4,5,6].forEach(k => {
     const s = document.getElementById('prev' + k);
     if (s) s.classList.toggle('on', k === n);
   });
@@ -2893,13 +2929,18 @@ function togglePreview(n) {
   scheduleDrawerRankAnimation(wasAlreadyOpen);
 }
 
+function getVisibilityTier(rank) {
+  if (rank <= 10) return { label: 'High',     emoji: '🟢', color: '#16A34A' };
+  if (rank <= 25) return { label: 'Medium',   emoji: '🟡', color: '#CA8A04' };
+  if (rank <= 38) return { label: 'Low',      emoji: '🟠', color: '#EA580C' };
+  return             { label: 'Very Low',  emoji: '🔴', color: '#DC2626' };
+}
+
 function buildMiniSerp(n, fromRank, toRank, containerEl) {
   const container = containerEl || document.getElementById('sideDrawerMiniSerp');
   if (!container) return;
 
   const NUM_CARDS = 7;
-  const SLOT_MAX = NUM_CARDS - 1;
-  /* YOUR lands on 2nd row (index 1); animation reads as moving up from 6th row (index 5) */
   const yourSlot = 1;
   const SLOT_FROM_STORY = 5;
   const CARD_STEP = 52;
@@ -2907,9 +2948,12 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
 
   const slots = [];
   for (let i = 0; i < NUM_CARDS; i++) {
-    const r = toRank - yourSlot + i;
-    slots.push({ rank: r, isYou: i === yourSlot });
+    slots.push({ rank: toRank - yourSlot + i, isYou: i === yourSlot });
   }
+
+  const fromTier = getVisibilityTier(fromRank);
+  const toTier   = getVisibilityTier(toRank);
+  const diff     = fromRank - toRank;
 
   const cards = slots.map(s => {
     if (s.isYou) {
@@ -2917,7 +2961,6 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
       const pullAttr = useAnim ? `--rank-pull:${pullPx}px;` : '';
       const pend = useAnim ? ' ms-your-rank-pending' : '';
       return `<div class="ms-card ms-your${pend}" style="${pullAttr}position:relative;z-index:2">
-        <span class="ms-num yours">#${s.rank}</span>
         <div class="ms-your-photo">🏠<div class="ms-your-badge">YOU</div></div>
         <div class="ms-your-body">
           <div class="ms-your-title">2 BHK in Sector 22 Dwarka</div>
@@ -2928,7 +2971,6 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     }
     const w = 50 + (s.rank % 5) * 8;
     return `<div class="ms-card" style="position:relative">
-      <span class="ms-num">#${s.rank}</span>
       <div class="ms-photo"><div class="sk" style="width:100%;height:100%;border-radius:0"></div></div>
       <div class="ms-body">
         <div class="ms-sk-line sk" style="width:${w}%"></div>
@@ -2942,21 +2984,53 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     </div>`;
   }).join('');
 
-  const diff = fromRank - toRank;
+  const sameT = fromTier.label === toTier.label;
+  const footerMsg = diff > 0
+    ? sameT
+      ? `📈 Moving up within <b>${toTier.label}</b> visibility`
+      : `🎯 Visibility: <b>${fromTier.label}</b> → <b>${toTier.label}</b>`
+    : `📊 Quality improvement · Visibility tier unchanged`;
+
   container.innerHTML = `
-    <div class="ms-header">
-      <span class="ms-head-label">Rank if fixed:</span>
-      <span class="ms-rank-from">#${fromRank}</span>
-      <span class="ms-rank-arrow">→</span>
-      <span class="ms-rank-to">#${toRank}</span>
-      <span class="ms-rank-up">${diff > 0 ? '↑' : '─'}</span>
-      <span class="ms-head-right">+${previewGains[n]} pts</span>
+    <div class="phone-frame">
+      <div class="phone-statusbar">
+        <span class="psb-time" style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.2px">9:41</span>
+        <!-- Dynamic Island -->
+        <div style="position:absolute;left:50%;transform:translateX(-50%);top:8px;width:90px;height:24px;background:#000;border-radius:20px;z-index:10"></div>
+        <span class="psb-icons" style="display:flex;align-items:center;gap:5px;font-size:10px;color:#fff">
+          <svg width="14" height="10" viewBox="0 0 14 10" fill="white"><path d="M7 2.5C8.8 2.5 10.4 3.2 11.6 4.3L13 2.9C11.4 1.4 9.3 0.5 7 0.5C4.7 0.5 2.6 1.4 1 2.9L2.4 4.3C3.6 3.2 5.2 2.5 7 2.5Z"/><path d="M7 5.5C8.1 5.5 9.1 5.9 9.9 6.6L11.3 5.2C10.1 4.2 8.6 3.5 7 3.5C5.4 3.5 3.9 4.2 2.7 5.2L4.1 6.6C4.9 5.9 5.9 5.5 7 5.5Z"/><circle cx="7" cy="9" r="1.5"/></svg>
+          <svg width="15" height="11" viewBox="0 0 15 11" fill="white"><rect x="0" y="2" width="12" height="8" rx="1.5" stroke="white" stroke-width="1.2" fill="none"/><rect x="1" y="3" width="8" height="6" rx="0.8" fill="white"/><path d="M13 4.5V7.5C13.8 7.2 14.5 6.5 14.5 6C14.5 5.5 13.8 4.8 13 4.5Z" fill="white"/></svg>
+        </span>
+      </div>
+      <div class="phone-screen">
+        <div class="phone-serp-header">
+          <div class="psh-logo">⌂</div>
+          <div class="psh-search">🔍 2 BHK Sector 22 Dwarka</div>
+        </div>
+        <div class="phone-serp-meta">
+          <span>Search results</span>
+          <span style="color:#7C3AED;font-weight:600">Housing.com</span>
+        </div>
+        <div class="phone-cards ms-cards">${cards}</div>
+        <div class="phone-indicator">
+          <span class="pi-tier">${footerMsg}</span>
+        </div>
+      </div>
+      <div class="phone-home-bar"><div class="phb-line"></div></div>
+    <div style="margin-top:12px;padding:12px 14px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);width:100%;text-align:center">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:13px;font-weight:700;color:${fromTier.color}">${fromTier.emoji} ${fromTier.label}</span>
+        <span style="font-size:16px;color:var(--text3)">→</span>
+        <span style="font-size:13px;font-weight:700;color:${toTier.color}">${toTier.emoji} ${toTier.label}</span>
+      </div>
+      <div style="font-size:11px;color:var(--text3);line-height:1.5">
+        ${diff > 0
+          ? sameT
+            ? `Your listing moves up within <b style="color:var(--text2)">${toTier.label}</b> visibility on the search page`
+            : `Your listing visibility improves from <b style="color:${fromTier.color}">${fromTier.label}</b> to <b style="color:${toTier.color}">${toTier.label}</b> on the search page`
+          : `This fix improves listing quality. Visibility tier stays at <b style="color:${toTier.color}">${toTier.label}</b>`}
+      </div>
     </div>
-    <div class="ms-cards">${cards}</div>
-    <div class="ms-footer">
-      ${diff > 0
-        ? `🎯 Moves from rank #${fromRank} → #${toRank} · ${diff} position${diff>1?'s':''} gained`
-        : `📊 Improves other metrics without a rank change`}
     </div>`;
 }
 
@@ -3012,7 +3086,7 @@ function closeSideDrawer(){
   backdrop.setAttribute('aria-hidden','true');
   panel.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
-  [1,2,3,4,5,6,7].forEach(k => {
+  [1,2,3,4,5,6].forEach(k => {
     const s = document.getElementById('prev' + k);
     if (s) s.classList.remove('on');
   });
