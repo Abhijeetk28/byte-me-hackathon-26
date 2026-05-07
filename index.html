@@ -864,19 +864,72 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .mini-serp{background:transparent;margin-top:12px;margin-bottom:4px;display:flex;flex-direction:column;align-items:center}
 [data-theme="dark"] .mini-serp{}
 
-/* ── PHONE FRAME ── */
-.phone-frame{width:100%;max-width:100%;background:#fff;border:10px solid #1C1C1E;border-radius:50px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.28),0 8px 24px rgba(0,0,0,.12),inset 0 0 0 1px rgba(255,255,255,.08);position:relative}
-[data-theme="dark"] .phone-frame{background:#0F172A;border-color:#0C0C0E;box-shadow:0 40px 80px rgba(0,0,0,.6)}
-.phone-statusbar{background:#1C1C1E;height:40px;display:flex;align-items:center;justify-content:space-between;padding:0 20px;flex-shrink:0;position:relative}
+/* ── PHONE FRAME — iPhone 14/15 aspect 390×844; height capped so tier caption stays in view ── */
+.phone-preview-device{
+  --phone-caption-reserve: clamp(100px, 17vh, 142px);
+  --phone-layout-chrome: 88px;
+  --phone-max-h: calc(100svh - var(--phone-layout-chrome) - var(--phone-caption-reserve));
+  width:100%;
+  max-width:100%;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0;
+}
+.phone-frame{
+  width:min(390px,100%,calc(var(--phone-max-h) * 390 / 844));
+  max-width:100%;
+  box-sizing:border-box;
+  aspect-ratio:390 / 844;
+  height:auto;
+  max-height:var(--phone-max-h);
+  background:#fff;
+  border:10px solid #1C1C1E;
+  border-radius:47px;
+  overflow:hidden;
+  box-shadow:0 28px 56px rgba(0,0,0,.26),0 6px 18px rgba(0,0,0,.1),inset 0 0 0 1px rgba(255,255,255,.08);
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-height:0;
+  flex-shrink:0;
+}
+[data-theme="dark"] .phone-frame{background:#0F172A;border-color:#0C0C0E;box-shadow:0 28px 56px rgba(0,0,0,.55)}
+.phone-tier-caption{
+  width:min(390px,100%,calc(var(--phone-max-h) * 390 / 844));
+  max-width:100%;
+  margin-top:12px;
+  padding:12px 14px;
+  background:var(--surface2);
+  border-radius:12px;
+  border:1px solid var(--border);
+  text-align:center;
+  box-sizing:border-box;
+  flex-shrink:0;
+}
+.phone-statusbar{background:#1C1C1E;height:52px;display:flex;align-items:center;justify-content:space-between;padding:0 18px 0 22px;flex-shrink:0;position:relative}
 .psb-time{font-size:10px;font-weight:700;color:#fff}
 .psb-icons{display:flex;align-items:center;gap:4px;font-size:9px;color:#fff}
-.phone-screen{background:var(--surface,#fff);overflow:hidden}
+.phone-screen{background:var(--surface,#fff);overflow:hidden;flex:1;min-height:0;display:flex;flex-direction:column}
 [data-theme="dark"] .phone-screen{background:#0F172A}
-.phone-serp-header{background:linear-gradient(90deg,#3B0D8C,#6B21C1);padding:8px 10px;display:flex;align-items:center;gap:6px}
+.phone-serp-header{background:linear-gradient(90deg,#3B0D8C,#6B21C1);padding:7px 10px;display:flex;align-items:center;gap:6px;flex-shrink:0}
 .psh-logo{background:#F5A200;width:16px;height:16px;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;flex-shrink:0}
-.psh-search{flex:1;background:rgba(255,255,255,.2);border-radius:12px;padding:4px 8px;font-size:9px;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:4px}
-.phone-serp-meta{padding:5px 10px;font-size:9px;color:var(--text3);border-bottom:1px solid var(--border2);display:flex;justify-content:space-between}
-.phone-cards{padding:5px 8px 5px 8px;display:flex;flex-direction:column;gap:4px;max-height:480px;overflow-y:hidden}
+.psh-search{flex:1;min-width:0;background:rgba(255,255,255,.2);border-radius:11px;padding:4px 8px;font-size:9px;color:rgba(255,255,255,.85);display:flex;align-items:center;gap:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.phone-serp-meta{padding:5px 10px;font-size:9px;color:var(--text3);border-bottom:1px solid var(--border2);display:flex;justify-content:space-between;gap:8px;flex-shrink:0}
+.phone-cards{
+  --phone-card-h:90px;
+  --phone-card-gap-below:10px;
+  --phone-cards-pad-x:10px;
+  padding:4px var(--phone-cards-pad-x);
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
 
 /* phone scroll-up animation */
 @keyframes skelScrollUp{
@@ -903,13 +956,96 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .phone-cards.rising .ms-card:nth-child(5):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.0s;opacity:0}
 .phone-cards.rising .ms-card:nth-child(6):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.1s;opacity:0}
 .phone-cards.rising .ms-card:nth-child(7):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.2s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(8):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.3s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(9):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.4s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(10):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.5s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(11):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.6s;opacity:0}
+.phone-cards.rising .ms-card:nth-child(12):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.7s;opacity:0}
 .phone-cards::-webkit-scrollbar{display:none}
-.phone-indicator{background:var(--surface2,#F8FAFC);padding:4px 10px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--border2)}
-[data-theme="dark"] .phone-indicator{background:#161B22}
-.pi-tier{font-size:9px;font-weight:700;display:flex;align-items:center;gap:4px}
-.pi-pts{font-size:9px;font-weight:700;color:#7C3AED;background:#EDE9FE;padding:2px 6px;border-radius:6px}
-.phone-home-bar{background:#1C1C1E;height:28px;display:flex;align-items:center;justify-content:center}
-.phb-line{width:100px;height:4px;background:rgba(255,255,255,.5);border-radius:4px}
+/* SERP cards — fixed equal height, compact (phone) */
+.phone-frame .ms-cards{padding:6px var(--phone-cards-pad-x,10px);gap:0}
+.phone-frame .ms-card{
+  grid-template-columns:76px 1fr;
+  grid-template-rows:1fr;
+  border-radius:8px;
+  margin-bottom:var(--phone-card-gap-below,10px);
+  min-width:0;
+  height:var(--phone-card-h,90px);
+  min-height:var(--phone-card-h,90px);
+  max-height:var(--phone-card-h,90px);
+  align-items:stretch;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+.phone-frame .ms-card:last-child{margin-bottom:var(--phone-card-gap-below,10px)}
+.phone-frame .ms-num{
+  left:18px;
+  top:50%;
+  transform:translateY(-50%);
+  width:28px;
+  text-align:center;
+  font-size:8px;
+  font-weight:800;
+  z-index:2;
+  text-shadow:0 0 3px #fff,0 1px 2px rgba(0,0,0,.25);
+}
+[data-theme="dark"] .phone-frame .ms-num{text-shadow:0 0 3px #0f172a,0 1px 2px rgba(0,0,0,.65)}
+.phone-frame .ms-photo,.phone-frame .ms-your-photo{
+  height:100%;
+  min-height:0;
+  max-height:100%;
+  box-sizing:border-box;
+  align-self:stretch;
+}
+.phone-frame .ms-your-photo{font-size:22px}
+.phone-frame .ms-body{
+  padding:6px 10px;
+  min-height:0;
+  height:100%;
+  max-height:100%;
+  justify-content:center;
+  gap:2px;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+.phone-frame .ms-sk-line{height:7px;margin-bottom:4px}
+.phone-frame .ms-sk-line:last-child{margin-bottom:0}
+.phone-frame .ms-sk-row{gap:4px;margin-bottom:3px}
+.phone-frame .ms-sk-chip{height:6px}
+.phone-frame .ms-sk-btn{height:18px;width:48px}
+.phone-frame .ms-your-body{
+  padding:6px 10px;
+  gap:3px;
+  min-height:0;
+  height:100%;
+  max-height:100%;
+  justify-content:center;
+  box-sizing:border-box;
+  overflow:hidden;
+}
+.phone-frame .ms-your-title{
+  font-size:10px;
+  line-height:1.25;
+  font-weight:700;
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  word-break:break-word;
+}
+.phone-frame .ms-your-price{
+  font-size:11px;
+  font-weight:800;
+  line-height:1.2;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.phone-frame .ms-contact{font-size:8px;padding:3px 10px;margin-top:1px;flex-shrink:0}
+.phone-frame .ms-your-badge{font-size:7px;padding:1px 5px;top:5px;right:5px}
+.pi-pts{font-size:9px;font-weight:700;color:#7C3AED;background:#EDE9FE;padding:2px 6px;border-radius:5px}
+.phone-home-bar{background:#1C1C1E;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.phb-line{width:128px;height:4px;background:rgba(255,255,255,.5);border-radius:4px}
 .phone-vis-header{padding:8px 10px 4px;display:flex;align-items:center;justify-content:space-between}
 .pvh-label{font-size:9px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.4px}
 .pvh-change{font-size:10px;font-weight:700;display:flex;align-items:center;gap:4px}
@@ -1070,7 +1206,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .side-drawer-title{font-size:15px;font-weight:700;color:var(--text)}
 .side-drawer-close{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
 .side-drawer-close:hover{background:var(--surface3);color:var(--text);border-color:var(--text4)}
-.side-drawer-body{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden;padding:16px 18px 20px;color:var(--text2);font-size:13px;line-height:1.55}
+.side-drawer-body{flex:1;min-height:0;display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;padding:16px 18px 20px;color:var(--text2);font-size:13px;line-height:1.55;-webkit-overflow-scrolling:touch}
 .side-drawer-confetti-canvas{
   position:absolute;
   inset:0;
@@ -1082,7 +1218,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .side-drawer-empty-hint{color:var(--text3);font-size:13px;line-height:1.55;margin:0}
 .side-drawer-empty-hint strong{color:var(--text);font-weight:700}
 
-/* Preview block: ~85% of panel body — fits 7 cards with scroll */
+/* Preview block: ~85% of panel body — SERP list scrolls (many cards) */
 #sideDrawerMiniSerp.side-drawer-mini-serp{
   flex:0 0 85%;
   max-height:85%;
@@ -1093,6 +1229,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   display:flex;
   flex-direction:column;
   border-radius:12px;
+}
+/* Phone mock: use viewport-based height; let drawer body scroll if needed */
+#sideDrawerMiniSerp.side-drawer-mini-serp:has(.phone-preview-device){
+  flex:1 1 auto;
+  max-height:none;
+  overflow:visible;
 }
 #sideDrawerMiniSerp.side-drawer-mini-serp .ms-header{
   flex-shrink:0;
@@ -1223,6 +1365,73 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 #sideDrawerMiniSerp.side-drawer-mini-serp .ms-your.ms-your-rank-pending.ms-your-rank-run{
   transform:translateY(0);
 }
+
+/* Phone mock in drawer: wins over generic #sideDrawerMiniSerp … tablet SERP rules */
+/* Drawer: extra chrome (panel header + body padding) so phone shortens and caption fits */
+#sideDrawerMiniSerp .phone-preview-device{
+  --phone-layout-chrome: 102px;
+  margin-left:auto;
+  margin-right:auto;
+}
+/* Phone in drawer: higher specificity beats #sideDrawerMiniSerp.side-drawer-mini-serp .ms-* tablet rules */
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-cards{
+  flex:1;
+  min-height:0;
+  overflow-y:auto;
+  overflow-x:visible;
+  padding:6px var(--phone-cards-pad-x,10px);
+  gap:0;
+  --phone-card-h:90px;
+  --phone-card-gap-below:10px;
+}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-card{
+  grid-template-columns:76px 1fr;
+  grid-template-rows:1fr;
+  align-items:stretch;
+  border-radius:8px;
+  margin-bottom:var(--phone-card-gap-below,10px);
+  min-width:0;
+  height:var(--phone-card-h,90px);
+  min-height:var(--phone-card-h,90px);
+  max-height:var(--phone-card-h,90px);
+  box-sizing:border-box;
+  overflow:hidden;
+}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-card:last-child{margin-bottom:var(--phone-card-gap-below,10px)}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-num{
+  left:18px;
+  top:50%;
+  transform:translateY(-50%);
+  width:28px;
+  text-align:center;
+  font-size:8px;
+  font-weight:800;
+  z-index:2;
+  text-shadow:0 0 3px #fff,0 1px 2px rgba(0,0,0,.25);
+}
+[data-theme="dark"] #sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-num{text-shadow:0 0 3px #0f172a,0 1px 2px rgba(0,0,0,.65)}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-photo,
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-photo{
+  height:100%;
+  min-height:0;
+  max-height:100%;
+  width:100%;
+  border-radius:0;
+  box-sizing:border-box;
+  align-self:stretch;
+}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-photo{font-size:22px}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-body{padding:6px 10px;gap:0;justify-content:center;min-height:0;height:100%;max-height:100%;box-sizing:border-box;overflow:hidden}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-sk-line{height:7px;margin-bottom:4px}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-sk-line:last-child{margin-bottom:0}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-sk-row{gap:4px;margin-bottom:3px}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-sk-chip{height:6px}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-sk-btn{height:18px;width:48px}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-body{padding:6px 10px;gap:3px;align-self:stretch;min-height:0;height:100%;max-height:100%;justify-content:center;box-sizing:border-box;overflow:hidden}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-title{font-size:10px;line-height:1.25;font-weight:700;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;word-break:break-word}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-price{font-size:11px;font-weight:800;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-contact{font-size:8px;padding:3px 10px;border-radius:4px;align-self:flex-end;width:auto;text-align:center;margin-top:1px;flex-shrink:0}
+#sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-badge{font-size:7px;padding:1px 5px}
 
 </style>
 </head>
@@ -2929,31 +3138,20 @@ function togglePreview(n) {
   scheduleDrawerRankAnimation(wasAlreadyOpen);
 }
 
-function getVisibilityTier(rank) {
-  if (rank <= 10) return { label: 'High',     emoji: '🟢', color: '#16A34A' };
-  if (rank <= 25) return { label: 'Medium',   emoji: '🟡', color: '#CA8A04' };
-  if (rank <= 38) return { label: 'Low',      emoji: '🟠', color: '#EA580C' };
-  return             { label: 'Very Low',  emoji: '🔴', color: '#DC2626' };
-}
-
 function buildMiniSerp(n, fromRank, toRank, containerEl) {
   const container = containerEl || document.getElementById('sideDrawerMiniSerp');
   if (!container) return;
 
-  const NUM_CARDS = 7;
+  const NUM_CARDS = 12;
   const yourSlot = 1;
-  const SLOT_FROM_STORY = 5;
-  const CARD_STEP = 52;
+  const SLOT_FROM_STORY = 8;
+  const CARD_STEP = 90;
   let pullPx = fromRank > toRank ? (SLOT_FROM_STORY - yourSlot) * CARD_STEP : 0;
 
   const slots = [];
   for (let i = 0; i < NUM_CARDS; i++) {
     slots.push({ rank: toRank - yourSlot + i, isYou: i === yourSlot });
   }
-
-  const fromTier = getVisibilityTier(fromRank);
-  const toTier   = getVisibilityTier(toRank);
-  const diff     = fromRank - toRank;
 
   const cards = slots.map(s => {
     if (s.isYou) {
@@ -2984,19 +3182,13 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     </div>`;
   }).join('');
 
-  const sameT = fromTier.label === toTier.label;
-  const footerMsg = diff > 0
-    ? sameT
-      ? `📈 Moving up within <b>${toTier.label}</b> visibility`
-      : `🎯 Visibility: <b>${fromTier.label}</b> → <b>${toTier.label}</b>`
-    : `📊 Quality improvement · Visibility tier unchanged`;
-
   container.innerHTML = `
+    <div class="phone-preview-device">
     <div class="phone-frame">
       <div class="phone-statusbar">
         <span class="psb-time" style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.2px">9:41</span>
-        <!-- Dynamic Island -->
-        <div style="position:absolute;left:50%;transform:translateX(-50%);top:8px;width:90px;height:24px;background:#000;border-radius:20px;z-index:10"></div>
+        <!-- Dynamic Island (scaled to ~390pt-wide device) -->
+        <div style="position:absolute;left:50%;transform:translateX(-50%);top:11px;width:118px;height:30px;background:#000;border-radius:20px;z-index:10"></div>
         <span class="psb-icons" style="display:flex;align-items:center;gap:5px;font-size:10px;color:#fff">
           <svg width="14" height="10" viewBox="0 0 14 10" fill="white"><path d="M7 2.5C8.8 2.5 10.4 3.2 11.6 4.3L13 2.9C11.4 1.4 9.3 0.5 7 0.5C4.7 0.5 2.6 1.4 1 2.9L2.4 4.3C3.6 3.2 5.2 2.5 7 2.5Z"/><path d="M7 5.5C8.1 5.5 9.1 5.9 9.9 6.6L11.3 5.2C10.1 4.2 8.6 3.5 7 3.5C5.4 3.5 3.9 4.2 2.7 5.2L4.1 6.6C4.9 5.9 5.9 5.5 7 5.5Z"/><circle cx="7" cy="9" r="1.5"/></svg>
           <svg width="15" height="11" viewBox="0 0 15 11" fill="white"><rect x="0" y="2" width="12" height="8" rx="1.5" stroke="white" stroke-width="1.2" fill="none"/><rect x="1" y="3" width="8" height="6" rx="0.8" fill="white"/><path d="M13 4.5V7.5C13.8 7.2 14.5 6.5 14.5 6C14.5 5.5 13.8 4.8 13 4.5Z" fill="white"/></svg>
@@ -3012,23 +3204,17 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
           <span style="color:#7C3AED;font-weight:600">Housing.com</span>
         </div>
         <div class="phone-cards ms-cards">${cards}</div>
-        <div class="phone-indicator">
-          <span class="pi-tier">${footerMsg}</span>
-        </div>
       </div>
       <div class="phone-home-bar"><div class="phb-line"></div></div>
-    <div style="margin-top:12px;padding:12px 14px;background:var(--surface2);border-radius:10px;border:1px solid var(--border);width:100%;text-align:center">
-      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px">
-        <span style="font-size:13px;font-weight:700;color:${fromTier.color}">${fromTier.emoji} ${fromTier.label}</span>
-        <span style="font-size:16px;color:var(--text3)">→</span>
-        <span style="font-size:13px;font-weight:700;color:${toTier.color}">${toTier.emoji} ${toTier.label}</span>
+    </div>
+    <div class="phone-tier-caption">
+      <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:5px">
+        <span style="font-size:12px;font-weight:700;color:#EA580C">🔴 Low</span>
+        <span style="font-size:14px;color:var(--text3)">→</span>
+        <span style="font-size:12px;font-weight:700;color:#CA8A04">🟠 Medium</span>
       </div>
-      <div style="font-size:11px;color:var(--text3);line-height:1.5">
-        ${diff > 0
-          ? sameT
-            ? `Your listing moves up within <b style="color:var(--text2)">${toTier.label}</b> visibility on the search page`
-            : `Your listing visibility improves from <b style="color:${fromTier.color}">${fromTier.label}</b> to <b style="color:${toTier.color}">${toTier.label}</b> on the search page`
-          : `This fix improves listing quality. Visibility tier stays at <b style="color:${toTier.color}">${toTier.label}</b>`}
+      <div style="font-size:10px;color:var(--text3);line-height:1.45">
+        Your listing visibility improves from <b style="color:#EA580C">Low</b> to <b style="color:#CA8A04">Medium</b> on the search page
       </div>
     </div>
     </div>`;
