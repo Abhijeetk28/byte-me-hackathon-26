@@ -1716,15 +1716,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div class="dim-item">
           <div class="dim-head">
             <div class="dim-label">📷 Photos Analysis</div>
-            <div class="dim-score" style="color:#EF4444">6%<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span></div>
+            <div class="dim-score" style="color:#EF4444">9<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span></div>
           </div>
-          <div class="dim-bar"><div class="dim-fill" style="width:40%;background:#EF4444" id="dimPhotos"></div></div>
+          <div class="dim-bar"><div class="dim-fill" style="width:60%;background:#EF4444" id="dimPhotos"></div></div>
           <div class="dim-status" id="photosDimStatus">3 photos × 3pts = 9/15</div>
         </div>
         <div class="dim-item">
           <div class="dim-head">
             <div class="dim-label">🛡️ Property Verified</div>
-            <div class="dim-score" id="verifyDimScore" style="color:#EF4444">0%<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span></div>
+            <div class="dim-score" id="verifyDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimVerify"></div></div>
           <div class="dim-status" id="verifyDimStatus">Not verified · Get +10 pts</div>
@@ -1732,7 +1732,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div class="dim-item">
           <div class="dim-head">
             <div class="dim-label">💲 Price</div>
-            <div class="dim-score" style="color:#4ADE80">5%<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
+            <div class="dim-score" style="color:#4ADE80">5<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:100%;background:#4ADE80" id="dimPrice"></div></div>
           <div class="dim-status">Price provided ✓ &nbsp;<span style="color:#FBBF24;font-weight:700">⚠ 13% above market avg</span></div>
@@ -1740,7 +1740,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div class="dim-item">
           <div class="dim-head">
             <div class="dim-label">🏠 Amenities</div>
-            <div class="dim-score" id="amenitiesDimScore" style="color:#EF4444">0%<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
+            <div class="dim-score" id="amenitiesDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimComp"></div></div>
           <div class="dim-status" id="amenitiesDimStatus">0 amenities selected · Select any = +5 pts</div>
@@ -3346,7 +3346,7 @@ function updateScore() {
   const dimPhotos = document.getElementById('dimPhotos');
   if (dimPhotos) { dimPhotos.style.width = (scoreBreakdown.photos / 15 * 100) + '%'; dimPhotos.style.background = photoColor; }
   const photoDimScore = document.querySelector('#dimPhotos')?.closest('.dim-item')?.querySelector('.dim-score');
-  if (photoDimScore) { photoDimScore.innerHTML = scoreBreakdown.photos + '%<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span>'; photoDimScore.style.color = photoColor; }
+  if (photoDimScore) { photoDimScore.innerHTML = scoreBreakdown.photos + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span>'; photoDimScore.style.color = photoColor; }
   const photosDimStatus = document.getElementById('photosDimStatus');
   if (photosDimStatus) photosDimStatus.textContent = photoCount + ' photos × 3pts = ' + scoreBreakdown.photos + '/15';
 
@@ -3382,7 +3382,7 @@ function updateScore() {
   const dimVerify = document.getElementById('dimVerify');
   if (dimVerify) { dimVerify.style.width = (scoreBreakdown.verify / 10 * 100) + '%'; dimVerify.style.background = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
   const verifyDimScore = document.getElementById('verifyDimScore');
-  if (verifyDimScore) { verifyDimScore.innerHTML = scoreBreakdown.verify + '%<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span>'; verifyDimScore.style.color = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
+  if (verifyDimScore) { verifyDimScore.innerHTML = scoreBreakdown.verify + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span>'; verifyDimScore.style.color = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
   const verifyDimStatus = document.getElementById('verifyDimStatus');
   if (verifyDimStatus) verifyDimStatus.textContent = scoreBreakdown.verify >= 10 ? '✓ Verified · 10/10 pts' : 'Not verified · Get +10 pts';
 
@@ -3390,9 +3390,20 @@ function updateScore() {
   const dimComp = document.getElementById('dimComp');
   if (dimComp) { dimComp.style.width = (scoreBreakdown.amenities / 5 * 100) + '%'; dimComp.style.background = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
   const amenitiesDimScore = document.getElementById('amenitiesDimScore');
-  if (amenitiesDimScore) { amenitiesDimScore.innerHTML = scoreBreakdown.amenities + '%<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span>'; amenitiesDimScore.style.color = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
+  if (amenitiesDimScore) { amenitiesDimScore.innerHTML = scoreBreakdown.amenities + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span>'; amenitiesDimScore.style.color = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
   const amenitiesStatus = document.getElementById('amenitiesDimStatus');
   if (amenitiesStatus) amenitiesStatus.textContent = scoreBreakdown.amenities >= 5 ? 'Amenity selected ✓ · 5/5 pts' : '0 amenities selected · Select any = +5 pts';
+
+  const dimPriceBar = document.getElementById('dimPrice');
+  if (dimPriceBar) {
+    dimPriceBar.style.width = (scoreBreakdown.price / 5 * 100) + '%';
+    dimPriceBar.style.background = scoreBreakdown.price >= 5 ? '#4ADE80' : '#EF4444';
+  }
+  const priceDimScore = document.querySelector('#dimPrice')?.closest('.dim-item')?.querySelector('.dim-score');
+  if (priceDimScore) {
+    priceDimScore.innerHTML = scoreBreakdown.price + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span>';
+    priceDimScore.style.color = scoreBreakdown.price >= 5 ? '#4ADE80' : '#EF4444';
+  }
 
   // ── Market compare table ──
   const compScore = document.getElementById('compScoreYou');
