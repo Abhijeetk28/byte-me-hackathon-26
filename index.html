@@ -117,7 +117,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .logo{display:flex;align-items:center;line-height:1}
 .logo svg{display:block}
 .hdr-center{flex:1;display:flex;align-items:center;gap:12px;justify-content:center}
-.page-title{font-size:15px;font-weight:700;color:#fff}
+.page-title{font-size:20px;font-weight:800;color:#fff}
 .ai-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.3px}
 .hdr-right{display:flex;gap:8px;align-items:center}
 .btn-sm{padding:6px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:var(--transition)}
@@ -1473,15 +1473,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     </svg>
   </div>
   <div class="hdr-center">
-    <div class="page-title">✨ ListIQ <span style="font-size:11px;font-weight:500;opacity:.75">(Listing Analyzer)</span></div>
+    <div class="page-title">✨ ListIQ <span style="font-size:15px;font-weight:500;opacity:.75">(Listing Analyzer)</span></div>
   </div>
   <div class="hdr-right">
-    <label class="dm-label" onclick="toggleDark()">
-      <span id="dmIcon">🌙</span>
-      <button class="dm-toggle" id="dmToggle" type="button"></button>
-      <span id="dmText">Dark</span>
-    </label>
-    <button class="btn-sm btn-red">Publish Listing</button>
+<button class="btn-sm btn-red" onclick="publishListing()">Publish Listing</button>
   </div>
 </header>
 
@@ -1535,7 +1530,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div style="display:flex;flex-direction:column;gap:0">
           <!-- Price + Active -->
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
-            <div style="font-size:20px;font-weight:800;color:var(--text)">₹ 85 L</div>
+            <div style="font-size:20px;font-weight:800;color:var(--text)">₹1.35 Cr</div>
             <div style="display:flex;align-items:center;gap:5px;color:#16A34A;font-size:11px;font-weight:700;border:1.5px solid #A7F3D0;background:#ECFDF5;padding:3px 9px;border-radius:20px">
               <svg width="11" height="11" viewBox="0 0 24 24" fill="#16A34A"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
               ACTIVE
@@ -1578,14 +1573,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       </div>
 
       <!-- Missing fields -->
-      <div style="background:#FEF2F2;border-radius:10px;padding:12px 14px;border:1px solid #FECACA">
+      <div style="background:#FEF2F2;border-radius:10px;padding:12px 14px;border:1px solid #FECACA" id="missingInfoBox">
         <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">❌ Missing Information</div>
-        <div style="display:flex;flex-direction:column;gap:5px">
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Property facing direction</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Age of property</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Amenities (0 of 35 filled)</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Floor plan / layout</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Parking details</div>
+        <div style="display:flex;flex-direction:column;gap:5px" id="missingInfoList">
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missPhotos"><span style="color:#EF4444">✗</span> <span>Only 3 of 5 photos added</span></div>
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missVerify"><span style="color:#EF4444">✗</span> Property not verified</div>
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missAmenities"><span style="color:#EF4444">✗</span> Amenities (0 of 35 filled)</div>
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missFacing"><span style="color:#EF4444">✗</span> Property facing direction</div>
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missAge"><span style="color:#EF4444">✗</span> Age of property</div>
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missPrice"><span style="color:#EF4444">✗</span> Price above market range</div>
         </div>
       </div>
 
@@ -1645,7 +1641,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </svg>
       </div>
       <div class="an-title">Building your listing insights...</div>
-      <div class="an-sub">Pouring the foundation · framing checks · usually 2–3s</div>
+      <div class="an-sub">Pouring the foundation · framing checks · usually 3–5s</div>
       <div class="an-steps" id="anSteps">
         <div class="an-step" id="step1"><div class="dot"></div> Checking photo quality & coverage</div>
         <div class="an-step" id="step2"><div class="dot"></div> Analyzing description quality</div>
@@ -1675,7 +1671,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div class="sc-info">
           <div class="sc-label">Listing Score</div>
           <div class="sc-grade" id="scGrade">🟡 Average</div>
-          <div class="sc-desc">Your listing is in the <strong>bottom 15%</strong> of similar properties in Sector 22 Dwarka.<br/>Estimated time to first inquiry: <strong>45+ days</strong></div>
+          <div class="sc-desc">Your listing is in the <strong>bottom 15%</strong> of similar properties in Sector 22 Dwarka.<br/>Estimated time to first inquiry: <strong>5–7 days</strong></div>
         </div>
       </div>
 
@@ -1702,7 +1698,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="dim-score" style="color:#4ADE80">5<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:100%;background:#4ADE80" id="dimPrice"></div></div>
-          <div class="dim-status">Price provided ✓ (quality tip: 11% above avg)</div>
+          <div class="dim-status">Price provided ✓ &nbsp;<span style="color:#FBBF24;font-weight:700">⚠ 13% above market avg</span></div>
         </div>
         <div class="dim-item">
           <div class="dim-head">
@@ -1788,7 +1784,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               Price above market
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Similar 2 BHKs in Sector 22 Dwarka sell for <strong>₹72–78L</strong>, but yours is listed at ₹85L — that's <strong>₹7–13L (9–18%) more</strong> than what buyers are comparing. <span id="activeDaysText">Active for <strong>9 days</strong> with less enquiries.</span> A small price drop can make a big difference.</div>
+            <div class="issue-desc">Similar 2 BHKs in Sector 22 Dwarka are estimated at <strong>₹98.29L–1.20 Cr</strong>, but yours is listed at ₹1.35 Cr — that's <strong>₹15–37L (13–27%) more</strong> than the market range. <span id="activeDaysText">Active for <strong>9 days</strong> with less enquiries.</span> A small price drop can make a big difference.</div>
             <div class="issue-impact impact-orange">⏱ Overpriced listings take 3x longer to sell</div>
             <div class="preview-strip" id="prev4" onclick="togglePreview(4)">
               <div class="ptog"></div>
@@ -1803,10 +1799,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               <div style="font-size:11px;font-weight:700;color:var(--text2)">Enter new price</div>
               <div class="price-edit-row">
                 <span style="font-size:13px;font-weight:700;color:var(--text2)">₹</span>
-                <input class="price-input" id="priceInput" type="text" value="85,00,000" placeholder="e.g. 78,00,000"/>
+                <input class="price-input" id="priceInput" type="text" value="1,35,00,000" placeholder="e.g. 1,10,00,000"/>
                 <button class="price-save-btn" onclick="saveManualPrice()">Save Price</button>
               </div>
-              <div class="price-hint">Market range: <span>₹72L – ₹78L</span> · Recommended: ₹76L</div>
+              <div class="price-hint">Market range: <span>₹98.29L – ₹1.20 Cr</span> · Recommended: ₹1.10 Cr</div>
             </div>
           </div>
 
@@ -1819,7 +1815,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
                 <div class="po-icon">⚡</div>
                 <div>
                   <div class="po-label">Auto-correct to market rate</div>
-                  <div class="po-sub">AI sets ₹76L based on similar listings in your area</div>
+                  <div class="po-sub">AI sets ₹1.10 Cr based on similar listings in your area</div>
                 </div>
               </div>
               <div class="po-option" onclick="chooseManualPrice()">
@@ -2086,8 +2082,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </tr>
           <tr>
             <td>Price / sq.ft</td>
-            <td class="you-cell">₹7,345</td>
-            <td class="mkt-cell">₹6,890</td>
+            <td class="you-cell">₹11,678</td>
+            <td class="mkt-cell">₹9,000</td>
           </tr>
           <tr>
             <td>Amenities filled</td>
@@ -2136,22 +2132,62 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             </div>
           </div>
           <div>
-            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">What buyers are asking<span style="font-size:11px;font-weight:700;color:#7C3AED;cursor:pointer;text-transform:none;letter-spacing:0">View all 89 →</span></div>
+            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">Top questions by buyers<span style="font-size:11px;font-weight:700;color:#7C3AED;cursor:pointer;text-transform:none;letter-spacing:0">View all 89 →</span></div>
             <div class="buyer-q-list" style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
-              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#E74C3C;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">P</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">How far is the nearest metro station?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Priya S. · 2h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Connectivity</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 12</div><div style="font-size:10px;color:var(--text3)">👍 34</div></div></div>
-              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">A</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">Are there good schools for kids in the area?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Arjun M. · 5h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Schools</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 8</div><div style="font-size:10px;color:var(--text3)">👍 21</div></div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#E74C3C;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">P</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">How far is Sector 21 metro from this area? Is it walkable?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Priya S. · 2h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Connectivity</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 12</div><div style="font-size:10px;color:var(--text3)">👍 34</div></div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">A</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">Are Mount Carmel or Paramount school easy to reach from Sector 22?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Arjun M. · 5h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Schools</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 8</div><div style="font-size:10px;color:var(--text3)">👍 21</div></div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#10B981;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">N</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">Parking is a big issue in Dwarka — how do residents manage?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Neha T. · 1d ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Parking</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 6</div><div style="font-size:10px;color:var(--text3)">👍 18</div></div></div>
             </div>
           </div>
           <div>
             <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px">Locality sentiment from 312 residents</div>
             <div class="sentiment-bar" style="background:#F5F3FF;border-radius:10px;padding:12px 14px;border:1px solid #EDE9FE;margin-bottom:14px">
-              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Metro Access</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:84%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">84%</div></div>
-              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Safety</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:79%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">79%</div></div>
-              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Schools</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:71%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">71%</div></div>
-              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Parking</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:42%;background:#F59E0B;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#F59E0B">42%</div></div>
-              <div style="display:flex;align-items:center;gap:10px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Traffic</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:28%;background:#EF4444;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#EF4444">28%</div></div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Metro Access</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:85%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">85%</div></div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Safety</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:84%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">84%</div></div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Schools</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:80%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">80%</div></div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Parking</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:25%;background:#EF4444;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#EF4444">25%</div></div>
+              <div style="display:flex;align-items:center;gap:10px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Traffic</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:30%;background:#EF4444;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#EF4444">30%</div></div>
             </div>
           </div>
+          <!-- Coverage grid -->
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px">Does your listing address what buyers care about?</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+              <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:9px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">
+                <div style="font-size:16px;flex-shrink:0;margin-top:1px">🚇</div>
+                <div><div style="font-size:12px;font-weight:700;color:#991B1B">Metro Access</div><div style="font-size:10.5px;color:#B91C1C;line-height:1.45;margin-top:2px">Sector 21 Metro is 0.7 km away — not mentioned in description.</div><div style="font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;padding:2px 7px;border-radius:5px;margin-top:5px;display:inline-flex;align-items:center;gap:3px">✗ Not in description</div></div>
+              </div>
+              <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:9px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">
+                <div style="font-size:16px;flex-shrink:0;margin-top:1px">🏫</div>
+                <div><div style="font-size:12px;font-weight:700;color:#991B1B">Schools Nearby</div><div style="font-size:10.5px;color:#B91C1C;line-height:1.45;margin-top:2px">Mount Carmel & Paramount International nearby — not mentioned.</div><div style="font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;padding:2px 7px;border-radius:5px;margin-top:5px;display:inline-flex;align-items:center;gap:3px">✗ Not mentioned</div></div>
+              </div>
+              <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:9px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">
+                <div style="font-size:16px;flex-shrink:0;margin-top:1px">🅿️</div>
+                <div><div style="font-size:12px;font-weight:700;color:#92400E">Parking</div><div style="font-size:10.5px;color:#B45309;line-height:1.45;margin-top:2px">Community flags this as a concern. Address proactively.</div><div style="font-size:10px;font-weight:700;background:#FEF3C7;color:#B45309;padding:2px 7px;border-radius:5px;margin-top:5px;display:inline-flex;align-items:center;gap:3px">⚠ Concern in area</div></div>
+              </div>
+              <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:9px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">
+                <div style="font-size:16px;flex-shrink:0;margin-top:1px">🚗</div>
+                <div><div style="font-size:12px;font-weight:700;color:#92400E">Traffic</div><div style="font-size:10.5px;color:#B45309;line-height:1.45;margin-top:2px">Dabri-Gurgaon Road sees peak-hour jams. Mention metro alternative.</div><div style="font-size:10px;font-weight:700;background:#FEF3C7;color:#B45309;padding:2px 7px;border-radius:5px;margin-top:5px;display:inline-flex;align-items:center;gap:3px">⚠ Buyers will ask</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI suggestion box -->
+          <div style="background:linear-gradient(135deg,#F0F9FF,#EFF6FF);border:1.5px solid #BAE6FD;border-radius:10px;padding:13px 14px;margin-bottom:2px">
+            <div style="display:flex;align-items:center;gap:7px;margin-bottom:9px">
+              <span style="font-size:14px">✨</span>
+              <span style="font-size:12px;font-weight:700;color:#0369A1">AI Suggestion — based on community data</span>
+              <span style="background:#0284C7;color:#fff;font-size:9px;font-weight:700;padding:1px 6px;border-radius:6px">SMART</span>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:6px">
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#16A34A;font-size:14px;flex-shrink:0;margin-top:-1px">+</span><span>Add <strong>"0.7 km from Sector 21 Metro — 9-min walk"</strong> — #1 question buyers ask (34 upvotes)</span></div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#16A34A;font-size:14px;flex-shrink:0;margin-top:-1px">+</span><span>Mention <strong>"Mount Carmel & Paramount International School nearby"</strong> — drives 80% of family buyer decisions</span></div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#16A34A;font-size:14px;flex-shrink:0;margin-top:-1px">+</span><span>Clarify <strong>"dedicated covered parking included"</strong> — parking shortage is #1 complaint in Dwarka</span></div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#F59E0B;font-size:14px;flex-shrink:0;margin-top:-1px">⚠</span><span>Pre-empt traffic concern: <strong>"metro + airport expressway makes daily commute easy"</strong></span></div>
+            </div>
+            <div style="margin-top:10px;font-size:11px;font-weight:700;color:#0284C7;cursor:pointer;display:flex;align-items:center;gap:4px" onclick="toast('📝 Go to Edit Listing → Description to add these insights')">Apply to description manually → Edit Listing</div>
+          </div>
+
           <div style="background:#F5F3FF;border-radius:10px;padding:12px 14px;border:1px solid #EDE9FE;display:flex;align-items:center;gap:12px">
             <div style="font-size:28px">📈</div>
             <div style="flex:1">
@@ -2500,16 +2536,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="dm-body" style="gap:14px">
       <div style="background:var(--surface2);border-radius:10px;padding:12px 14px;border:1px solid var(--border)">
         <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Current Price</div>
-        <div style="font-size:22px;font-weight:800;color:var(--text)">₹ 85,00,000</div>
+        <div style="font-size:22px;font-weight:800;color:var(--text)">₹ 1,35,00,000</div>
         <div style="font-size:11px;color:#EF4444;font-weight:600;margin-top:3px">9-18% above market range</div>
       </div>
       <div>
         <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">Enter new price</div>
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
           <span style="font-size:15px;font-weight:700;color:var(--text2)">₹</span>
-          <input style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:15px;font-weight:700;font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);outline:none;transition:.2s" id="priceInput" type="text" value="85,00,000" placeholder="e.g. 78,00,000"/>
+          <input style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:15px;font-weight:700;font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);outline:none;transition:.2s" id="priceInput" type="text" value="1,35,00,000" placeholder="e.g. 1,10,00,000"/>
         </div>
-        <div style="font-size:11px;color:var(--text3)">Market range: <span style="color:#16A34A;font-weight:600">₹72L – ₹78L</span> &nbsp;·&nbsp; Recommended: <span style="color:#16A34A;font-weight:600">₹76L</span></div>
+        <div style="font-size:11px;color:var(--text3)">Market range: <span style="color:#16A34A;font-weight:600">₹98.29L – ₹1.20 Cr</span> &nbsp;·&nbsp; Recommended: <span style="color:#16A34A;font-weight:600">₹1.10 Cr</span></div>
       </div>
       <button style="width:100%;background:#7C3AED;color:#fff;border:none;padding:11px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s" onclick="saveManualPrice()">Save Price</button>
       <div style="text-align:center"><span style="font-size:12px;color:var(--text3);cursor:pointer" onclick="closePriceEditModal()">Cancel</span></div>
@@ -2519,10 +2555,46 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 
 <div class="toast" id="toast"></div>
 
+<!-- ── PUBLISH SUCCESS MODAL ── -->
+<div class="modal-overlay" id="publishModal" onclick="closePublishModal(event)" style="z-index:9999">
+  <div class="upload-modal" onclick="event.stopPropagation()" style="max-width:420px;text-align:center;padding:0">
+    <div style="background:linear-gradient(135deg,#16A34A,#15803D);padding:32px 24px 24px;border-radius:16px 16px 0 0">
+      <div style="font-size:48px;margin-bottom:12px">🎉</div>
+      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:6px">Listing Published!</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.85)">Your 2 BHK in Sector 22 Dwarka is now live on Housing.com</div>
+    </div>
+    <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:12px">
+      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">✅</span>
+        <div style="text-align:left">
+          <div style="font-size:12px;font-weight:700;color:#065F46">Live on Housing.com</div>
+          <div style="font-size:11px;color:#047857">Visible to buyers searching in Sector 22 Dwarka</div>
+        </div>
+      </div>
+      <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">📩</span>
+        <div style="text-align:left">
+          <div style="font-size:12px;font-weight:700;color:#0369A1">Confirmation sent</div>
+          <div style="font-size:11px;color:#0284C7">Check your registered email for listing details</div>
+        </div>
+      </div>
+      <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
+        <span style="font-size:20px">📈</span>
+        <div style="text-align:left">
+          <div style="font-size:12px;font-weight:700;color:#92400E" id="publishScoreLine">Listing score: 60/100</div>
+          <div style="font-size:11px;color:#B45309" id="publishScoreTip">Fix the remaining issues to rank higher and get faster enquiries</div>
+        </div>
+      </div>
+      <button onclick="closePublishModal()" style="width:100%;background:#16A34A;color:#fff;border:none;padding:12px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;margin-top:4px">Done</button>
+    </div>
+  </div>
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
 <script>
 let analysisComplete = false;
 let fixesApplied = 0;
+const fixedIssues = {1:false,2:false,3:false,4:false,5:false,6:false};
 const totalFixes = 6;
 
 // ── Scoring system ──
@@ -2672,7 +2744,7 @@ function startAnalysis() {
   steps.forEach(id => document.getElementById(id).className = 'an-step');
 
   // Spread 5 steps over 4200ms (extra 2s added)
-  const delays = [0, 700, 1500, 2400, 3400];
+  const delays = [0, 900, 2000, 3400, 5000];
 
   steps.forEach((id, i) => {
     setTimeout(() => {
@@ -2684,7 +2756,7 @@ function startAnalysis() {
   setTimeout(() => {
     document.getElementById(steps[steps.length-1]).className = 'an-step done';
     showResults();
-  }, 5200);
+  }, 7200);
 }
 
 function showResults() {
@@ -2736,10 +2808,10 @@ function chooseAutoPrice() {
 
   const btn = document.getElementById('adjustPriceBtn');
   btn.disabled = true;
-  btn.textContent = '⚡ Applying ₹76L...';
+  btn.textContent = '⚡ Applying ₹1.10 Cr...';
 
   setTimeout(() => {
-    fixIssue(4, 'Price auto-corrected to ₹76L. market rate for similar listings');
+    fixIssue(4, 'Price auto-corrected to ₹1.10 Cr — market rate for similar listings');
     btn.textContent = '✓ Price Updated';
     btn.className = 'fix-btn done';
   }, 1200);
@@ -3058,8 +3130,8 @@ function closePriceOptions(){const pop=document.getElementById('priceOptions');i
 function chooseAutoPrice(){
   closePriceOptions();
   const btn=document.getElementById('adjustPriceBtn');
-  btn.disabled=true; btn.textContent='⚡ Applying ₹76L...';
-  setTimeout(()=>{ fixIssue(3,'Price auto-corrected to ₹76L. market rate'); btn.textContent='✓ Price Updated'; btn.className='fix-btn done'; }, 1200);
+  btn.disabled=true; btn.textContent='⚡ Applying ₹1.10 Cr...';
+  setTimeout(()=>{ fixIssue(3,'Price auto-corrected to ₹1.10 Cr — market rate'); btn.textContent='✓ Price Updated'; btn.className='fix-btn done'; }, 1200);
 }
 function chooseManualPrice(){
   closePriceOptions();
@@ -3084,6 +3156,7 @@ function saveManualPrice(){
 
 // ── Amenities score fix (issue 6) ──
 function fixIssue(num, msg) {
+  fixedIssues[num] = true;
   markFixed(num);
   toast('✅ ' + msg);
 
@@ -3229,6 +3302,21 @@ function updateScore() {
   const remaining = totalFixes - fixesApplied;
   if (issuesBadge) { issuesBadge.textContent = remaining > 0 ? remaining + ' issues remaining' : '✅ All fixed!'; }
   if (issuesBadge && remaining === 0) { issuesBadge.style.background = '#DCFCE7'; issuesBadge.style.color = '#16A34A'; }
+
+  // ── Missing info box sync ──
+  const missPhotos = document.getElementById('missPhotos');
+  if (missPhotos) {
+    if (photoCount >= 5) { missPhotos.style.display='none'; }
+    else { missPhotos.style.display='flex'; missPhotos.querySelector('span:last-child').textContent = 'Only ' + photoCount + ' of 5 photos added'; }
+  }
+  const missVerify = document.getElementById('missVerify');
+  if (missVerify) missVerify.style.display = scoreBreakdown.verify >= 10 ? 'none' : 'flex';
+  const missAmenities = document.getElementById('missAmenities');
+  if (missAmenities) { missAmenities.style.display = scoreBreakdown.amenities > 0 ? 'none' : 'flex'; }
+  const missFacing = document.getElementById('missFacing');
+  if (missFacing) missFacing.style.display = (typeof fixedIssues !== 'undefined' && fixedIssues[5]) ? 'none' : 'flex';
+  const missPrice = document.getElementById('missPrice');
+  if (missPrice) missPrice.style.display = (fixedIssues[4]) ? 'none' : 'flex';
 
   // ── Final CTA current score ──
   const fcCurrent = document.getElementById('fcScoreCurrent');
@@ -3537,7 +3625,7 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
         <div class="ms-your-photo">🏠<div class="ms-your-badge">YOU</div></div>
         <div class="ms-your-body">
           <div class="ms-your-title">2 BHK in Sector 22 Dwarka</div>
-          <div class="ms-your-price">₹85 L · 1156 sqft</div>
+          <div class="ms-your-price">₹1.35 Cr · 1156 sqft</div>
           <button class="ms-contact">Contact</button>
         </div>
       </div>`;
@@ -3612,6 +3700,27 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
   const saved = localStorage.getItem('loDarkMode');
   if(saved === 'true') applyDark(true);
 })();
+
+function publishListing() {
+  const baseScore = 60;
+  const currentScore = getTotalScore();
+  const gain = currentScore - baseScore;
+  const scoreLine = document.getElementById('publishScoreLine');
+  if (gain > 0) {
+    scoreLine.innerHTML = 'Listing score improved: <span style="text-decoration:line-through;opacity:.6">' + baseScore + '</span> → <strong style="color:#16A34A">' + currentScore + '/100</strong> <span style="color:#16A34A">(+' + gain + ' pts 🎉)</span>';
+    document.getElementById('publishScoreTip').textContent = 'Great progress! Fix remaining issues to rank even higher.';
+  } else {
+    scoreLine.innerHTML = 'Listing score: <strong>' + currentScore + '/100</strong>';
+    document.getElementById('publishScoreTip').textContent = 'Fix the issues above to rank higher and get faster enquiries.';
+  }
+  document.getElementById('publishModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closePublishModal(e) {
+  if (e && e.target !== document.getElementById('publishModal')) return;
+  document.getElementById('publishModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
 
 function toggleDark(){
   const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
