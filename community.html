@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Community · Housing.com</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="community.css"/>
+<script src="community-shared.js"></script>
+<script>
+(function(){
+  if(localStorage.getItem('loDarkMode')==='true') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="index.html" class="logo" style="display:flex;align-items:center">
+    <img src="https://c.housingcdn.com/demand/s/client/common/assets/housing.820bbe77.png" alt="Housing.com" style="height:14px;width:auto;display:block" onerror="this.style.display='none'"/>
+  </a>
+  <div class="hdr-center">
+    <div class="page-title">Community Q&amp;A</div>
+  </div>
+  <div class="hdr-right">
+    <label class="dm-label"><button type="button" class="dm-toggle" id="dmToggle" onclick="toggleDark()" aria-label="Toggle dark mode"></button></label>
+    <a href="index.html" class="btn-sm btn-outline-hdr">✨ ListIQ</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="comm-hero">
+    <h1>Ask buyers &amp; residents</h1>
+    <p>Real conversations on projects, possession timelines, loans, and locality fit — from people evaluating similar choices. Demo content for Housing hackathon.</p>
+  </div>
+
+  <div class="name-bar">
+    <label>Your display name for replies
+      <input type="text" id="displayNameInput" maxlength="48" placeholder="e.g. Priya Sharma" autocomplete="name"/>
+    </label>
+    <button type="button" class="btn-prime" id="saveNameBtn">Save</button>
+    <button type="button" class="btn-ghost" id="suggestNameBtn">Suggest name</button>
+  </div>
+
+  <div id="threadFeed"></div>
+</div>
+
+<div class="toast-fix" id="toast"></div>
+
+<script>
+function toggleDark(){
+  var on = document.documentElement.getAttribute('data-theme') !== 'dark';
+  document.documentElement.setAttribute('data-theme', on ? 'dark' : 'light');
+  localStorage.setItem('loDarkMode', String(on));
+  var btn = document.getElementById('dmToggle');
+  if(btn) btn.classList.toggle('dark', on);
+}
+(function(){
+  if(document.documentElement.getAttribute('data-theme')==='dark'){
+    var btn = document.getElementById('dmToggle');
+    if(btn) btn.classList.add('dark');
+  }
+})();
+
+function toast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+function renderFeed(){
+  var CS = window.CommunityStore;
+  var threads = window.COMMUNITY_THREADS || [];
+  var html = threads.map(function(th){
+    var tags = (th.tags||[]).map(function(t){ return '<span class="thread-tag">'+escapeHtml(t)+'</span>'; }).join('');
+    return '<a class="thread-card" href="thread.html?id='+encodeURIComponent(th.id)+'">'+
+      '<div class="thread-tags">'+tags+'</div>'+
+      '<h2>'+escapeHtml(th.title)+'</h2>'+
+      '<p class="thread-excerpt">'+escapeHtml(th.excerpt)+'</p>'+
+      '<div class="thread-meta-row">'+
+        '<div class="thread-author">'+
+          '<img src="'+escapeHtml(th.avatar)+'" alt="" width="36" height="36"/>'+
+          '<div><strong>'+escapeHtml(th.author)+'</strong><span>'+escapeHtml(th.handle)+' · '+escapeHtml(th.createdLabel)+'</span></div>'+
+        '</div>'+
+        '<div class="stats">'+
+          '<span class="stat">'+CS.iconHeart(CS.isLiked(th.id))+' '+CS.fmtNum(CS.effectiveLikes(th))+'</span>'+
+          '<span class="stat">'+CS.iconComment()+' '+CS.effectiveCommentCount(th)+'</span>'+
+          '<span class="stat">'+CS.iconEye()+' '+CS.fmtNum(CS.effectiveViews(th))+'</span>'+
+        '</div>'+
+      '</div></a>';
+  }).join('');
+  document.getElementById('threadFeed').innerHTML = html;
+}
+
+function escapeHtml(s){
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+document.getElementById('displayNameInput').value = CommunityStore.getDisplayName();
+document.getElementById('saveNameBtn').addEventListener('click', function(){
+  CommunityStore.setDisplayName(document.getElementById('displayNameInput').value);
+  toast('Display name saved');
+});
+document.getElementById('suggestNameBtn').addEventListener('click', function(){
+  var s = CommunityStore.suggestDisplayName();
+  document.getElementById('displayNameInput').value = s;
+  CommunityStore.setDisplayName(s);
+  toast('Try this name — saved');
+});
+
+renderFeed();
+</script>
+</body>
+</html>

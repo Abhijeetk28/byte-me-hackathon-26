@@ -119,7 +119,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .hdr-center{flex:1;display:flex;align-items:center;gap:12px;justify-content:center}
 .page-title{font-size:20px;font-weight:800;color:#fff}
 .ai-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.3px}
-.hdr-right{display:flex;gap:8px;align-items:center}
+.hdr-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .btn-sm{padding:6px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:var(--transition)}
 .btn-outline{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);color:#fff}
 .btn-red{background:#C0392B;color:#fff}
@@ -1457,6 +1457,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 #sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-contact{font-size:8px;padding:3px 10px;border-radius:4px;align-self:flex-end;width:auto;text-align:center;margin-top:1px;flex-shrink:0}
 #sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-badge{font-size:7px;padding:1px 5px}
 
+.comm-nav-btn{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 12px;border-radius:9px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;text-decoration:none;font-family:'Inter',sans-serif;transition:.2s}
+.comm-nav-btn:hover{background:rgba(255,255,255,.22);text-decoration:none;transform:translateY(-1px)}
+.comm-nav-btn svg{flex-shrink:0;opacity:.95}
+.comm-new-pill{font-size:9px;font-weight:800;letter-spacing:.5px;background:linear-gradient(135deg,#F59E0B,#EA580C);color:#fff;padding:3px 8px;border-radius:999px;box-shadow:0 1px 4px rgba(234,88,12,.45)}
 </style>
 </head>
 <body>
@@ -1479,7 +1483,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="page-title">✨ ListIQ <span style="font-size:15px;font-weight:500;opacity:.75">(Listing Analyzer)</span></div>
   </div>
   <div class="hdr-right">
-<button class="btn-sm" onclick="publishListing()" style="background:#16A34A;color:#fff">Publish Listing</button>
+    <a href="community.html" class="comm-nav-btn" title="Community Q&amp;A — new">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <span>Community</span>
+      <span class="comm-new-pill">NEW</span>
+    </a>
+    <button class="btn-sm" onclick="publishListing()" style="background:#16A34A;color:#fff">Publish Listing</button>
   </div>
 </header>
 

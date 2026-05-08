@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Thread · Housing Community</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="community.css"/>
+<script src="community-shared.js"></script>
+<script>
+(function(){
+  if(localStorage.getItem('loDarkMode')==='true') document.documentElement.setAttribute('data-theme','dark');
+})();
+</script>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="index.html" class="logo" style="display:flex;align-items:center">
+    <img src="https://c.housingcdn.com/demand/s/client/common/assets/housing.820bbe77.png" alt="Housing.com" style="height:14px;width:auto;display:block" onerror="this.style.display='none'"/>
+  </a>
+  <div class="hdr-center">
+    <div class="page-title">Community</div>
+  </div>
+  <div class="hdr-right">
+    <label class="dm-label"><button type="button" class="dm-toggle" id="dmToggle" onclick="toggleDark()" aria-label="Toggle dark mode"></button></label>
+    <a href="community.html" class="btn-sm btn-outline-hdr">All threads</a>
+    <a href="index.html" class="btn-sm btn-outline-hdr">ListIQ</a>
+  </div>
+</header>
+
+<div class="wrap thread-page">
+  <div class="back-row">
+    <a class="back-link" href="community.html">← Back to discussions</a>
+  </div>
+  <div id="threadRoot"></div>
+</div>
+
+<div class="toast-fix" id="toast"></div>
+
+<script>
+function toggleDark(){
+  var on = document.documentElement.getAttribute('data-theme') !== 'dark';
+  document.documentElement.setAttribute('data-theme', on ? 'dark' : 'light');
+  localStorage.setItem('loDarkMode', String(on));
+  var btn = document.getElementById('dmToggle');
+  if(btn) btn.classList.toggle('dark', on);
+}
+(function(){
+  if(document.documentElement.getAttribute('data-theme')==='dark'){
+    var btn = document.getElementById('dmToggle');
+    if(btn) btn.classList.add('dark');
+  }
+})();
+
+function toast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+function escapeHtml(s){
+  var d = document.createElement('div');
+  d.textContent = s;
+  return d.innerHTML;
+}
+
+function userAvatarUrl(name){
+  var enc = encodeURIComponent(name || 'You');
+  return 'https://ui-avatars.com/api/?name='+enc+'&background=7C3AED&color=ffffff&size=128&bold=true';
+}
+
+function qsId(){
+  var p = new URLSearchParams(window.location.search);
+  return p.get('id') || '';
+}
+
+function renderCommentRow(c, isUser){
+  var av = c.avatar || userAvatarUrl(c.author);
+  return '<div class="comment">'+
+    '<img src="'+escapeHtml(av)+'" alt="" width="38" height="38"/>'+
+    '<div class="comment-body">'+
+      '<div class="by">'+escapeHtml(c.author)+'<span>'+escapeHtml(c.timeLabel)+'</span></div>'+
+      '<div class="txt">'+escapeHtml(c.body)+'</div>'+
+    '</div></div>';
+}
+
+function renderThread(){
+  var id = qsId();
+  var CS = window.CommunityStore;
+  var th = CS.getThread(id);
+  var root = document.getElementById('threadRoot');
+  if(!th){
+    root.innerHTML = '<div class="empty-thread">Thread not found. <a href="community.html">Browse community</a></div>';
+    return;
+  }
+
+  CS.recordThreadView(id);
+
+  document.title = th.title.replace(/</g,'').slice(0,72) + ' · Housing Community';
+
+  var liked = CS.isLiked(id);
+  var tags = (th.tags||[]).map(function(t){ return '<span class="thread-tag">'+escapeHtml(t)+'</span>'; }).join('');
+
+  var opHtml =
+    '<article class="op-card">'+
+      '<div class="thread-tags" style="margin-bottom:14px">'+tags+'</div>'+
+      '<div class="op-head">'+
+        '<img src="'+escapeHtml(th.avatar)+'" alt="" width="48" height="48"/>'+
+        '<div class="who"><strong>'+escapeHtml(th.author)+'</strong><span>@'+escapeHtml(th.handle)+' · '+escapeHtml(th.createdLabel)+'</span></div>'+
+      '</div>'+
+      '<h1 class="op-title">'+escapeHtml(th.title)+'</h1>'+
+      '<div class="op-body">'+escapeHtml(th.body)+'</div>'+
+      '<div class="op-stats">'+
+        '<button type="button" class="stat-btn'+(liked?' liked':'')+'" id="likeBtn" data-id="'+escapeHtml(th.id)+'">'+
+          CS.iconHeart(liked)+' <span id="likeCount">'+CS.fmtNum(CS.effectiveLikes(th))+'</span></button>'+
+        '<span class="stat">'+CS.iconComment()+' <span id="commentCount">'+CS.effectiveCommentCount(th)+'</span></span>'+
+        '<span class="stat">'+CS.iconEye()+' <span id="viewCount">'+CS.fmtNum(CS.effectiveViews(th))+'</span></span>'+
+      '</div>'+
+    '</article>';
+
+  var userCs = CS.getUserComments(id);
+  var allComments = (th.replies||[]).concat(userCs.map(function(uc){
+    return { author: uc.author, avatar: userAvatarUrl(uc.author), timeLabel: uc.timeLabel, body: uc.body };
+  }));
+
+  var commHtml = '<section class="comments-section"><h3>Discussion ('+allComments.length+')</h3>'+
+    allComments.map(function(c){ return renderCommentRow(c); }).join('')+
+    '<div class="composer">'+
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px">'+
+      '<input id="threadNameInput" type="text" maxlength="48" placeholder="Your display name for replies" style="flex:1;min-width:200px;padding:9px 12px;border-radius:8px;border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:inherit;font-size:13px"/>'+
+      '<button type="button" class="btn-ghost" id="saveThreadNameBtn">Save name</button></div>'+
+      '<label for="replyBox" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden">Your reply</label>'+
+      '<textarea id="replyBox" placeholder="Share your experience or question — saved locally for this demo"></textarea>'+
+      '<div class="composer-foot">'+
+        '<small>Posting as <strong id="postAsLabel"></strong> · <a href="community.html">Community home</a></small>'+
+        '<button type="button" class="btn-prime" id="postReplyBtn">Post comment</button>'+
+      '</div></div></section>';
+
+  root.innerHTML = opHtml + commHtml;
+
+  document.getElementById('postAsLabel').textContent = CS.getDisplayName() || '(set name above)';
+
+  var tn = document.getElementById('threadNameInput');
+  if(tn) tn.value = CS.getDisplayName();
+  var sn = document.getElementById('saveThreadNameBtn');
+  if(sn) sn.addEventListener('click', function(){
+    CS.setDisplayName(document.getElementById('threadNameInput').value);
+    document.getElementById('postAsLabel').textContent = CS.getDisplayName() || '(set name above)';
+    toast('Display name saved');
+  });
+  document.getElementById('likeBtn').addEventListener('click', function(){
+    var tid = this.getAttribute('data-id');
+    var now = CS.toggleLike(tid);
+    var fresh = CS.getThread(tid);
+    this.classList.toggle('liked', now);
+    this.innerHTML = CS.iconHeart(now)+' <span id="likeCount">'+CS.fmtNum(CS.effectiveLikes(fresh))+'</span>';
+  });
+
+  document.getElementById('postReplyBtn').addEventListener('click', function(){
+    var name = CS.getDisplayName();
+    if(!name || !name.trim()){
+      toast('Set your display name on the Community page first');
+      return;
+    }
+    var txt = document.getElementById('replyBox').value;
+    if(!CS.addUserComment(id, name, txt)){
+      toast('Write something before posting');
+      return;
+    }
+    document.getElementById('replyBox').value = '';
+    renderThread();
+    toast('Comment added');
+  });
+}
+
+renderThread();
+</script>
+</body>
+</html>
