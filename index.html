@@ -1771,7 +1771,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               <span class="sev-pill sev-red">CRITICAL</span>
             </div>
             <div class="issue-desc" id="issuePhotoDesc">You have 3 photos. Minimum recommended is <strong>5 photos</strong>. Missing: <strong>kitchen, bathroom, bedroom 2</strong> — add these to reach the minimum of 5 photos.</div>
-            <div class="issue-impact impact-red">📉 Missing photos = 68% fewer leads</div>
+            <div class="issue-impact impact-red" id="photoIssueImpact">📉 Missing photos = 68% fewer leads</div>
             <div class="preview-strip" id="prev1" onclick="togglePreview(1)">
               <div class="ptog"></div>
               <div class="prev-label">🔍 Check listing boost</div>
@@ -2626,6 +2626,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 <script>
 let analysisComplete = false;
 let fixesApplied = 0;
+let amenitiesCount = 0;
 const fixedIssues = {1:false,2:false,3:false,4:false,5:false,6:false};
 const totalFixes = 6;
 
@@ -3198,6 +3199,7 @@ function submitAmenities() {
 }
 
 function _updateAmenitiesUI(count) {
+  amenitiesCount = count;
   // Issue title
   const amenTitle = document.getElementById('amenitiesIssueTitle');
   if (amenTitle) amenTitle.textContent = count + ' of 27 amenities filled';
@@ -3359,7 +3361,15 @@ function updateScore() {
   const issueTitle = document.getElementById('issuePhotoTitle');
   if (issueTitle) issueTitle.textContent = needed === 0 ? 'Photos complete ✓' : 'Add ' + needed + ' more photo' + (needed !== 1 ? 's' : '');
   const issueDesc = document.getElementById('issuePhotoDesc');
-  if (issueDesc && needed > 0) issueDesc.innerHTML = 'You have ' + photoCount + ' photos. Minimum recommended is <strong>5 photos</strong>. Missing: <strong>kitchen, bathroom, bedroom 2</strong>.';
+  if (issueDesc) {
+    if (needed === 0) issueDesc.innerHTML = 'You have <strong>' + photoCount + ' photos</strong> — minimum reached! Add more for even better visibility.';
+    else issueDesc.innerHTML = 'You have <strong>' + photoCount + ' photos</strong>. Minimum recommended is <strong>5 photos</strong>. Missing: <strong>kitchen, bathroom, bedroom 2</strong>.';
+  }
+  const photoImpact = document.getElementById('photoIssueImpact');
+  if (photoImpact) {
+    if (needed === 0) { photoImpact.textContent = '✅ Minimum photos reached — listing now fully visible'; photoImpact.className = 'issue-impact impact-green'; }
+    else { photoImpact.textContent = '📉 Missing photos = 68% fewer leads'; photoImpact.className = 'issue-impact impact-red'; }
+  }
 
   // ── Verify dim card ──
   const dimVerify = document.getElementById('dimVerify');
@@ -3388,7 +3398,7 @@ function updateScore() {
   const compAmenities = document.getElementById('compAmenitiesYou');
   if (compAmenities) {
     const amFixed = scoreBreakdown.amenities > 0;
-    compAmenities.textContent = amFixed ? '1+ / 27' : '0 / 27';
+    compAmenities.textContent = amenitiesCount > 0 ? amenitiesCount + ' / 27' : '0 / 27';
     compAmenities.className = amFixed ? 'mkt-cell' : 'you-cell';
     compAmenities.style.color = amFixed ? '#16A34A' : '';
     compAmenities.style.fontWeight = amFixed ? '600' : '';
@@ -3424,7 +3434,7 @@ function updateScore() {
   const missAmenities = document.getElementById('missAmenities');
   if (missAmenities) { missAmenities.style.display = scoreBreakdown.amenities > 0 ? 'none' : 'flex'; }
   const amenitiesIssueTitle = document.getElementById('amenitiesIssueTitle');
-  if (amenitiesIssueTitle) amenitiesIssueTitle.textContent = scoreBreakdown.amenities > 0 ? '1+ of 27 amenities filled' : '0 of 27 amenities filled';
+  if (amenitiesIssueTitle) amenitiesIssueTitle.textContent = amenitiesCount > 0 ? amenitiesCount + ' of 27 amenities filled' : '0 of 27 amenities filled';
   const missFacing = document.getElementById('missFacing');
   if (missFacing) missFacing.style.display = (typeof fixedIssues !== 'undefined' && fixedIssues[5]) ? 'none' : 'flex';
   const missPrice = document.getElementById('missPrice');
@@ -3478,61 +3488,27 @@ function handlePhotoUpload(input) {
   if (!files.length) return;
   const added = files.length;
 
-  // Current photo count tracking (starts at 2)
   const prevCount = parseInt(sessionStorage.getItem('photoCount') || '3');
   const newCount = Math.min(prevCount + added, 10);
   sessionStorage.setItem('photoCount', newCount);
   const needed = Math.max(0, 5 - newCount);
 
-  // Update listing card badges
-  const countBadge = document.getElementById('photoCountBadge');
-  if (countBadge) countBadge.textContent = newCount + ' Photo' + (newCount !== 1 ? 's' : '');
-  const warnBadge = document.getElementById('photoWarningBadge');
-  if (warnBadge) {
-    if (newCount >= 5) warnBadge.style.display = 'none';
-    else warnBadge.textContent = newCount + ' / 5 photos';
-  }
+  // Update score breakdown and let updateScore handle all DOM
+  scoreBreakdown.photos = Math.min(newCount * 3, 15);
 
-  // Update score card photos dim
-  const dimStatus = document.getElementById('photosDimStatus');
-  if (dimStatus) dimStatus.textContent = newCount + ' photos · ' + needed + ' missing · No floor plan';
-  const dimFill = document.getElementById('dimPhotos');
-  if (dimFill) {
-    const pct = Math.min(27 + (newCount - 2) * 12, 100);
-    dimFill.style.width = pct + '%';
-    dimFill.style.background = newCount >= 5 ? '#16A34A' : '#EF4444';
-  }
-
-  // Update photo analysis badge
+  // Update photo analysis badge (not covered by updateScore)
   const analysisBadge = document.getElementById('photoAnalysisBadge');
   if (analysisBadge) {
     analysisBadge.textContent = newCount + '/5 photos';
     if (newCount >= 5) { analysisBadge.style.background = '#DCFCE7'; analysisBadge.style.color = '#15803D'; }
   }
 
-  // Update issue #1 title and description
-  const issueTitle = document.getElementById('issuePhotoTitle');
-  if (issueTitle) {
-    if (needed === 0) issueTitle.textContent = 'Photos complete ✓';
-    else issueTitle.textContent = 'Add ' + needed + ' more photo' + (needed !== 1 ? 's' : '');
-  }
-  const issueDesc = document.getElementById('issuePhotoDesc');
-  if (issueDesc) {
-    if (needed === 0) issueDesc.innerHTML = 'You have <strong>' + newCount + ' photos</strong>. Minimum of 5 reached. Consider adding more for better results.';
-    else issueDesc.innerHTML = 'You have ' + newCount + ' photos. Minimum recommended is <strong>5 photos</strong>. Still missing ' + needed + ' more. add kitchen, bathroom, or living room.';
-  }
+  toast('📸 ' + added + ' photo' + (added > 1 ? 's' : '') + ' added — now ' + newCount + '/5 minimum');
 
-  toast('📸 ' + added + ' photo' + (added > 1 ? 's' : '') + ' added. now ' + newCount + '/5 minimum');
-
-  // Close modal and update score
   closeUploadModal();
   if (needed === 0) {
-    scoreBreakdown.photos = Math.min(newCount * 3, 15);
-    updateScore();
-    fixIssue(1, newCount + ' photos added. minimum reached!');
+    fixIssue(1, newCount + ' photos — minimum reached!');
   } else {
-    // Partial improvement. update score
-    scoreBreakdown.photos = Math.min(newCount * 3, 15);
     updateScore();
   }
   input.value = '';
