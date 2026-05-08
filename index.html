@@ -113,11 +113,11 @@
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh;transition:var(--transition)}
 
 /* ── HEADER ── */
-.hdr{background:var(--hdr-bg);border-bottom:1px solid var(--hdr-border);height:56px;display:flex;align-items:center;padding:0 28px;gap:20px;position:sticky;top:0;z-index:100;box-shadow:var(--hdr-shadow);transition:var(--transition)}
-.logo{display:flex;align-items:center;line-height:1}
+.hdr{background:var(--hdr-bg);border-bottom:1px solid var(--hdr-border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:20px;position:sticky;top:0;z-index:100;box-shadow:var(--hdr-shadow);transition:var(--transition)}
+.logo{display:flex;align-items:center;line-height:1;flex-shrink:0}
 .logo svg{display:block}
-.hdr-center{flex:1;display:flex;align-items:center;gap:12px;justify-content:center}
-.page-title{font-size:20px;font-weight:800;color:#fff}
+.hdr-center{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;justify-content:center;pointer-events:none}
+.page-title{font-size:20px;font-weight:800;color:#fff;pointer-events:auto;white-space:nowrap}
 .ai-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.3px}
 .hdr-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .btn-sm{padding:6px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:var(--transition)}
@@ -1480,7 +1480,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     </svg>
   </div>
   <div class="hdr-center">
-    <div class="page-title">✨ ListIQ <span style="font-size:15px;font-weight:500;opacity:.75">(Listing Analyzer)</span></div>
+    <div class="page-title">✨ ListIQ</div>
   </div>
   <div class="hdr-right">
     <a href="community.html" class="comm-nav-btn" title="Community Q&amp;A — new">
@@ -2171,7 +2171,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             </div>
           </div>
           <div>
-            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">Top questions by buyers<span style="font-size:11px;font-weight:700;color:#7C3AED;cursor:pointer;text-transform:none;letter-spacing:0">View all 89 →</span></div>
+            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">Top questions by buyers<a href="community.html" style="font-size:11px;font-weight:700;color:#7C3AED;cursor:pointer;text-transform:none;letter-spacing:0;text-decoration:none">View all 89 →</a></div>
             <div class="buyer-q-list" style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
               <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#E74C3C;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">P</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">How far is Sector 21 metro from this area? Is it walkable?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Priya S. · 2h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Connectivity</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 12</div><div style="font-size:10px;color:var(--text3)">👍 34</div></div></div>
               <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">A</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">Are Mount Carmel or Paramount school easy to reach from Sector 22?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Arjun M. · 5h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Schools</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 8</div><div style="font-size:10px;color:var(--text3)">👍 21</div></div></div>
