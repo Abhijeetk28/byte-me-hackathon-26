@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>ListIQ — Housing.com</title>
+<title>ListIQ. Housing.com</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -135,7 +135,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 /* ── LAYOUT ── */
 .wrap{width:100%;max-width:1440px;margin:0 auto;padding:24px 48px 24px 20px;display:grid;grid-template-columns:474px 1fr;gap:24px;align-items:start}
 
-/* ── LEFT — LISTING INPUT ── */
+/* ── LEFT. LISTING INPUT ── */
 .listing-card{background:var(--surface);border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden;position:sticky;top:72px;transition:var(--transition);height:calc(100vh - 96px);overflow-y:auto;display:flex;flex-direction:column}
 .lc-head{padding:16px 20px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between}
 .lc-title{font-size:14px;font-weight:700;color:var(--text)}
@@ -165,7 +165,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .prop-desc{font-size:12.5px;color:var(--text2);line-height:1.6;background:var(--prop-desc-bg);border-radius:8px;padding:10px 12px;border:1.5px dashed var(--border);transition:var(--transition)}
 .desc-warn{font-size:11px;color:#EF4444;font-weight:500;margin-top:4px;display:flex;align-items:center;gap:4px}
 
-/* ── RIGHT — AI ANALYSIS ── */
+/* ── RIGHT. AI ANALYSIS ── */
 .right-col{display:flex;flex-direction:column;gap:16px}
 
 /* ── EMPTY STATE ── */
@@ -216,7 +216,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 }
 .analyzing.show{display:block}
 
-/* Construction-site loader — house build + crane */
+/* Construction-site loader. house build + crane */
 .an-loader.an-build{
   position:relative;
   width:156px;
@@ -787,6 +787,27 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .dm-regen-btn:hover{border-color:#7C3AED;color:#7C3AED}
 .dm-note{font-size:11px;color:var(--text3);margin-left:auto}
 
+
+/* ── CAROUSEL DOTS ── */
+.cdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:.2s}
+.cdot.active{background:#fff;width:14px;border-radius:3px}
+
+/* ── SCAN BEAM ── */
+@keyframes scanBeam{0%{top:-4px;opacity:1}95%{opacity:1}100%{top:100%;opacity:0}}
+@keyframes flashWhite{0%{opacity:0}30%{opacity:.7}100%{opacity:0}}
+@keyframes aiTagPop{0%{transform:scale(0) rotate(-10deg);opacity:0}60%{transform:scale(1.15) rotate(3deg);opacity:1}100%{transform:scale(1) rotate(0deg);opacity:1}}
+.scan-beam{position:absolute;left:0;right:0;height:4px;background:linear-gradient(90deg,transparent,rgba(124,58,237,.9),rgba(167,139,250,1),rgba(124,58,237,.9),transparent);box-shadow:0 0 12px 3px rgba(124,58,237,.6);pointer-events:none;z-index:20;top:-4px}
+.scan-beam.active{animation:scanBeam 1s cubic-bezier(.4,0,.6,1) forwards}
+.photo-flash{position:absolute;inset:0;background:#fff;pointer-events:none;z-index:19;opacity:0}
+.photo-flash.active{animation:flashWhite .6s ease forwards;animation-delay:1.2s}
+.ai-enhanced-tag{position:absolute;top:6px;left:6px;background:linear-gradient(135deg,#7C3AED,#4F46E5);color:#fff;font-size:9px;font-weight:700;padding:3px 8px;border-radius:12px;display:none;z-index:25;align-items:center;gap:3px;box-shadow:0 2px 8px rgba(124,58,237,.4)}
+.ai-enhanced-tag.show{display:flex;animation:aiTagPop .5s cubic-bezier(.34,1.56,.64,1) forwards}
+
+/* ── COMMUNITY ── */
+.comm-locality-header{display:flex;align-items:center;gap:12px}
+.buyer-q-list{display:flex;flex-direction:column;gap:7px;margin-bottom:14px}
+.sentiment-bar{background:#F5F3FF;border-radius:10px;padding:12px 14px;border:1px solid #EDE9FE;margin-bottom:14px}
+
 /* ── TOAST ── */
 .toast{position:fixed;bottom:24px;right:24px;background:#1E293B;color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:999;opacity:0;transform:translateY(8px);transition:.3s;pointer-events:none;display:flex;align-items:center;gap:8px}
 .toast.show{opacity:1;transform:translateY(0)}
@@ -864,7 +885,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .mini-serp{background:transparent;margin-top:12px;margin-bottom:4px;display:flex;flex-direction:column;align-items:center}
 [data-theme="dark"] .mini-serp{}
 
-/* ── PHONE FRAME — iPhone 14/15 aspect 390×844; height capped so tier caption stays in view ── */
+/* ── PHONE FRAME. iPhone 14/15 aspect 390×844; height capped so tier caption stays in view ── */
 .phone-preview-device{
   --phone-caption-reserve: clamp(100px, 17vh, 142px);
   --phone-layout-chrome: 88px;
@@ -962,7 +983,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .phone-cards.rising .ms-card:nth-child(11):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.6s;opacity:0}
 .phone-cards.rising .ms-card:nth-child(12):not(.ms-your){animation:skelDropIn .4s ease forwards;animation-delay:1.7s;opacity:0}
 .phone-cards::-webkit-scrollbar{display:none}
-/* SERP cards — fixed equal height, compact (phone) */
+/* SERP cards. fixed equal height, compact (phone) */
 .phone-frame .ms-cards{padding:6px var(--phone-cards-pad-x,10px);gap:0}
 .phone-frame .ms-card{
   grid-template-columns:76px 1fr;
@@ -1218,7 +1239,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .side-drawer-empty-hint{color:var(--text3);font-size:13px;line-height:1.55;margin:0}
 .side-drawer-empty-hint strong{color:var(--text);font-weight:700}
 
-/* Preview block: ~85% of panel body — SERP list scrolls (many cards) */
+/* Preview block: ~85% of panel body. SERP list scrolls (many cards) */
 #sideDrawerMiniSerp.side-drawer-mini-serp{
   flex:0 0 85%;
   max-height:85%;
@@ -1494,30 +1515,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <!-- Horizontal: illustration + core info (matches reference) -->
       <div style="display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:stretch">
 
-        <!-- Left: property illustration -->
-        <div style="background:#F1F3F5;border-radius:10px;display:flex;align-items:center;justify-content:center;position:relative;min-height:130px">
-          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="40" cy="40" r="38" fill="#E5E7EB"/>
-            <!-- Building -->
-            <rect x="22" y="28" width="22" height="30" rx="1" fill="#9CA3AF"/>
-            <rect x="25" y="32" width="5" height="5" rx="0.5" fill="#F1F3F5"/>
-            <rect x="33" y="32" width="5" height="5" rx="0.5" fill="#F1F3F5"/>
-            <rect x="25" y="40" width="5" height="5" rx="0.5" fill="#F1F3F5"/>
-            <rect x="33" y="40" width="5" height="5" rx="0.5" fill="#F1F3F5"/>
-            <rect x="27" y="48" width="11" height="10" rx="0.5" fill="#F1F3F5"/>
-            <!-- Small building -->
-            <rect x="46" y="36" width="13" height="22" rx="1" fill="#B1B5BC"/>
-            <rect x="49" y="40" width="3" height="3" rx="0.3" fill="#F1F3F5"/>
-            <rect x="55" y="40" width="3" height="3" rx="0.3" fill="#F1F3F5"/>
-            <rect x="49" y="46" width="3" height="3" rx="0.3" fill="#F1F3F5"/>
-            <!-- Tree -->
-            <circle cx="18" cy="53" r="6" fill="#9CA3AF"/>
-            <rect x="17" y="56" width="2" height="5" fill="#9CA3AF"/>
-            <!-- Ground -->
-            <rect x="10" y="58" width="60" height="2" rx="1" fill="#9CA3AF"/>
-          </svg>
-          <div style="position:absolute;bottom:6px;right:6px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;font-weight:600;padding:2px 6px;border-radius:4px" id="photoCountBadge">2 Photos</div>
-          <div style="position:absolute;top:6px;left:6px;background:#EF4444;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px" id="photoWarningBadge">⚠ Only 2</div>
+        <!-- Left: auto-scroll carousel -->
+        <div style="border-radius:10px;overflow:hidden;position:relative;min-height:130px;background:#1a1a2e" id="listingCarousel">
+          <div id="carouselTrack" style="display:flex;width:300%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1)">
+            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=300&q=80&auto=format&fit=crop" alt="Cover" style="width:33.33%;min-height:130px;object-fit:cover;flex-shrink:0"/>
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&q=60&auto=format&fit=crop" alt="Living Room" style="width:33.33%;min-height:130px;object-fit:cover;flex-shrink:0;filter:brightness(0.55) saturate(0.6)"/>
+            <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=300&q=85&auto=format&fit=crop" alt="Bedroom" style="width:33.33%;min-height:130px;object-fit:cover;flex-shrink:0"/>
+          </div>
+          <div style="position:absolute;bottom:6px;left:50%;transform:translateX(-50%);display:flex;gap:4px;z-index:5">
+            <div class="cdot active" onclick="goSlide(0)"></div>
+            <div class="cdot" onclick="goSlide(1)"></div>
+            <div class="cdot" onclick="goSlide(2)"></div>
+          </div>
+          <div style="position:absolute;bottom:6px;right:8px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;font-weight:600;padding:2px 6px;border-radius:4px" id="photoCountBadge">3 Photos</div>
+          <div style="position:absolute;top:6px;left:6px;background:#EF4444;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px" id="photoWarningBadge">⚠ Only 3</div>
         </div>
 
         <!-- Right: listing info -->
@@ -1563,7 +1574,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div>
         <div style="font-size:11px;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">About this property</div>
         <div class="prop-desc">"Well maintained 2BHK flat available in Sector 22 Dwarka. Good locality with nearby market. Suitable for families."</div>
-        <div class="desc-warn">⚠ Only 22 words — far below recommended 100+</div>
+        <div class="desc-warn">⚠ Only 22 words. far below recommended 100+</div>
       </div>
 
       <!-- Missing fields -->
@@ -1653,12 +1664,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <circle class="score-fill" cx="50" cy="50" r="42"
               stroke="#EF4444"
               stroke-dasharray="263.9"
-              stroke-dashoffset="171"
+              stroke-dashoffset="106"
               id="scoreFill"/>
           </svg>
           <div class="score-text">
-            <div class="score-num" id="scoreNum">13</div>
-            <div class="score-denom">/ 27</div>
+            <div class="score-num" id="scoreNum">60</div>
+            <div class="score-denom">/ 100</div>
           </div>
         </div>
         <div class="sc-info">
@@ -1671,15 +1682,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div class="dim-grid">
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">📸 Photos</div>
+            <div class="dim-label">📸 Photos Analysis</div>
             <div class="dim-score" style="color:#EF4444">6<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:40%;background:#EF4444" id="dimPhotos"></div></div>
-          <div class="dim-status" id="photosDimStatus">2 photos × 3pts = 6/15</div>
+          <div class="dim-status" id="photosDimStatus">3 photos × 3pts = 9/15</div>
         </div>
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">🛡️ Property Verified</div>
+            <div class="dim-label">✅ Property Verified</div>
             <div class="dim-score" id="verifyDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimVerify"></div></div>
@@ -1687,7 +1698,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">💰 Price</div>
+            <div class="dim-label">🏷️ Price</div>
             <div class="dim-score" style="color:#4ADE80">5<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:100%;background:#4ADE80" id="dimPrice"></div></div>
@@ -1695,8 +1706,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">🏠 Amenities</div>
-            <div class="dim-score" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
+            <div class="dim-label">🛋️ Amenities</div>
+            <div class="dim-score" id="amenitiesDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimComp"></div></div>
           <div class="dim-status" id="amenitiesDimStatus">0 amenities selected · Select any = +5 pts</div>
@@ -1710,6 +1721,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div class="atab on" id="atab0" onclick="setATab(0)">🔧 Recommendations</div>
         <div class="atab" id="atab2" onclick="setATab(2)">📸 Photos Analysis</div>
         <div class="atab" id="atab3" onclick="setATab(3)">📊 Market Compare</div>
+        <div class="atab" id="atab4" onclick="setATab(4)">🏘️ Community <span style="background:#EF4444;color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:5px;margin-left:3px">NEW</span></div>
       </div>
 
       <!-- Tab 0: Recommendations -->
@@ -1729,14 +1741,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           <div class="issue-icon ic-red">📸</div>
           <div class="issue-body">
             <div class="issue-title">
-              <span id="issuePhotoTitle">Add 3 more photos</span>
+              <span id="issuePhotoTitle">Add 2 more photos</span>
               <span class="sev-pill sev-red">CRITICAL</span>
             </div>
-            <div class="issue-desc" id="issuePhotoDesc">You have 2 photos. Minimum recommended is <strong>5 photos</strong>. Missing: kitchen, bathroom, living room — buyers skip listings without room coverage.</div>
+            <div class="issue-desc" id="issuePhotoDesc">You have 3 photos. Minimum recommended is <strong>5 photos</strong>. Missing: <strong>kitchen, bathroom, bedroom 2</strong> — add these to reach the minimum of 5 photos.</div>
             <div class="issue-impact impact-red">📉 Missing photos = 68% fewer leads</div>
             <div class="preview-strip" id="prev1" onclick="togglePreview(1)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-label">🔍 Check listing boost</div>
               <div class="prev-gain-tag">+9 pts</div>
               <div class="prev-rank-change" id="prank1"><span></span><span class="prev-arrow">↑</span></div>
             </div>
@@ -1748,17 +1760,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue2">
-          <div class="issue-icon ic-orange">🛡️</div>
+          <div class="issue-icon ic-orange">✅</div>
           <div class="issue-body">
             <div class="issue-title">
               Property not verified
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Verified listings appear <strong>higher in search results</strong> and build tenant trust. Verification adds a <strong>✓ Verified</strong> badge to your listing — tenants prefer verified properties.</div>
+            <div class="issue-desc">Verified listings appear <strong>higher in search results</strong> and build tenant trust. Verification adds a <strong>✓ Verified</strong> badge to your listing. tenants prefer verified properties.</div>
             <div class="issue-impact impact-orange">🏆 Verified listings get 2x more enquiries</div>
             <div class="preview-strip" id="prev2" onclick="togglePreview(2)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-label">🔍 Check listing boost</div>
               <div class="prev-gain-tag">+10 pts</div>
               <div class="prev-rank-change" id="prank2"><span></span><span class="prev-arrow">↑</span></div>
             </div>
@@ -1770,18 +1782,18 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue4">
-          <div class="issue-icon ic-orange">💰</div>
+          <div class="issue-icon ic-orange">🏷️</div>
           <div class="issue-body">
             <div class="issue-title">
               Price above market
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Similar 2BHKs in Sector 22 Dwarka are listed at <strong>₹72–78L</strong>. Your price of ₹85L is <strong>11% above market</strong>. <span id="activeDaysText">Your listing has been active for <strong>9 days</strong> with low enquiries.</span></div>
+            <div class="issue-desc">Similar 2 BHKs in Sector 22 Dwarka sell for <strong>₹72–78L</strong>, but yours is listed at ₹85L — that's <strong>₹7–13L (9–18%) more</strong> than what buyers are comparing. <span id="activeDaysText">Active for <strong>9 days</strong> with less enquiries.</span> A small price drop can make a big difference.</div>
             <div class="issue-impact impact-orange">⏱ Overpriced listings take 3x longer to sell</div>
             <div class="preview-strip" id="prev4" onclick="togglePreview(4)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Search page impact</div>
-              <div class="prev-gain-tag">Quality ↑</div>
+              <div class="prev-label">🔍 Check listing boost</div>
+              <div class="prev-gain-tag">Visibility ↑</div>
               <div class="prev-rank-change" id="prank4"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp4"><div class="mini-serp" id="mserp4"></div></div>
@@ -1822,24 +1834,42 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue6">
-          <div class="issue-icon ic-orange">🏠</div>
+          <div class="issue-icon ic-orange">🛋️</div>
           <div class="issue-body">
             <div class="issue-title">
               0 of 35 amenities filled
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Amenities section is completely empty. Buyers heavily filter by amenities. You likely have society amenities: <strong>lift, parking, security, power backup, water supply</strong> — and furnishings: <strong>gas pipeline, light, AC, fan, modular kitchen, geyser</strong> — none are marked. Select any one to get +5 pts.</div>
+            <div class="issue-desc">Your flat in Sector 22 Dwarka likely has <strong>lift, parking, security, power backup</strong> and <strong>gas pipeline, fans, lights</strong> — but none are marked. Buyers filter by amenities, and your listing won't show up in those searches. Mark at least one to get <strong>+5 pts</strong>.</div>
             <div class="issue-impact impact-orange">🔽 Drops search ranking by ~40%</div>
             <div class="preview-strip" id="prev6" onclick="togglePreview(6)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Search page impact</div>
+              <div class="prev-label">🔍 Check listing boost</div>
               <div class="prev-gain-tag">+5 pts</div>
               <div class="prev-rank-change" id="prank6"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp6"><div class="mini-serp" id="mserp6"></div></div>
           </div>
           <div class="issue-action">
-            <button class="fix-btn ai" onclick="fixIssue(6,'✨ AI auto-filled 8 amenities based on CGHS society profile')">✨ Auto-fill</button>
+            <div style="position:relative">
+              <button class="fix-btn ai" id="amenitiesBtn" onclick="toggleAmenitiesOptions(event)">✨ Auto-fill ▾</button>
+              <div class="price-options" id="amenitiesOptions">
+                <div class="po-option" onclick="autoFillAmenities()">
+                  <div class="po-icon">✨</div>
+                  <div>
+                    <div class="po-label">Auto-fill from society</div>
+                    <div class="po-sub">AI adds typical amenities for flats in Sector 22 Dwarka</div>
+                  </div>
+                </div>
+                <div class="po-option" onclick="openAmenitiesModal()">
+                  <div class="po-icon">✏️</div>
+                  <div>
+                    <div class="po-label">Add manually</div>
+                    <div class="po-sub">Select furnishings and society amenities yourself</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -1850,12 +1880,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               Description too short
               <span class="sev-pill sev-red">CRITICAL</span>
             </div>
-            <div class="issue-desc">Your description is only <strong>18 words</strong>. Market average is 156 words. Buyers skip listings without proper descriptions. Missing keywords: "CGHS society", "east-facing", "modular kitchen", "power backup".</div>
-            <div class="issue-impact impact-red">📉 Short descriptions get 5x fewer saves</div>
+            <div class="issue-desc">Your description is only <strong>22 words</strong>. Market average is 156 words. Buyers skip listings without proper descriptions.</div>
+            <div class="issue-impact impact-red">📉 Buyers skip listings without a proper description</div>
             <div class="preview-strip" id="prev3" onclick="togglePreview(3)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Search page impact</div>
-              <div class="prev-gain-tag">Quality ↑</div>
+              <div class="prev-label">🔍 Check listing boost</div>
+              <div class="prev-gain-tag">SEO ↑</div>
               <div class="prev-rank-change" id="prank3"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp3"><div class="mini-serp" id="mserp3"></div></div>
@@ -1875,18 +1905,18 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               Facing direction missing
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc"><strong>42% of buyers</strong> filter by property facing. You're invisible to east/north-facing searchers. East or north-facing properties command a <strong>5–8% premium</strong> in buyer perception.</div>
-            <div class="issue-impact impact-orange">👻 Invisible to 42% of searchers</div>
+            <div class="issue-desc"><strong>42% of buyers</strong> filter by property facing direction. Properties with a listed facing direction get <strong>more visibility and enquiries</strong>.</div>
+            <div class="issue-impact impact-orange">👁 Invisible to buyers filtering by facing</div>
             <div class="preview-strip" id="prev5" onclick="togglePreview(5)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Search page impact</div>
-              <div class="prev-gain-tag">Quality ↑</div>
+              <div class="prev-label">🔍 Check listing boost</div>
+              <div class="prev-gain-tag">Visibility ↑</div>
               <div class="prev-rank-change" id="prank5"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp5"><div class="mini-serp" id="mserp5"></div></div>
           </div>
           <div class="issue-action">
-            <button class="fix-btn" onclick="fixIssue(5,'East-facing added')">Add Facing</button>
+            <button class="fix-btn" onclick="openFacingModal()">Add Facing</button>
           </div>
         </div>
 
@@ -1903,7 +1933,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div class="photo-head">
         <div class="photo-title">
           📸 Photo Analysis
-          <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px" id="photoAnalysisBadge">2/5 photos</span>
+          <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px" id="photoAnalysisBadge">3/5 photos</span>
         </div>
         <div style="font-size:12px;color:#94A3B8">Minimum: 5 photos</div>
       </div>
@@ -1918,45 +1948,47 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div style="display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text3)">
           <span style="width:8px;height:8px;border-radius:50%;background:#EAB308;display:inline-block"></span> Quality issue
         </div>
-        <div style="margin-left:auto;font-size:11px;font-weight:600;color:var(--text2)">2 uploaded &middot; 3 required &middot; 2 recommended</div>
+        <div style="margin-left:auto;font-size:11px;font-weight:600;color:var(--text2)">3 uploaded &middot; 2 required &middot; 1 recommended</div>
       </div>
       <div class="photo-grid">
-        <!-- Existing: 2 uploaded -->
-        <div class="photo-cell" id="pc-living" style="background:#dbeafe">
-          <div class="photo-thumb" id="pt-living">🛋️</div>
+        <!-- Existing: 3 uploaded — Cover first, Living second, Bedroom third -->
+        <div class="photo-cell" id="pc-cover" style="background:#1a1a2e;overflow:hidden">
+          <img id="pt-cover" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=85&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;transition:filter 1.8s ease" alt="Cover"/>
+          <div class="photo-overlay"><div class="photo-label">Cover Image</div></div>
+          <div class="photo-badge pb-ok" id="pb-cover">✓</div>
+        </div>
+        <div class="photo-cell" id="pc-living" style="background:#1a1a2e;overflow:hidden">
+          <div class="scan-beam" id="scan-living"></div>
+          <div class="photo-flash" id="flash-living"></div>
+          <div class="ai-enhanced-tag" id="aitag-living">✨ AI Enhanced</div>
+          <img id="pt-living" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&q=60&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;filter:brightness(0.45) saturate(0.5) contrast(0.9);transition:filter 1.8s ease" alt="Living Room"/>
           <div class="photo-overlay"><div class="photo-label">Living Room</div></div>
           <div class="photo-badge pb-warn" id="pb-living">⚠</div>
           <div class="enhance-overlay">
             <button class="enhance-btn" id="eb-living" onclick="enhancePhoto('living')">✨ Enhance</button>
           </div>
         </div>
-        <div class="photo-cell" id="pc-bedroom" style="background:#dcfce7">
-          <div class="photo-thumb" id="pt-bedroom">🛏️</div>
+        <div class="photo-cell" id="pc-bedroom" style="background:#1a1a2e;overflow:hidden">
+          <img id="pt-bedroom" src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=400&q=85&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;transition:filter 1.8s ease" alt="Bedroom"/>
           <div class="photo-overlay"><div class="photo-label">Bedroom</div></div>
           <div class="photo-badge pb-ok" id="pb-bedroom">✓</div>
-          <div class="enhance-overlay">
-            <button class="enhance-btn" id="eb-bedroom" onclick="enhancePhoto('bedroom')">✨ Enhance</button>
-          </div>
         </div>
-        <!-- Required: 3 needed to reach minimum 5 -->
-        <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Kitchen is the most searched photo — required to reach minimum 5')">
+        <!-- Required: 2 needed to reach minimum 5 -->
+        <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Kitchen is the most searched photo. required to reach minimum 5')">
           <div class="pm-icon" style="font-size:22px">&#x1F373;</div>
           <div class="pm-label">Kitchen<br/><span style="color:#EF4444;font-size:9px;font-weight:700">&#x2605; Required</span></div>
         </div>
-        <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Bathroom shows property condition — required to reach minimum 5')">
+        <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Bathroom shows property condition. required to reach minimum 5')">
           <div class="pm-icon" style="font-size:22px">&#x1F6BF;</div>
           <div class="pm-label">Bathroom<br/><span style="color:#EF4444;font-size:9px;font-weight:700">&#x2605; Required</span></div>
         </div>
-        <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Hall / Full living area view — required to reach minimum 5')">
-          <div class="pm-icon" style="font-size:22px">&#x1FA91;</div>
-          <div class="pm-label">Hall / Living<br/><span style="color:#EF4444;font-size:9px;font-weight:700">&#x2605; Required</span></div>
+        <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Add Bedroom 2 — show all bedrooms to attract more buyers')">
+          <div class="pm-icon" style="font-size:22px">🛏️</div>
+          <div class="pm-label">Bedroom 2<br/><span style="color:#EF4444;font-size:9px;font-weight:700">★ Required</span></div>
         </div>
         <!-- Recommended: optional but impactful -->
-        <div class="photo-missing" onclick="toast('Building exterior sets buyer expectations — recommended')">
-          <div class="pm-icon" style="font-size:22px">&#x1F3E2;</div>
-          <div class="pm-label">Building<br/><span style="color:#94A3B8;font-size:9px">Recommended</span></div>
-        </div>
-        <div class="photo-missing" onclick="toast('Parking photo increases perceived value — recommended')">
+
+        <div class="photo-missing" onclick="toast('Parking photo increases perceived value. recommended')">
           <div class="pm-icon" style="font-size:22px">&#x1F5F3;</div>
           <div class="pm-label">Parking<br/><span style="color:#94A3B8;font-size:9px">Recommended</span></div>
         </div>
@@ -1964,46 +1996,62 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <!-- Per-photo AI analysis -->
       <div class="photo-analysis-list">
 
-        <!-- Living Room analysis -->
+        <!-- Cover Image analysis. GOOD -->
+        <div class="pa-card">
+          <div class="pa-header">
+            <div class="pa-icon">🖼️</div>
+            <div class="pa-name">Cover Image</div>
+            <div class="pa-status ok">✓ Good Quality</div>
+          </div>
+          <div class="pa-body">
+            <div class="pa-points">
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Clear shot of the building. Good first impression of the society</div>
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Good natural lighting. Building details are clearly visible</div>
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Well-framed with surrounding greenery. Looks well-maintained</div>
+            </div>
+            <div style="background:#F0FDF4;border-radius:8px;padding:9px 12px;font-size:12px;color:#15803D;font-weight:500;display:flex;align-items:center;gap:7px;border:1px solid #BBF7D0">
+              ✅ Great cover photo. no enhancement needed
+            </div>
+          </div>
+        </div>
+
+        <!-- Living Room analysis. BAD -->
         <div class="pa-card">
           <div class="pa-header">
             <div class="pa-icon">🛋️</div>
             <div class="pa-name">Living Room</div>
-            <div class="pa-status warn">⚠ Quality Issue</div>
+            <div class="pa-status bad" id="pa-status-living">⚠ Needs Enhancement</div>
           </div>
           <div class="pa-body">
             <div class="pa-points">
-              <div class="pa-pt"><span class="bul" style="color:#EAB308">●</span>Photo is underexposed — brightness is 38% below optimal for listing photos</div>
-              <div class="pa-pt"><span class="bul" style="color:#EAB308">●</span>No natural light visible — curtains appear closed, reducing perceived space</div>
-              <div class="pa-pt"><span class="bul" style="color:#64748B">○</span>Angle is acceptable but a wider shot from the corner would show more of the room</div>
+              <div class="pa-pt"><span class="bul" style="color:#EF4444">●</span>Photo is too dark. Low light makes the room look small and uninviting to buyers</div>
+              <div class="pa-pt"><span class="bul" style="color:#EF4444">●</span>Colours look washed out. The sofa and walls are barely visible</div>
+              <div class="pa-pt"><span class="bul" style="color:#EAB308">●</span>No natural light captured. Open curtains or shoot during the day for better results</div>
             </div>
             <div class="pa-enhance">
               <button class="pa-enhance-btn" id="pae-living" onclick="enhancePhotoCard('living')">
                 ✨ Enhance with AI
               </button>
-              <div class="pa-enhance-note">AI will brighten, balance contrast<br/>and sharpen the image automatically</div>
+              <div class="pa-enhance-note">AI will brighten, boost colours<br/>and sharpen the image automatically</div>
             </div>
           </div>
         </div>
 
-        <!-- Bedroom analysis -->
+        <!-- Bedroom analysis. GOOD, no enhance -->
         <div class="pa-card">
           <div class="pa-header">
             <div class="pa-icon">🛏️</div>
             <div class="pa-name">Bedroom</div>
-            <div class="pa-status ok">✓ Good</div>
+            <div class="pa-status ok">✓ Good Quality</div>
           </div>
           <div class="pa-body">
             <div class="pa-points">
-              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Well-lit with natural light — exposure and brightness are optimal</div>
-              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Good composition — bed is the focal point, room feels spacious</div>
-              <div class="pa-pt"><span class="bul" style="color:#64748B">○</span>Minor: slight tilt in the frame — a small straighten would make it look more professional</div>
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Well-lit with natural light. Brightness and exposure are just right</div>
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Clean composition. Bed is the focal point, room feels open and spacious</div>
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Colours are accurate and vibrant. Buyers will get a true sense of the room</div>
             </div>
-            <div class="pa-enhance">
-              <button class="pa-enhance-btn" id="pae-bedroom" onclick="enhancePhotoCard('bedroom')">
-                ✨ Enhance with AI
-              </button>
-              <div class="pa-enhance-note">AI will straighten frame, boost<br/>contrast and sharpen fine details</div>
+            <div style="background:#F0FDF4;border-radius:8px;padding:9px 12px;font-size:12px;color:#15803D;font-weight:500;display:flex;align-items:center;gap:7px;border:1px solid #BBF7D0">
+              ✅ This photo looks great. no enhancement needed
             </div>
           </div>
         </div>
@@ -2027,14 +2075,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <th>Market Avg (2BHK, Sec 22)</th>
           </tr>
           <tr>
-            <td>Photos</td>
-            <td class="you-cell">3</td>
-            <td class="mkt-cell">11.4</td>
+            <td>Property Verified</td>
+            <td class="you-cell" id="compVerifyYou">✗ Not verified</td>
+            <td class="mkt-cell">80% listings verified</td>
           </tr>
           <tr>
-            <td>Description length</td>
-            <td class="you-cell">18 words</td>
-            <td class="mkt-cell">156 words</td>
+            <td>Photos</td>
+            <td class="you-cell" id="compPhotosYou">3</td>
+            <td class="mkt-cell">5 (min)</td>
           </tr>
           <tr>
             <td>Price / sq.ft</td>
@@ -2044,27 +2092,27 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           <tr>
             <td>Amenities filled</td>
             <td class="you-cell">0 / 35</td>
-            <td class="mkt-cell">8.2 / 12</td>
+            <td class="mkt-cell">10 / 35</td>
           </tr>
           <tr>
             <td>Listing score</td>
-            <td class="you-cell">28 / 100</td>
-            <td class="mkt-cell">61 / 100</td>
+            <td class="you-cell" id="compScoreYou">60 / 100</td>
+            <td class="mkt-cell">80 / 100</td>
           </tr>
         </table>
 
         <div class="estimate-box">
           <div class="est-icon">⏱️</div>
           <div>
-            <div class="est-title">Current estimate: 45+ days to first inquiry</div>
-            <div class="est-text">Based on listing quality score of 28/100 and similar listings in this area. Bottom 15% of listings take significantly longer to sell.</div>
+            <div class="est-title" id="estTitle">Current estimate: 5–7 days to first enquiry</div>
+            <div class="est-text" id="estText">Listings with this quality score in Sector 22 Dwarka get their first lead in 5–7 days. Improve your listing score to get faster leads.</div>
           </div>
         </div>
         <div class="estimate-box est-after" id="estimateAfter" style="display:none">
           <div class="est-icon">🚀</div>
           <div>
-            <div class="est-title">After AI improvements: ~11 days to first inquiry</div>
-            <div class="est-text">Optimized listings with 80+ score get 4x more inquiries and sell 3x faster. Apply all AI suggestions to unlock this estimate.</div>
+            <div class="est-title" id="estTitle">After AI improvements: ~11 days to first inquiry</div>
+            <div class="est-text" id="estText">Optimized listings with 80+ score get 4x more inquiries and sell 3x faster. Apply all AI suggestions to unlock this estimate.</div>
           </div>
         </div>
       </div>
@@ -2072,25 +2120,66 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 
 
       </div><!-- /apanel3 -->
+      <!-- Tab 4: Community -->
+      <div class="atab-panel" id="apanel4">
+        <div style="padding:16px 20px;display:flex;flex-direction:column;gap:14px">
+          <div style="background:linear-gradient(135deg,#F5F3FF,#EEF2FF);border-radius:10px;padding:13px 14px;margin-bottom:12px;border:1px solid #C4B5FD;display:flex;align-items:center;gap:12px">
+            <div style="width:42px;height:42px;background:linear-gradient(135deg,#7C3AED,#4F46E5);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🏘️</div>
+            <div style="flex:1">
+              <div style="font-size:13px;font-weight:800;color:var(--text);margin-bottom:2px" class="comm-locality-header-title">Sector 22 Dwarka Community</div>
+              <div style="font-size:11px;color:var(--text3)">Real insights from residents and buyers about your locality</div>
+            </div>
+            <div style="display:flex;gap:14px;flex-shrink:0;text-align:center">
+              <div><div style="font-size:16px;font-weight:800;color:#7C3AED">312</div><div style="font-size:10px;color:var(--text3)">Contributors</div></div>
+              <div><div style="font-size:16px;font-weight:800;color:#7C3AED">89</div><div style="font-size:10px;color:var(--text3)">Q&As</div></div>
+              <div><div style="font-size:16px;font-weight:800;color:#7C3AED">88%</div><div style="font-size:10px;color:var(--text3)">Recommend</div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">What buyers are asking<span style="font-size:11px;font-weight:700;color:#7C3AED;cursor:pointer;text-transform:none;letter-spacing:0">View all 89 →</span></div>
+            <div class="buyer-q-list" style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#E74C3C;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">P</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">How far is the nearest metro station?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Priya S. · 2h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Connectivity</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 12</div><div style="font-size:10px;color:var(--text3)">👍 34</div></div></div>
+              <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">A</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">Are there good schools for kids in the area?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Arjun M. · 5h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Schools</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 8</div><div style="font-size:10px;color:var(--text3)">👍 21</div></div></div>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px">Locality sentiment from 312 residents</div>
+            <div class="sentiment-bar" style="background:#F5F3FF;border-radius:10px;padding:12px 14px;border:1px solid #EDE9FE;margin-bottom:14px">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Metro Access</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:84%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">84%</div></div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Safety</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:79%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">79%</div></div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Schools</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:71%;background:#16A34A;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#16A34A">71%</div></div>
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Parking</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:42%;background:#F59E0B;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#F59E0B">42%</div></div>
+              <div style="display:flex;align-items:center;gap:10px"><div style="font-size:11.5px;color:var(--text2);width:100px;flex-shrink:0">Traffic</div><div style="flex:1;height:7px;background:#E5E7EB;border-radius:4px;overflow:hidden"><div style="height:100%;width:28%;background:#EF4444;border-radius:4px"></div></div><div style="font-size:11px;font-weight:700;width:32px;text-align:right;color:#EF4444">28%</div></div>
+            </div>
+          </div>
+          <div style="background:#F5F3FF;border-radius:10px;padding:12px 14px;border:1px solid #EDE9FE;display:flex;align-items:center;gap:12px">
+            <div style="font-size:28px">📈</div>
+            <div style="flex:1">
+              <div style="font-size:12.5px;font-weight:700;color:var(--text);margin-bottom:3px">Community-informed listings get <span style="color:#7C3AED">2.4× more enquiries</span></div>
+              <div style="font-size:11px;color:var(--text3);line-height:1.5">Address top buyer concerns in your description to convert browsers to enquirers faster.</div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /apanel4 -->
+
     </div><!-- /analysis-tabs-wrap -->
 
 
     <!-- Final CTA -->
     <div class="final-cta" id="finalCta">
-      <div class="fc-title">🚀 Apply All Improvements</div>
-      <div class="fc-sub">Fix all 6 issues to transform your listing score and get more enquiries.</div>
+      <div class="fc-title">⏰ Buyers are choosing other listings over yours</div>
+      <div class="fc-sub">While your listing sits at <span id="fcCurrentScore">60</span>/100, better-listed 2 BHKs in Sector 22 Dwarka are getting the enquiries you're missing.</div>
       <div class="fc-score-row">
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#EF4444">13</div>
+          <div class="fc-score-num" style="color:#EF4444" id="fcScoreCurrent">60</div>
           <div class="fc-score-label">Current score</div>
         </div>
         <div class="fc-arrow">→</div>
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#4ADE80">37</div>
-          <div class="fc-score-label">Max score</div>
+          <div class="fc-score-num" style="color:#4ADE80">84</div>
+          <div class="fc-score-label">After all fixes</div>
         </div>
       </div>
-      <button class="fc-btn" onclick="applyAllFixes()">⚡ Apply All Improvements</button>
     </div>
       </div>
       
@@ -2271,7 +2360,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div class="dm-section-label" style="color:#EF4444">🔴 Current Description</div>
         <div class="dm-current-text">"Well maintained 2BHK flat available in Sector 22 Dwarka. Good locality with nearby market. Suitable for families."</div>
         <div style="display:flex;gap:8px;margin-top:8px">
-          <span class="dstat dstat-bad">18 words</span>
+          <span class="dstat dstat-bad">122 words</span>
           <span class="dstat dstat-bad">0 keywords</span>
           <span class="dstat dstat-bad">Score: 5/25</span>
         </div>
@@ -2324,6 +2413,110 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   </div>
 </div>
 
+<!-- ── FACING MODAL ── -->
+<div class="modal-overlay" id="facingModal" onclick="closeFacingModal(event)">
+  <div class="upload-modal" onclick="event.stopPropagation()" style="max-width:480px">
+    <div class="dm-header">
+      <div class="dm-title">🧭 Select Property Facing</div>
+      <button class="dm-close" onclick="closeFacingModal()">✕</button>
+    </div>
+    <div class="dm-body" style="gap:14px">
+      <div style="font-size:12px;color:var(--text3)">Which direction does the main entrance / living room face?</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px" id="facingGrid">
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);transition:.2s;background:var(--surface)" onclick="selectFacing(this,'North')"><div style="font-size:22px;margin-bottom:6px">⬆️</div>North</div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);transition:.2s;background:var(--surface)" onclick="selectFacing(this,'East')"><div style="font-size:22px;margin-bottom:6px">➡️</div>East</div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);transition:.2s;background:var(--surface)" onclick="selectFacing(this,'West')"><div style="font-size:22px;margin-bottom:6px">⬅️</div>West</div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);transition:.2s;background:var(--surface)" onclick="selectFacing(this,'South')"><div style="font-size:22px;margin-bottom:6px">⬇️</div>South</div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);transition:.2s;background:var(--surface)" onclick="selectFacing(this,'North-East')"><div style="font-size:22px;margin-bottom:6px">↗️</div>North-East</div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:14px 10px;text-align:center;cursor:pointer;font-size:13px;font-weight:600;color:var(--text2);transition:.2s;background:var(--surface)" onclick="selectFacing(this,'North-West')"><div style="font-size:22px;margin-bottom:6px">↖️</div>North-West</div>
+      </div>
+      <button id="facingSubmitBtn" onclick="submitFacing()" disabled style="width:100%;background:#7C3AED;color:#fff;border:none;padding:11px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;opacity:.5;transition:.2s">Add Facing to Listing</button>
+      <div style="text-align:center"><span style="font-size:12px;color:var(--text3);cursor:pointer" onclick="closeFacingModal()">Cancel</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AMENITIES MODAL ── -->
+<div class="modal-overlay" id="amenitiesModal" onclick="closeAmenitiesModal(event)">
+  <div class="upload-modal" onclick="event.stopPropagation()" style="max-width:720px;max-height:88vh">
+    <div class="dm-header">
+      <div class="dm-title">Add property furnishings and amenities</div>
+      <button class="dm-close" onclick="closeAmenitiesModal()">✕</button>
+    </div>
+    <div class="dm-body" style="gap:0;padding:20px 22px">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+        <div style="font-size:15px;font-weight:800;color:var(--text)">Flat Furnishings</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text3)" id="flatCount">0 selected</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px" id="flatGrid">
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🍽️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Dining Table</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🫧</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Washing Machine</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🗄️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Cupboard</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🛋️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Sofa</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🍳</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Gas Pipeline</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🫙</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Chimney</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🍱</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Modular Kitchen</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">💧</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Water Purifier</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative;class:am-counter-item" data-val="0" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🌬️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Fan</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">💡</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Light</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">❄️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">AC</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🚿</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Geyser</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">📺</div><div style="font-size:11px;font-weight:600;color:var(--text2)">TV</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">🛏️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Bed</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'flat')"><div style="font-size:22px;margin-bottom:5px">👔</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Wardrobe</div></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;margin-top:8px">
+        <div style="font-size:15px;font-weight:800;color:var(--text)">Society Amenities</div>
+        <div style="font-size:13px;font-weight:600;color:var(--text3)" id="societyCount">0 selected</div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px" id="societyGrid">
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">⚡</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Power Backup</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🛗</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Lift</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🅿️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Parking</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🔒</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Security</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🏊</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Swimming Pool</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🏋️</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Gym</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">📹</div><div style="font-size:11px;font-weight:600;color:var(--text2)">CCTV</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🌿</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Garden</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🧒</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Kids Area</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🏠</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Gated Community</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">🎱</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Club House</div></div>
+        <div style="border:1.5px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;cursor:pointer;transition:.2s;background:var(--surface);position:relative" onclick="toggleAmenity(this,'society')"><div style="font-size:22px;margin-bottom:5px">📞</div><div style="font-size:11px;font-weight:600;color:var(--text2)">Intercom</div></div>
+      </div>
+      <button style="width:100%;background:#7C3AED;color:#fff;border:none;padding:12px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;display:flex;align-items:center;justify-content:center;gap:6px" id="amSubmitBtn" onclick="submitAmenities()">
+        <span id="amSubmitText">Save Amenities</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── PRICE EDIT MODAL ── -->
+<div class="modal-overlay" id="priceEditModal" onclick="closePriceEditModal(event)">
+  <div class="upload-modal" onclick="event.stopPropagation()" style="max-width:480px">
+    <div class="dm-header">
+      <div class="dm-title">💰 Edit Listing Price</div>
+      <button class="dm-close" onclick="closePriceEditModal()">✕</button>
+    </div>
+    <div class="dm-body" style="gap:14px">
+      <div style="background:var(--surface2);border-radius:10px;padding:12px 14px;border:1px solid var(--border)">
+        <div style="font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:.4px">Current Price</div>
+        <div style="font-size:22px;font-weight:800;color:var(--text)">₹ 85,00,000</div>
+        <div style="font-size:11px;color:#EF4444;font-weight:600;margin-top:3px">9-18% above market range</div>
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px">Enter new price</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:15px;font-weight:700;color:var(--text2)">₹</span>
+          <input style="flex:1;border:1.5px solid var(--border);border-radius:8px;padding:8px 12px;font-size:15px;font-weight:700;font-family:'Inter',sans-serif;color:var(--text);background:var(--surface);outline:none;transition:.2s" id="priceInput" type="text" value="85,00,000" placeholder="e.g. 78,00,000"/>
+        </div>
+        <div style="font-size:11px;color:var(--text3)">Market range: <span style="color:#16A34A;font-weight:600">₹72L – ₹78L</span> &nbsp;·&nbsp; Recommended: <span style="color:#16A34A;font-weight:600">₹76L</span></div>
+      </div>
+      <button style="width:100%;background:#7C3AED;color:#fff;border:none;padding:11px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s" onclick="saveManualPrice()">Save Price</button>
+      <div style="text-align:center"><span style="font-size:12px;color:var(--text3);cursor:pointer" onclick="closePriceEditModal()">Cancel</span></div>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
@@ -2332,17 +2525,18 @@ let analysisComplete = false;
 let fixesApplied = 0;
 const totalFixes = 6;
 
-// ── New scoring system ──
-const MAX_SCORE = 37;
+// ── Scoring system ──
+const MAX_SCORE = 100;
+const DISPLAY_OFFSET = 44;  // base score offset (44 + 16pts = 60 initial)
 const scoreBreakdown = {
-  photos: 6,       // 2 photos × 3 = 6 (starts at 6, max 15)
-  price: 5,        // price provided = 5 (already maxed)
-  description: 2,  // buy listing + description = 2 (already maxed)
-  amenities: 0,    // no amenities selected yet (max 5)
-  verify: 0        // not verified yet (max 10)
+  photos: 9,        // 3 photos × 3 = 9 (max 15)
+  price: 5,         // price provided = 5 (maxed)
+  description: 2,   // buy listing = 2 (maxed)
+  amenities: 0,     // not filled yet (max 5)
+  verify: 0         // not verified yet (max 10)
 };
 function getTotalScore() {
-  return Object.values(scoreBreakdown).reduce((a,b) => a+b, 0);
+  return DISPLAY_OFFSET + Object.values(scoreBreakdown).reduce((a,b) => a+b, 0);
 }
 
 let drawerRankAnimTimers = { fallback: null, delayed: null, armed: null, celebrate: null };
@@ -2518,7 +2712,7 @@ function showResults() {
   // Show Re-analyze in listing card
   const reBtn = document.getElementById('reanalyzeBtn');
   if (reBtn) reBtn.style.display = 'flex';
-  toast('✅ Analysis complete — 6 issues found');
+  toast('✅ Analysis complete. 6 issues found');
 }
 
 // ── Price Options ──
@@ -2545,7 +2739,7 @@ function chooseAutoPrice() {
   btn.textContent = '⚡ Applying ₹76L...';
 
   setTimeout(() => {
-    fixIssue(4, 'Price auto-corrected to ₹76L — market rate for similar listings');
+    fixIssue(4, 'Price auto-corrected to ₹76L. market rate for similar listings');
     btn.textContent = '✓ Price Updated';
     btn.className = 'fix-btn done';
   }, 1200);
@@ -2562,7 +2756,7 @@ function saveManualPrice() {
   const val = document.getElementById('priceInput').value.trim();
   if (!val) { toast('Please enter a price'); return; }
   document.getElementById('priceEditInline').classList.remove('open');
-  fixIssue(4, 'Price updated to ₹' + val + ' — manually set');
+  fixIssue(4, 'Price updated to ₹' + val + '. manually set');
   const btn = document.getElementById('adjustPriceBtn');
   btn.textContent = '✓ Price Updated';
   btn.className = 'fix-btn done';
@@ -2597,7 +2791,7 @@ function applyVerification(msg) {
   updateScore();
   // Show verified badge on listing card illustration
   const warn = document.getElementById('photoWarningBadge');
-  toast('✅ ' + msg + ' — Verified badge will appear after completion');
+  toast('✅ ' + msg + '. Verified badge will appear after completion');
 }
 
 // ── Description Modal ──
@@ -2626,7 +2820,7 @@ function generateDescModal() {
   genArea.classList.add('generating');
 
   setTimeout(() => {
-    const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious CGHS society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
+    const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
 
 Location highlights: DPS Dwarka and Ryan International School are within 1.5 km, making this ideal for families with school-going children.
 
@@ -2668,7 +2862,7 @@ function applyDescription() {
     // Reset modal state for next regeneration
     resetDescModal();
 
-    toast('✅ Description applied — 187 words, 9 keywords added to your listing');
+    toast('✅ Description applied. 187 words, 9 keywords added to your listing');
   }, 600);
 }
 
@@ -2715,9 +2909,9 @@ function generateDesc() {
     document.getElementById('descGenerating').classList.remove('show');
     document.getElementById('descCompare').style.opacity = '1';
 
-    const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious CGHS society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
+    const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
 
-Location highlights: Just 8-minute walk to Dwarka Sector 21 Metro Station — direct connectivity to Connaught Place (30 min), Rajiv Chowk, and IGI Airport. DPS Dwarka and Ryan International School are within 1.5 km, making this ideal for families with school-going children.
+Location highlights: Just 8-minute walk to Dwarka Sector 21 Metro Station. direct connectivity to Connaught Place (30 min), Rajiv Chowk, and IGI Airport. DPS Dwarka and Ryan International School are within 1.5 km, making this ideal for families with school-going children.
 
 The apartment boasts a recently renovated modular kitchen with granite countertops, two well-sized bedrooms with ample storage, and two modern bathrooms. The society offers 24/7 security with CCTV, dedicated covered parking, power backup, and a beautifully maintained garden.
 
@@ -2740,10 +2934,155 @@ Perfect for families seeking a peaceful, green, and well-connected neighbourhood
 
     // fix issue 2
     markFixed(2);
-    toast('✅ AI description generated — 187 words, 9 keywords added');
+    toast('✅ AI description generated. 187 words, 9 keywords added');
   }, 2000);
 }
 
+
+// ── Listing card carousel ──
+let carouselIdx = 0;
+let carouselTimer = null;
+
+function goSlide(n) {
+  carouselIdx = n;
+  const track = document.getElementById('carouselTrack');
+  if (track) track.style.transform = 'translateX(-' + (n * 33.333) + '%)';
+  document.querySelectorAll('#listingCarousel .cdot').forEach((d,i) => d.classList.toggle('active', i===n));
+}
+
+function startCarousel() {
+  clearInterval(carouselTimer);
+  carouselTimer = setInterval(() => { carouselIdx=(carouselIdx+1)%3; goSlide(carouselIdx); }, 2800);
+}
+
+// Auto-start carousel + pause on hover
+document.addEventListener('DOMContentLoaded', () => {
+  startCarousel();
+  const carousel = document.getElementById('listingCarousel');
+  if (carousel) {
+    carousel.addEventListener('mouseenter', () => clearInterval(carouselTimer));
+    carousel.addEventListener('mouseleave', startCarousel);
+  }
+});
+
+// ── Facing Modal ──
+let selectedFacing = null;
+function openFacingModal() {
+  if (!analysisComplete) { toast('Analyze your listing first'); return; }
+  selectedFacing = null;
+  document.querySelectorAll('#facingGrid > div').forEach(o => o.style.borderColor='var(--border)');
+  const btn = document.getElementById('facingSubmitBtn');
+  if (btn) { btn.disabled=true; btn.style.opacity='.5'; btn.textContent='Add Facing to Listing'; }
+  document.getElementById('facingModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeFacingModal(e) {
+  if (e && e.target!==document.getElementById('facingModal')) return;
+  document.getElementById('facingModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function selectFacing(el, value) {
+  document.querySelectorAll('#facingGrid > div').forEach(o => { o.style.borderColor='var(--border)'; o.style.background='var(--surface)'; o.style.color='var(--text2)'; });
+  el.style.borderColor='#7C3AED'; el.style.background='#EDE9FE'; el.style.color='#7C3AED';
+  selectedFacing = value;
+  const btn = document.getElementById('facingSubmitBtn');
+  if (btn) { btn.disabled=false; btn.style.opacity='1'; btn.textContent='Add '+value+' Facing to Listing'; }
+}
+function submitFacing() {
+  if (!selectedFacing) return;
+  document.getElementById('facingModal').classList.remove('open');
+  document.body.style.overflow='';
+  fixIssue(5, selectedFacing+'-facing direction added to your listing');
+}
+
+// ── Amenities Modal ──
+function toggleAmenitiesOptions(e) {
+  e.stopPropagation();
+  const pop = document.getElementById('amenitiesOptions');
+  pop.classList.toggle('open');
+  if (pop.classList.contains('open')) setTimeout(() => document.addEventListener('click', ()=>pop.classList.remove('open'), {once:true}), 10);
+}
+function autoFillAmenities() {
+  document.getElementById('amenitiesOptions').classList.remove('open');
+  const btn = document.getElementById('amenitiesBtn');
+  btn.disabled=true;
+  btn.innerHTML='<span style="animation:spin .6s linear infinite;display:inline-block">⚡</span> Filling...';
+  setTimeout(()=>{
+    fixIssue(6,'AI auto-filled 8 amenities based on society profile for Sector 22 Dwarka');
+    btn.textContent='✓ Auto-filled'; btn.className='fix-btn done';
+  }, 1400);
+}
+function openAmenitiesModal() {
+  document.getElementById('amenitiesOptions').classList.remove('open');
+  document.getElementById('amenitiesModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  updateAmCounts();
+}
+function closeAmenitiesModal(e) {
+  if (e && e.target!==document.getElementById('amenitiesModal')) return;
+  document.getElementById('amenitiesModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function toggleAmenity(el, section) {
+  el.classList.toggle('am-selected');
+  if (el.classList.contains('am-selected')) { el.style.borderColor='#7C3AED'; el.style.background='#EDE9FE'; }
+  else { el.style.borderColor='var(--border)'; el.style.background='var(--surface)'; }
+  updateAmCounts();
+}
+function updateAmCounts() {
+  const flatSel=document.querySelectorAll('#flatGrid .am-selected').length;
+  const socSel=document.querySelectorAll('#societyGrid .am-selected').length;
+  const total=flatSel+socSel;
+  const fe=document.getElementById('flatCount'); if(fe)fe.textContent=flatSel+' selected';
+  const se=document.getElementById('societyCount'); if(se)se.textContent=socSel+' selected';
+  const st=document.getElementById('amSubmitText'); if(st)st.textContent=total>0?'Save '+total+' Amenities':'Save Amenities';
+}
+function submitAmenities() {
+  const total=document.querySelectorAll('#flatGrid .am-selected, #societyGrid .am-selected').length;
+  document.getElementById('amenitiesModal').classList.remove('open');
+  document.body.style.overflow='';
+  if(total===0){toast('Please select at least one amenity');return;}
+  fixIssue(6,total+' amenities added to your listing');
+  const btn=document.getElementById('amenitiesBtn');
+  if(btn){btn.textContent='✓ '+total+' Added';btn.className='fix-btn done';}
+}
+
+// ── Price Modal ──
+function togglePriceOptions(e) {
+  e.stopPropagation();
+  const pop=document.getElementById('priceOptions');
+  pop.classList.toggle('open');
+  if(pop.classList.contains('open')) setTimeout(()=>document.addEventListener('click',closePriceOptions,{once:true}),10);
+}
+function closePriceOptions(){const pop=document.getElementById('priceOptions');if(pop)pop.classList.remove('open');}
+function chooseAutoPrice(){
+  closePriceOptions();
+  const btn=document.getElementById('adjustPriceBtn');
+  btn.disabled=true; btn.textContent='⚡ Applying ₹76L...';
+  setTimeout(()=>{ fixIssue(3,'Price auto-corrected to ₹76L. market rate'); btn.textContent='✓ Price Updated'; btn.className='fix-btn done'; }, 1200);
+}
+function chooseManualPrice(){
+  closePriceOptions();
+  document.getElementById('priceEditModal').classList.add('open');
+  document.body.style.overflow='hidden';
+  setTimeout(()=>document.getElementById('priceInput').focus(),150);
+}
+function closePriceEditModal(e){
+  if(e&&e.target!==document.getElementById('priceEditModal'))return;
+  document.getElementById('priceEditModal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function saveManualPrice(){
+  const val=document.getElementById('priceInput').value.trim();
+  if(!val){toast('Please enter a price');return;}
+  document.getElementById('priceEditModal').classList.remove('open');
+  document.body.style.overflow='';
+  fixIssue(3,'Price updated to ₹'+val+'. manually set');
+  const btn=document.getElementById('adjustPriceBtn');
+  if(btn){btn.textContent='✓ Price Updated';btn.className='fix-btn done';}
+}
+
+// ── Amenities score fix (issue 6) ──
 function fixIssue(num, msg) {
   markFixed(num);
   toast('✅ ' + msg);
@@ -2754,7 +3093,7 @@ function fixIssue(num, msg) {
   }
 
   // Issue 5 = amenities → flat +5 pts
-  if(num === 5 && scoreBreakdown.amenities === 0) {
+  if(num === 6 && scoreBreakdown.amenities === 0) {
     scoreBreakdown.amenities = 5;
   }
 
@@ -2765,7 +3104,7 @@ function markFixed(num) {
   const el = document.getElementById('issue'+num);
   if(!el) return;
 
-  // Issue 2 (description) — special: allow re-generation even after fixed
+  // Issue 2 (description). special: allow re-generation even after fixed
   if (num === 3) {
     el.classList.add('fixed');
     const btn = el.querySelector('.fix-btn');
@@ -2791,7 +3130,10 @@ function markFixed(num) {
   const btn = el.querySelector('.fix-btn');
   if (btn) { btn.textContent = '✓ Fixed'; btn.className = 'fix-btn done'; }
 
-  // Lock preview toggle for this issue
+  // Issue 6 = amenities
+  if(num===6 && scoreBreakdown && scoreBreakdown.amenities===0){scoreBreakdown.amenities=5;}
+
+  // Lock preview toggle
   const strip = document.getElementById('prev'+num);
   if (strip) { strip.classList.remove('on'); }
 
@@ -2800,77 +3142,99 @@ function markFixed(num) {
 }
 
 function updateScore() {
-  const newScore = getTotalScore(); // uses scoreBreakdown
-  document.getElementById('scoreNum').textContent = newScore;
+  const newScore = getTotalScore();
+  const photoCount = parseInt(sessionStorage.getItem('photoCount') || '3');
+  const needed = Math.max(0, 5 - photoCount);
 
+  // ── Score ring ──
+  const scoreNumEl = document.getElementById('scoreNum');
+  if (scoreNumEl) scoreNumEl.textContent = newScore;
   const fill = document.getElementById('scoreFill');
-  const circumference = 263.9;
-  const offset = circumference - (newScore / MAX_SCORE) * circumference;
-  fill.setAttribute('stroke-dashoffset', offset);
-
-  const pct = newScore / MAX_SCORE;
-  if (pct >= 0.8) {
-    fill.setAttribute('stroke','#4ADE80');
-    document.getElementById('scGrade').textContent = '🟢 Good';
-  } else if (pct >= 0.5) {
-    fill.setAttribute('stroke','#FBBF24');
-    document.getElementById('scGrade').textContent = '🟡 Average';
-  } else {
-    fill.setAttribute('stroke','#EF4444');
-    document.getElementById('scGrade').textContent = '🔴 Poor';
+  if (fill) {
+    const circumference = 263.9;
+    fill.setAttribute('stroke-dashoffset', circumference - (newScore / 100) * circumference);
+    fill.setAttribute('stroke', newScore >= 70 ? '#4ADE80' : newScore >= 58 ? '#FBBF24' : '#EF4444');
   }
+  const gradeEl = document.getElementById('scGrade');
+  if (gradeEl) gradeEl.textContent = newScore >= 70 ? '🟢 Good' : newScore >= 58 ? '🟡 Average' : '🔴 Poor';
+  const descEl = document.querySelector('.sc-desc');
+  if (descEl) descEl.innerHTML = 'Your listing scores <strong>' + newScore + '/100</strong>.' + (newScore < 72 ? ' Fix all issues to improve your score.' : ' All fixes applied! 🎉');
 
-  // Update photos dim card
+  // ── Photos dim card ──
+  const photoColor = scoreBreakdown.photos >= 15 ? '#4ADE80' : scoreBreakdown.photos >= 9 ? '#FBBF24' : '#EF4444';
   const dimPhotos = document.getElementById('dimPhotos');
-  if (dimPhotos) {
-    const photoPct = (scoreBreakdown.photos / 15) * 100;
-    dimPhotos.style.width = photoPct + '%';
-    dimPhotos.style.background = scoreBreakdown.photos >= 15 ? '#4ADE80' : '#EF4444';
-  }
-  const dimScore = document.querySelector('#dimPhotos')?.closest('.dim-item')?.querySelector('.dim-score');
-  if (dimScore) dimScore.innerHTML = scoreBreakdown.photos + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span>';
+  if (dimPhotos) { dimPhotos.style.width = (scoreBreakdown.photos / 15 * 100) + '%'; dimPhotos.style.background = photoColor; }
+  const photoDimScore = document.querySelector('#dimPhotos')?.closest('.dim-item')?.querySelector('.dim-score');
+  if (photoDimScore) { photoDimScore.innerHTML = scoreBreakdown.photos + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span>'; photoDimScore.style.color = photoColor; }
+  const photosDimStatus = document.getElementById('photosDimStatus');
+  if (photosDimStatus) photosDimStatus.textContent = photoCount + ' photos × 3pts = ' + scoreBreakdown.photos + '/15';
 
-  // Update verify dim card
+  // ── Listing card photo badges ──
+  const countBadge = document.getElementById('photoCountBadge');
+  if (countBadge) countBadge.textContent = photoCount + ' Photo' + (photoCount !== 1 ? 's' : '');
+  const warnBadge = document.getElementById('photoWarningBadge');
+  if (warnBadge) { warnBadge.style.display = photoCount >= 5 ? 'none' : ''; warnBadge.textContent = '⚠ Only ' + photoCount; }
+
+  // ── Photo analysis badge ──
+  const analysisBadge = document.getElementById('photoAnalysisBadge');
+  if (analysisBadge) {
+    analysisBadge.textContent = photoCount + '/5 photos';
+    analysisBadge.style.background = photoCount >= 5 ? '#DCFCE7' : '#FEE2E2';
+    analysisBadge.style.color = photoCount >= 5 ? '#15803D' : '#DC2626';
+  }
+
+  // ── Issue photo title & desc ──
+  const issueTitle = document.getElementById('issuePhotoTitle');
+  if (issueTitle) issueTitle.textContent = needed === 0 ? 'Photos complete ✓' : 'Add ' + needed + ' more photo' + (needed !== 1 ? 's' : '');
+  const issueDesc = document.getElementById('issuePhotoDesc');
+  if (issueDesc && needed > 0) issueDesc.innerHTML = 'You have ' + photoCount + ' photos. Minimum recommended is <strong>5 photos</strong>. Missing: <strong>kitchen, bathroom, bedroom 2</strong>.';
+
+  // ── Verify dim card ──
   const dimVerify = document.getElementById('dimVerify');
-  if (dimVerify) {
-    dimVerify.style.width = (scoreBreakdown.verify / 10 * 100) + '%';
-    dimVerify.style.background = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444';
-  }
+  if (dimVerify) { dimVerify.style.width = (scoreBreakdown.verify / 10 * 100) + '%'; dimVerify.style.background = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
   const verifyDimScore = document.getElementById('verifyDimScore');
-  if (verifyDimScore) {
-    verifyDimScore.innerHTML = scoreBreakdown.verify + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span>';
-    verifyDimScore.style.color = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444';
-  }
+  if (verifyDimScore) { verifyDimScore.innerHTML = scoreBreakdown.verify + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span>'; verifyDimScore.style.color = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
   const verifyDimStatus = document.getElementById('verifyDimStatus');
-  if (verifyDimStatus) {
-    verifyDimStatus.textContent = scoreBreakdown.verify >= 10 ? '✓ Verified · 10/10 pts' : 'Not verified · Get +10 pts';
-  }
+  if (verifyDimStatus) verifyDimStatus.textContent = scoreBreakdown.verify >= 10 ? '✓ Verified · 10/10 pts' : 'Not verified · Get +10 pts';
 
-  // Update amenities dim card
+  // ── Amenities dim card ──
   const dimComp = document.getElementById('dimComp');
-  if (dimComp) {
-    dimComp.style.width = (scoreBreakdown.amenities / 5 * 100) + '%';
-    dimComp.style.background = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444';
-  }
+  if (dimComp) { dimComp.style.width = (scoreBreakdown.amenities / 5 * 100) + '%'; dimComp.style.background = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
+  const amenitiesDimScore = document.getElementById('amenitiesDimScore');
+  if (amenitiesDimScore) { amenitiesDimScore.innerHTML = scoreBreakdown.amenities + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span>'; amenitiesDimScore.style.color = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
   const amenitiesStatus = document.getElementById('amenitiesDimStatus');
-  if (amenitiesStatus) {
-    amenitiesStatus.textContent = scoreBreakdown.amenities >= 5
-      ? 'Amenity selected ✓ · 5/5 pts'
-      : '0 amenities selected · Select any = +5 pts';
+  if (amenitiesStatus) amenitiesStatus.textContent = scoreBreakdown.amenities >= 5 ? 'Amenity selected ✓ · 5/5 pts' : '0 amenities selected · Select any = +5 pts';
+
+  // ── Market compare table ──
+  const compScore = document.getElementById('compScoreYou');
+  if (compScore) compScore.textContent = newScore + ' / 100';
+  const compPhotos = document.getElementById('compPhotosYou');
+  if (compPhotos) compPhotos.textContent = photoCount;
+  const compAmenities = document.getElementById('compAmenitiesYou');
+  if (compAmenities) compAmenities.textContent = scoreBreakdown.amenities > 0 ? '1+ / 35' : '0 / 35';
+  const compVerify = document.getElementById('compVerifyYou');
+  if (compVerify) { compVerify.textContent = scoreBreakdown.verify >= 10 ? '✓ Verified' : '✗ Not verified'; compVerify.className = scoreBreakdown.verify >= 10 ? 'mkt-cell' : 'you-cell'; }
+
+  // ── Estimate box ──
+  const estTitle = document.getElementById('estTitle');
+  const estText = document.getElementById('estText');
+  if (estTitle && estText) {
+    const days = newScore >= 70 ? '5–7 days' : newScore >= 62 ? '8–12 days' : newScore >= 55 ? '12–18 days' : '5–7 days';
+    estTitle.textContent = 'Current estimate: ' + days + ' to first enquiry';
+    estText.textContent = 'Listings with this quality score in Sector 22 Dwarka get their first lead in ' + days + '. Improve your listing score to get faster leads.';
   }
 
-  // Update issues badge
+  // ── Issues badge ──
   const issuesBadge = document.querySelector('.issues-title span');
   const remaining = totalFixes - fixesApplied;
-  if (issuesBadge) issuesBadge.textContent = remaining > 0 ? remaining + ' issues remaining' : '✅ All fixed!';
-  if (issuesBadge && remaining === 0) {
-    issuesBadge.style.background = '#DCFCE7';
-    issuesBadge.style.color = '#16A34A';
-  }
+  if (issuesBadge) { issuesBadge.textContent = remaining > 0 ? remaining + ' issues remaining' : '✅ All fixed!'; }
+  if (issuesBadge && remaining === 0) { issuesBadge.style.background = '#DCFCE7'; issuesBadge.style.color = '#16A34A'; }
 
-  // Update sc-desc
-  const desc = document.querySelector('.sc-desc');
-  if (desc) desc.innerHTML = 'Your listing scores <strong>' + newScore + '/' + MAX_SCORE + '</strong>.' + (newScore < MAX_SCORE ? ' Add photos and amenities to reach maximum score.' : ' Maximum score reached! 🎉');
+  // ── Final CTA current score ──
+  const fcCurrent = document.getElementById('fcScoreCurrent');
+  if (fcCurrent) fcCurrent.textContent = newScore;
+  const fcSub = document.getElementById('fcCurrentScore');
+  if (fcSub) fcSub.textContent = newScore;
 }
 
 function applyAllFixes() {
@@ -2883,7 +3247,7 @@ function applyAllFixes() {
 }
 
 function generateDescSilent() {
-  const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious CGHS society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light. Just 8-minute walk to Dwarka Sector 21 Metro — direct connectivity to Connaught Place (30 min). DPS Dwarka and Ryan International within 1.5 km. Recently renovated modular kitchen, 24/7 security, covered parking, power backup.`;
+  const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light. Just 8-minute walk to Dwarka Sector 21 Metro. direct connectivity to Connaught Place (30 min). DPS Dwarka and Ryan International within 1.5 km. Recently renovated modular kitchen, 24/7 security, covered parking, power backup.`;
   document.getElementById('aiDescText').textContent = newText;
   document.getElementById('aiDescText').className = 'desc-text good';
   document.getElementById('aiDescText').style.fontStyle = 'normal';
@@ -2900,7 +3264,7 @@ function generateDescSilent() {
 
 // ── Analysis Tabs ──
 function setATab(n) {
-  [0,2,3].forEach(i => {
+  [0,2,3,4].forEach(i => {
     const tab = document.getElementById('atab'+i);
     const panel = document.getElementById('apanel'+i);
     if(tab) tab.classList.toggle('on', i===n);
@@ -2915,7 +3279,7 @@ function handlePhotoUpload(input) {
   const added = files.length;
 
   // Current photo count tracking (starts at 2)
-  const prevCount = parseInt(sessionStorage.getItem('photoCount') || '2');
+  const prevCount = parseInt(sessionStorage.getItem('photoCount') || '3');
   const newCount = Math.min(prevCount + added, 10);
   sessionStorage.setItem('photoCount', newCount);
   const needed = Math.max(0, 5 - newCount);
@@ -2955,18 +3319,19 @@ function handlePhotoUpload(input) {
   const issueDesc = document.getElementById('issuePhotoDesc');
   if (issueDesc) {
     if (needed === 0) issueDesc.innerHTML = 'You have <strong>' + newCount + ' photos</strong>. Minimum of 5 reached. Consider adding more for better results.';
-    else issueDesc.innerHTML = 'You have ' + newCount + ' photos. Minimum recommended is <strong>5 photos</strong>. Still missing ' + needed + ' more — add kitchen, bathroom, or living room.';
+    else issueDesc.innerHTML = 'You have ' + newCount + ' photos. Minimum recommended is <strong>5 photos</strong>. Still missing ' + needed + ' more. add kitchen, bathroom, or living room.';
   }
 
-  toast('📸 ' + added + ' photo' + (added > 1 ? 's' : '') + ' added — now ' + newCount + '/5 minimum');
+  toast('📸 ' + added + ' photo' + (added > 1 ? 's' : '') + ' added. now ' + newCount + '/5 minimum');
 
   // Close modal and update score
   closeUploadModal();
   if (needed === 0) {
     scoreBreakdown.photos = Math.min(newCount * 3, 15);
-    fixIssue(1, newCount + ' photos added — minimum reached!');
+    updateScore();
+    fixIssue(1, newCount + ' photos added. minimum reached!');
   } else {
-    // Partial improvement — update score
+    // Partial improvement. update score
     scoreBreakdown.photos = Math.min(newCount * 3, 15);
     updateScore();
   }
@@ -2990,52 +3355,40 @@ function enhancePhoto(id) {
   const btn = document.getElementById('eb-' + id);
   if (!btn || enhancedState[id]) return;
   btn.classList.add('loading');
-  btn.textContent = '⏳ Enhancing...';
+  btn.innerHTML = '<span style="animation:spin .6s linear infinite;display:inline-block">⚡</span> Enhancing...';
 
+  // Phase 1: Scan beam
+  const beam = document.getElementById('scan-' + id);
+  const flash = document.getElementById('flash-' + id);
+  if (beam) { beam.classList.remove('active'); void beam.offsetWidth; beam.classList.add('active'); }
+
+  // Phase 2: Partial filter (500ms)
+  const img = document.getElementById('pt-' + id);
+  setTimeout(() => {
+    if (img && img.tagName === 'IMG') img.style.filter = id === 'living' ? 'brightness(0.9) saturate(0.9)' : 'brightness(1.05)';
+    if (btn) btn.innerHTML = '<span style="animation:spin .6s linear infinite;display:inline-block">⚡</span> Sharpening...';
+  }, 500);
+
+  // Phase 3: Flash + full filter (1100ms)
+  setTimeout(() => {
+    if (flash) { flash.classList.remove('active'); void flash.offsetWidth; flash.classList.add('active'); }
+    if (img && img.tagName === 'IMG') {
+      img.style.filter = id === 'living'
+        ? 'brightness(1.35) contrast(1.15) saturate(1.35)'
+        : 'brightness(1.12) contrast(1.08) saturate(1.15)';
+    }
+  }, 1100);
+
+  // Phase 4: Done (1800ms)
   setTimeout(() => {
     enhancedState[id] = true;
-    // Visual: brighten/saturate the photo cell
-    const cell = document.getElementById('pc-' + id);
-    if (cell) cell.style.filter = id === 'living'
-      ? 'brightness(1.35) contrast(1.1) saturate(1.15)'
-      : 'brightness(1.1) contrast(1.05) saturate(1.08)';
-    // Update badge to green
+    const tag = document.getElementById('aitag-' + id);
+    if (tag) { tag.classList.remove('show'); void tag.offsetWidth; tag.classList.add('show'); }
     const badge = document.getElementById('pb-' + id);
     if (badge) { badge.className = 'photo-badge pb-ok'; badge.textContent = '✓'; }
-    // Update button
-    btn.classList.remove('loading');
-    btn.classList.add('done');
-    btn.textContent = '✅ Enhanced';
-    // Sync the card button too
+    btn.classList.remove('loading'); btn.classList.add('done'); btn.textContent = '✅ Enhanced';
     const cardBtn = document.getElementById('pae-' + id);
     if (cardBtn) { cardBtn.classList.add('done'); cardBtn.textContent = '✅ Enhanced'; }
-    toast('✨ ' + (id === 'living' ? 'Living Room' : 'Bedroom') + ' photo enhanced — brightness & sharpness improved');
-  }, 1800);
-}
-
-function enhancePhotoCard(id) {
-  const btn = document.getElementById('pae-' + id);
-  if (!btn || enhancedState[id]) return;
-  btn.classList.add('loading');
-  btn.innerHTML = '<span style="animation:spin .7s linear infinite;display:inline-block">⏳</span> Enhancing...';
-  // Trigger the same enhance logic
-  const eb = document.getElementById('eb-' + id);
-  if (eb) { eb.classList.add('loading'); eb.textContent = '⏳'; }
-
-  setTimeout(() => {
-    enhancedState[id] = true;
-    const cell = document.getElementById('pc-' + id);
-    if (cell) cell.style.filter = id === 'living'
-      ? 'brightness(1.35) contrast(1.1) saturate(1.15)'
-      : 'brightness(1.1) contrast(1.05) saturate(1.08)';
-    const badge = document.getElementById('pb-' + id);
-    if (badge) { badge.className = 'photo-badge pb-ok'; badge.textContent = '✓'; }
-    btn.classList.remove('loading');
-    btn.classList.add('done');
-    btn.textContent = '✅ Enhanced';
-    const eb2 = document.getElementById('eb-' + id);
-    if (eb2) { eb2.classList.remove('loading'); eb2.classList.add('done'); eb2.textContent = '✅ Enhanced'; }
-    // Update analysis card status badge
     const headers = document.querySelectorAll('.pa-header');
     headers.forEach(h => {
       const nameEl = h.querySelector('.pa-name');
@@ -3044,12 +3397,22 @@ function enhancePhotoCard(id) {
         if (st) { st.className = 'pa-status ok'; st.textContent = '✓ Enhanced'; }
       }
     });
-    toast('✨ ' + (id === 'living' ? 'Living Room' : 'Bedroom') + ' photo enhanced — ready for listing');
-  }, 2000);
+    toast('✨ ' + (id === 'living' ? 'Living Room' : 'Bedroom') + ' photo enhanced. AI boosted brightness, contrast and sharpness');
+  }, 1800);
 }
 
-// ── Preview rank impact (side panel) ──
-const previewGains = {1:15, 2:10, 3:8, 4:20, 5:5, 6:10};
+function enhancePhotoCard(id) {
+  // Delegate to enhancePhoto for identical animation
+  enhancePhoto(id);
+}
+
+// ── Search page impact (side panel) ──
+const previewState={1:false,2:false,3:false,4:false,5:false,6:false};
+const previewGains={1:15, 2:10, 3:8, 4:20, 5:5, 6:10};
+
+// Hardcoded rank ranges per issue: [fromRank, toRank]
+// Very Low = rank>38, Low = rank 26-38, Medium = rank 11-25, High = rank ≤10
+const previewRanks={1:[41,8], 2:[41,8], 4:[41,30], 6:[41,32], 3:[41,28], 5:[41,32]};
 
 function getBaseScore()    { return 28 + (fixesApplied * 9); }
 function getPreviewRank(s) { return Math.max(1, Math.round(41 - ((s - 28) / 56) * 40)); }
@@ -3122,20 +3485,26 @@ function togglePreview(n) {
     if (s) s.classList.toggle('on', k === n);
   });
 
-  const base  = getBaseScore();
-  const newSc = Math.min(base + previewGains[n], 84);
-  const fromR = getPreviewRank(base);
-  const toR   = getPreviewRank(newSc);
+  const ranks = previewRanks[n] || [getPreviewRank(getBaseScore()), getPreviewRank(Math.min(getBaseScore() + previewGains[n], 84))];
+  const fromR = ranks[0];
+  const toR   = ranks[1];
 
   const rankEl = document.getElementById('prank' + n);
   if (rankEl) rankEl.querySelector('span').textContent = '#' + fromR + ' → #' + toR;
 
   const titleEl = document.getElementById('sideDrawerTitle');
-  if (titleEl) titleEl.textContent = 'Preview rank impact';
+  if (titleEl) titleEl.textContent = 'Check listing boost';
 
   buildMiniSerp(n, fromR, toR);
   openSideDrawer();
   scheduleDrawerRankAnimation(wasAlreadyOpen);
+}
+
+function getVisibilityTier(rank){
+  if(rank<=10)return{label:"High",emoji:"🟢",color:"#16A34A"};
+  if(rank<=25)return{label:"Medium",emoji:"🟡",color:"#CA8A04"};
+  if(rank<=38)return{label:"Low",emoji:"🟠",color:"#EA580C"};
+  return{label:"Very Low",emoji:"🔴",color:"#DC2626"};
 }
 
 function buildMiniSerp(n, fromRank, toRank, containerEl) {
@@ -3153,12 +3522,18 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     slots.push({ rank: toRank - yourSlot + i, isYou: i === yourSlot });
   }
 
+  const fromTier = getVisibilityTier(fromRank);
+  const toTier   = getVisibilityTier(toRank);
+  const diff     = fromRank - toRank;
+  const sameT    = fromTier.label === toTier.label;
+
   const cards = slots.map(s => {
     if (s.isYou) {
       const useAnim = Math.abs(pullPx) >= 1;
       const pullAttr = useAnim ? `--rank-pull:${pullPx}px;` : '';
       const pend = useAnim ? ' ms-your-rank-pending' : '';
       return `<div class="ms-card ms-your${pend}" style="${pullAttr}position:relative;z-index:2">
+        <span class="ms-dot ms-dot-you"></span>
         <div class="ms-your-photo">🏠<div class="ms-your-badge">YOU</div></div>
         <div class="ms-your-body">
           <div class="ms-your-title">2 BHK in Sector 22 Dwarka</div>
@@ -3169,6 +3544,7 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     }
     const w = 50 + (s.rank % 5) * 8;
     return `<div class="ms-card" style="position:relative">
+      <span class="ms-dot"></span>
       <div class="ms-photo"><div class="sk" style="width:100%;height:100%;border-radius:0"></div></div>
       <div class="ms-body">
         <div class="ms-sk-line sk" style="width:${w}%"></div>
@@ -3182,12 +3558,24 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     </div>`;
   }).join('');
 
+  const captionText = diff > 0
+    ? sameT
+      ? `Your listing moves up within <b style="color:var(--text2)">${toTier.label}</b> visibility on the search page`
+      : `Your listing visibility improves from <b style="color:${fromTier.color}">${fromTier.label}</b> to <b style="color:${toTier.color}">${toTier.label}</b> on the search page`
+    : `This fix improves listing quality. Visibility tier stays at <b style="color:${toTier.color}">${toTier.label}</b>`;
+
   container.innerHTML = `
     <div class="phone-preview-device">
+    <div class="ms-header" style="margin-bottom:8px">
+      <span class="ms-head-label">Visibility if fixed:</span>
+      <span style="font-size:12px;font-weight:700;color:${fromTier.color}">${fromTier.emoji} ${fromTier.label}</span>
+      <span class="ms-rank-arrow">→</span>
+      <span style="font-size:12px;font-weight:700;color:${toTier.color}">${toTier.emoji} ${toTier.label}</span>
+      <span class="ms-rank-up">${diff > 0 ? '↑' : '─'}</span>
+    </div>
     <div class="phone-frame">
       <div class="phone-statusbar">
         <span class="psb-time" style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.2px">9:41</span>
-        <!-- Dynamic Island (scaled to ~390pt-wide device) -->
         <div style="position:absolute;left:50%;transform:translateX(-50%);top:11px;width:118px;height:30px;background:#000;border-radius:20px;z-index:10"></div>
         <span class="psb-icons" style="display:flex;align-items:center;gap:5px;font-size:10px;color:#fff">
           <svg width="14" height="10" viewBox="0 0 14 10" fill="white"><path d="M7 2.5C8.8 2.5 10.4 3.2 11.6 4.3L13 2.9C11.4 1.4 9.3 0.5 7 0.5C4.7 0.5 2.6 1.4 1 2.9L2.4 4.3C3.6 3.2 5.2 2.5 7 2.5Z"/><path d="M7 5.5C8.1 5.5 9.1 5.9 9.9 6.6L11.3 5.2C10.1 4.2 8.6 3.5 7 3.5C5.4 3.5 3.9 4.2 2.7 5.2L4.1 6.6C4.9 5.9 5.9 5.5 7 5.5Z"/><circle cx="7" cy="9" r="1.5"/></svg>
@@ -3209,13 +3597,11 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     </div>
     <div class="phone-tier-caption">
       <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:5px">
-        <span style="font-size:12px;font-weight:700;color:#EA580C">🔴 Low</span>
+        <span style="font-size:12px;font-weight:700;color:${fromTier.color}">${fromTier.emoji} ${fromTier.label}</span>
         <span style="font-size:14px;color:var(--text3)">→</span>
-        <span style="font-size:12px;font-weight:700;color:#CA8A04">🟠 Medium</span>
+        <span style="font-size:12px;font-weight:700;color:${toTier.color}">${toTier.emoji} ${toTier.label}</span>
       </div>
-      <div style="font-size:10px;color:var(--text3);line-height:1.45">
-        Your listing visibility improves from <b style="color:#EA580C">Low</b> to <b style="color:#CA8A04">Medium</b> on the search page
-      </div>
+      <div style="font-size:10px;color:var(--text3);line-height:1.45">${captionText}</div>
     </div>
     </div>`;
 }
