@@ -100,7 +100,7 @@
 [data-theme="dark"] .photo-thumb{filter:brightness(.85)}
 [data-theme="dark"] .apply-all-btn:hover{background:#6D28D9}
 [data-theme="dark"] .gen-btn:hover{opacity:.85}
-[data-theme="dark"] .final-cta{background:linear-gradient(135deg,#4C1D95,#312E81)}
+[data-theme="dark"] .final-cta{background:linear-gradient(100deg,#0F0640,#2D1195 40%,#5C2DD6 80%,#7B45E8)}
 [data-theme="dark"] .fc-btn{background:var(--surface);color:#7C3AED}
 [data-theme="dark"] .estimate-box{background:linear-gradient(135deg,#2D1E0F,#1C1205);border-color:#92400E}
 [data-theme="dark"] .est-after{background:linear-gradient(135deg,#0D2018,#0A1A10);border-color:#14532D}
@@ -163,7 +163,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .prop-price-sub{font-size:11px;color:#94A3B8}
 .prop-meta{display:flex;gap:12px;font-size:12px;color:#64748B}
 .prop-desc{font-size:12.5px;color:var(--text2);line-height:1.6;background:var(--prop-desc-bg);border-radius:8px;padding:10px 12px;border:1.5px dashed var(--border);transition:var(--transition)}
-.desc-warn{font-size:11px;color:#EF4444;font-weight:500;margin-top:4px;display:flex;align-items:center;gap:4px}
+.desc-warn{font-size:11px;color:var(--text3);font-weight:500;margin-top:4px;display:flex;align-items:center;gap:4px}
 
 /* ── RIGHT. AI ANALYSIS ── */
 .right-col{display:flex;flex-direction:column;gap:16px}
@@ -486,7 +486,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 }
 
 /* ── SCORE CARD ── */
-.score-card{background:linear-gradient(135deg,#3B0D8C 0%,#5C2DD6 55%,#7C3AED 100%);border-radius:16px;padding:28px 32px;color:#fff;display:none}
+.score-card{background:linear-gradient(135deg,#4A22B0 0%,#5C2DD6 45%,#7040DC 100%);border-radius:16px;padding:28px 32px;color:#fff;display:none;box-shadow:0 8px 32px rgba(92,45,214,.3)}
 .score-card.show{display:block}
 .sc-head{display:flex;align-items:center;gap:20px;margin-bottom:24px}
 .score-circle{position:relative;width:100px;height:100px;flex-shrink:0}
@@ -505,7 +505,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 
 /* dimension bars */
 .dim-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.dim-item{background:rgba(255,255,255,.08);border-radius:12px;padding:12px 14px}
+.dim-item{background:rgba(255,255,255,.1);border-radius:12px;padding:12px 14px;border:1px solid rgba(255,255,255,.08);backdrop-filter:blur(4px)}
 .dim-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .dim-label{font-size:12px;font-weight:600;color:rgba(255,255,255,.9);display:flex;align-items:center;gap:6px}
 .dim-score{font-size:13px;font-weight:800}
@@ -614,7 +614,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .est-after .est-text{color:#166534}
 
 /* ── FINAL CTA ── */
-.final-cta{background:linear-gradient(135deg,#7C3AED,#4F46E5);border-radius:16px;padding:20px 24px;color:#fff;text-align:center;display:none}
+.final-cta{background:linear-gradient(100deg,#4A22B0 0%,#5C2DD6 50%,#7040DC 100%);border-radius:16px;padding:20px 24px;color:#fff;text-align:center;display:none;box-shadow:0 6px 28px rgba(92,45,214,.35)}
 .final-cta.show{display:block}
 .fc-title{font-size:18px;font-weight:800;margin-bottom:8px}
 .fc-sub{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.6}
@@ -1126,6 +1126,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   0%{background-position:-500px 0}
   100%{background-position:500px 0}
 }
+@keyframes skShimmer{0%,100%{opacity:.2}50%{opacity:.5}}
+.sk-bar{background:linear-gradient(90deg,rgba(255,255,255,.12) 25%,rgba(255,255,255,.25) 50%,rgba(255,255,255,.12) 75%);background-size:500px 100%;animation:shimmer 1.6s infinite linear;}
 .sk{
   background:linear-gradient(90deg,var(--sk1) 25%,var(--sk2) 50%,var(--sk1) 75%);
   background-size:500px 100%;
@@ -1476,7 +1478,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="page-title">✨ ListIQ <span style="font-size:15px;font-weight:500;opacity:.75">(Listing Analyzer)</span></div>
   </div>
   <div class="hdr-right">
-<button class="btn-sm btn-red" onclick="publishListing()">Publish Listing</button>
+<button class="btn-sm" onclick="publishListing()" style="background:#16A34A;color:#fff">Publish Listing</button>
   </div>
 </header>
 
@@ -1513,7 +1515,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <!-- Left: auto-scroll carousel -->
         <div style="border-radius:10px;overflow:hidden;position:relative;min-height:130px;background:#1a1a2e" id="listingCarousel">
           <div id="carouselTrack" style="display:flex;width:300%;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1)">
-            <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=300&q=80&auto=format&fit=crop" alt="Cover" style="width:33.33%;min-height:130px;object-fit:cover;flex-shrink:0"/>
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=300&q=80&auto=format&fit=crop" alt="Cover" style="width:33.33%;min-height:130px;object-fit:cover;flex-shrink:0"/>
             <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&q=60&auto=format&fit=crop" alt="Living Room" style="width:33.33%;min-height:130px;object-fit:cover;flex-shrink:0;filter:brightness(0.55) saturate(0.6)"/>
             <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=300&q=85&auto=format&fit=crop" alt="Bedroom" style="width:33.33%;min-height:130px;object-fit:cover;flex-shrink:0"/>
           </div>
@@ -1522,8 +1524,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="cdot" onclick="goSlide(1)"></div>
             <div class="cdot" onclick="goSlide(2)"></div>
           </div>
-          <div style="position:absolute;bottom:6px;right:8px;background:rgba(0,0,0,.5);color:#fff;font-size:9px;font-weight:600;padding:2px 6px;border-radius:4px" id="photoCountBadge">3 Photos</div>
-          <div style="position:absolute;top:6px;left:6px;background:#EF4444;color:#fff;font-size:9px;font-weight:700;padding:2px 6px;border-radius:4px" id="photoWarningBadge">⚠ Only 3</div>
+          <div style="display:none" id="photoCountBadge">3 Photos</div>
+          <div style="position:absolute;top:6px;left:6px;background:rgba(0,0,0,.45);color:#fff;font-size:9px;font-weight:600;padding:2px 7px;border-radius:4px;backdrop-filter:blur(4px)" id="photoWarningBadge">3 / 5 photos</div>
         </div>
 
         <!-- Right: listing info -->
@@ -1531,15 +1533,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           <!-- Price + Active -->
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
             <div style="font-size:20px;font-weight:800;color:var(--text)">₹1.35 Cr</div>
-            <div style="display:flex;align-items:center;gap:5px;color:#16A34A;font-size:11px;font-weight:700;border:1.5px solid #A7F3D0;background:#ECFDF5;padding:3px 9px;border-radius:20px">
-              <svg width="11" height="11" viewBox="0 0 24 24" fill="#16A34A"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            <div style="display:flex;align-items:center;gap:6px;color:#4ADE80;font-size:12px;font-weight:700;background:none;border:none;padding:0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
               ACTIVE
             </div>
           </div>
           <!-- Title -->
           <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px">
-            <div style="font-size:14px;font-weight:700;color:var(--text)">2 BHK Apartment in Sector 22 Dwarka</div>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>
+            <div style="font-size:14px;font-weight:700;color:var(--text)">2 BHK Independent Floor in Sector 22 Dwarka</div>
           </div>
           <!-- Sqft + Furnishing -->
           <div style="font-size:12px;color:var(--text3);margin-bottom:10px">1156 sq. ft. &nbsp;·&nbsp; Unfurnished</div>
@@ -1569,7 +1570,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div>
         <div style="font-size:11px;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">About this property</div>
         <div class="prop-desc">"Well maintained 2BHK flat available in Sector 22 Dwarka. Good locality with nearby market. Suitable for families."</div>
-        <div class="desc-warn">⚠ Only 22 words. far below recommended 100+</div>
+        <div class="desc-warn">22 words · recommended 100+</div>
       </div>
 
       <!-- Missing fields -->
@@ -1599,6 +1600,33 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <button class="analyze-btn" id="analyzeBtn" onclick="startAnalysis()" style="margin-top:20px;margin-left:auto;margin-right:auto;display:flex">
         <span>✨</span> Analyze Listing
       </button>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;text-align:left;margin-top:28px">
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
+          <span style="font-size:20px">📸</span>
+          <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Photo Quality</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Count, coverage & brightness of your listing photos</div></div>
+        </div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
+          <span style="font-size:20px">💰</span>
+          <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Price vs Market</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Compare your price to similar 2 BHKs in Sector 22</div></div>
+        </div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
+          <span style="font-size:20px">✅</span>
+          <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Verified Badge</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Check verification status & trust score impact</div></div>
+        </div>
+        <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
+          <span style="font-size:20px">🛋️</span>
+          <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Amenities</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Furnishings, society features & missing amenity fields</div></div>
+        </div>
+      </div>
+
+      <!-- Social proof -->
+      <div style="margin-top:16px;width:100%;background:linear-gradient(135deg,#F5F3FF,#EEF2FF);border:1px solid #C4B5FD;border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:14px">
+        <div style="font-size:28px">🏆</div>
+        <div style="flex:1;text-align:left">
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px">Sellers who fix issues get <span style="color:#7C3AED">2.4× more enquiries</span></div>
+          <div style="font-size:12px;color:var(--text3)">Most sellers see significant score improvement after following recommendations</div>
+        </div>
+      </div>
     </div>
 
     <!-- Analyzing state -->
@@ -1660,11 +1688,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <circle class="score-fill" cx="50" cy="50" r="42"
               stroke="#EF4444"
               stroke-dasharray="263.9"
-              stroke-dashoffset="106"
+              stroke-dashoffset="153"
               id="scoreFill"/>
           </svg>
           <div class="score-text">
-            <div class="score-num" id="scoreNum">60</div>
+            <div class="score-num" id="scoreNum">42%</div>
             <div class="score-denom">/ 100</div>
           </div>
         </div>
@@ -1745,7 +1773,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="preview-strip" id="prev1" onclick="togglePreview(1)">
               <div class="ptog"></div>
               <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">+9 pts</div>
+              <div class="prev-gain-tag">+9%</div>
               <div class="prev-rank-change" id="prank1"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp1"><div class="mini-serp" id="mserp1"></div></div>
@@ -1767,7 +1795,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="preview-strip" id="prev2" onclick="togglePreview(2)">
               <div class="ptog"></div>
               <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">+10 pts</div>
+              <div class="prev-gain-tag">+10%</div>
               <div class="prev-rank-change" id="prank2"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp2"><div class="mini-serp" id="mserp2"></div></div>
@@ -1841,7 +1869,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="preview-strip" id="prev6" onclick="togglePreview(6)">
               <div class="ptog"></div>
               <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">+5 pts</div>
+              <div class="prev-gain-tag">+5%</div>
               <div class="prev-rank-change" id="prank6"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp6"><div class="mini-serp" id="mserp6"></div></div>
@@ -1881,7 +1909,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             <div class="preview-strip" id="prev3" onclick="togglePreview(3)">
               <div class="ptog"></div>
               <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">SEO ↑</div>
+              <div class="prev-gain-tag">Search Rank ↑</div>
               <div class="prev-rank-change" id="prank3"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp3"><div class="mini-serp" id="mserp3"></div></div>
@@ -1949,7 +1977,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div class="photo-grid">
         <!-- Existing: 3 uploaded — Cover first, Living second, Bedroom third -->
         <div class="photo-cell" id="pc-cover" style="background:#1a1a2e;overflow:hidden">
-          <img id="pt-cover" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=85&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;transition:filter 1.8s ease" alt="Cover"/>
+          <img id="pt-cover" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=85&auto=format&fit=crop" style="width:100%;height:100%;object-fit:cover;transition:filter 1.8s ease" alt="Cover"/>
           <div class="photo-overlay"><div class="photo-label">Cover Image</div></div>
           <div class="photo-badge pb-ok" id="pb-cover">✓</div>
         </div>
@@ -1972,15 +2000,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <!-- Required: 2 needed to reach minimum 5 -->
         <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Kitchen is the most searched photo. required to reach minimum 5')">
           <div class="pm-icon" style="font-size:22px">&#x1F373;</div>
-          <div class="pm-label">Kitchen<br/><span style="color:#EF4444;font-size:9px;font-weight:700">&#x2605; Required</span></div>
+          <div class="pm-label">Kitchen<br/><span style="color:#EF4444;font-size:9px;font-weight:700">&#x2605; Must add</span></div>
         </div>
         <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Bathroom shows property condition. required to reach minimum 5')">
           <div class="pm-icon" style="font-size:22px">&#x1F6BF;</div>
-          <div class="pm-label">Bathroom<br/><span style="color:#EF4444;font-size:9px;font-weight:700">&#x2605; Required</span></div>
+          <div class="pm-label">Bathroom<br/><span style="color:#EF4444;font-size:9px;font-weight:700">&#x2605; Must add</span></div>
         </div>
         <div class="photo-missing" style="border-color:#FECACA;background:var(--ic-red);" onclick="toast('Add Bedroom 2 — show all bedrooms to attract more buyers')">
           <div class="pm-icon" style="font-size:22px">🛏️</div>
-          <div class="pm-label">Bedroom 2<br/><span style="color:#EF4444;font-size:9px;font-weight:700">★ Required</span></div>
+          <div class="pm-label">Bedroom 2<br/><span style="color:#EF4444;font-size:9px;font-weight:700">★ Must add</span></div>
         </div>
         <!-- Recommended: optional but impactful -->
 
@@ -2073,7 +2101,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           <tr>
             <td>Property Verified</td>
             <td class="you-cell" id="compVerifyYou">✗ Not verified</td>
-            <td class="mkt-cell">80% listings verified</td>
+            <td class="mkt-cell">70% listings verified</td>
           </tr>
           <tr>
             <td>Photos</td>
@@ -2092,8 +2120,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </tr>
           <tr>
             <td>Listing score</td>
-            <td class="you-cell" id="compScoreYou">60 / 100</td>
-            <td class="mkt-cell">80 / 100</td>
+            <td class="you-cell" id="compScoreYou">42%</td>
+            <td class="mkt-cell">60%</td>
           </tr>
         </table>
 
@@ -2204,15 +2232,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <!-- Final CTA -->
     <div class="final-cta" id="finalCta">
       <div class="fc-title">⏰ Buyers are choosing other listings over yours</div>
-      <div class="fc-sub">While your listing sits at <span id="fcCurrentScore">60</span>/100, better-listed 2 BHKs in Sector 22 Dwarka are getting the enquiries you're missing.</div>
+      <div class="fc-sub">While your listing sits at <span id="fcCurrentScore">42</span>%, better-listed 2 BHKs in Sector 22 Dwarka are getting the enquiries you're missing.</div>
       <div class="fc-score-row">
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#EF4444" id="fcScoreCurrent">60</div>
+          <div class="fc-score-num" style="color:#EF4444" id="fcScoreCurrent">42%</div>
           <div class="fc-score-label">Current score</div>
         </div>
         <div class="fc-arrow">→</div>
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#4ADE80">84</div>
+          <div class="fc-score-num" style="color:#4ADE80">63%</div>
           <div class="fc-score-label">After all fixes</div>
         </div>
       </div>
@@ -2557,35 +2585,37 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 
 <!-- ── PUBLISH SUCCESS MODAL ── -->
 <div class="modal-overlay" id="publishModal" onclick="closePublishModal(event)" style="z-index:9999">
-  <div class="upload-modal" onclick="event.stopPropagation()" style="max-width:420px;text-align:center;padding:0">
-    <div style="background:linear-gradient(135deg,#16A34A,#15803D);padding:32px 24px 24px;border-radius:16px 16px 0 0">
-      <div style="font-size:48px;margin-bottom:12px">🎉</div>
-      <div style="font-size:20px;font-weight:800;color:#fff;margin-bottom:6px">Listing Published!</div>
-      <div style="font-size:13px;color:rgba(255,255,255,.85)">Your 2 BHK in Sector 22 Dwarka is now live on Housing.com</div>
+  <div class="upload-modal" onclick="event.stopPropagation()" style="max-width:400px;text-align:center;padding:0;border-radius:16px;overflow:hidden">
+    <div style="background:linear-gradient(135deg,#1A0A6E,#5C2DD6,#7040DC);padding:28px 24px 20px">
+      <img src="https://c.housingcdn.com/demand/s/client/common/assets/housing.820bbe77.png" height="16px" style="margin-bottom:16px;opacity:.9" onerror="this.style.display='none'"/>
+      <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:5px">Listing Published Successfully</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.75)">Your 2 BHK Independent Floor in Sector 22 Dwarka is now live</div>
     </div>
-    <div style="padding:20px 24px 24px;display:flex;flex-direction:column;gap:12px">
-      <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
-        <span style="font-size:20px">✅</span>
-        <div style="text-align:left">
-          <div style="font-size:12px;font-weight:700;color:#065F46">Live on Housing.com</div>
-          <div style="font-size:11px;color:#047857">Visible to buyers searching in Sector 22 Dwarka</div>
+    <div style="padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;background:var(--surface)">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px;text-align:left">
+        <div style="width:32px;height:32px;border-radius:8px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--text)">Live on Housing.com</div>
+          <div style="font-size:11px;color:var(--text3)">Visible to buyers searching in Sector 22 Dwarka</div>
         </div>
       </div>
-      <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
-        <span style="font-size:20px">📩</span>
-        <div style="text-align:left">
-          <div style="font-size:12px;font-weight:700;color:#0369A1">Confirmation sent</div>
-          <div style="font-size:11px;color:#0284C7">Check your registered email for listing details</div>
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px;text-align:left">
+        <div style="width:32px;height:32px;border-radius:8px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">📧</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:var(--text)">Confirmation sent</div>
+          <div style="font-size:11px;color:var(--text3)">Check your registered email for listing details</div>
         </div>
       </div>
-      <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:10px">
-        <span style="font-size:20px">📈</span>
-        <div style="text-align:left">
-          <div style="font-size:12px;font-weight:700;color:#92400E" id="publishScoreLine">Listing score: 60/100</div>
-          <div style="font-size:11px;color:#B45309" id="publishScoreTip">Fix the remaining issues to rank higher and get faster enquiries</div>
+      <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px;text-align:left">
+        <div style="width:32px;height:32px;border-radius:8px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">📊</div>
+        <div>
+          <div style="font-size:12px;font-weight:700;color:#5C2DD6" id="publishScoreLine">Listing score: 42%</div>
+          <div style="font-size:11px;color:#7C3AED" id="publishScoreTip">Fix the remaining issues to rank higher</div>
         </div>
       </div>
-      <button onclick="closePublishModal()" style="width:100%;background:#16A34A;color:#fff;border:none;padding:12px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;margin-top:4px">Done</button>
+      <button onclick="closePublishModal()" style="width:100%;background:#5C2DD6;color:#fff;border:none;padding:11px;border-radius:9px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;margin-top:2px;transition:.2s" onmouseover="this.style.background='#4A22B8'" onmouseout="this.style.background='#5C2DD6'">Done</button>
     </div>
   </div>
 </div>
@@ -2599,7 +2629,7 @@ const totalFixes = 6;
 
 // ── Scoring system ──
 const MAX_SCORE = 100;
-const DISPLAY_OFFSET = 44;  // base score offset (44 + 16pts = 60 initial)
+const DISPLAY_OFFSET = 26;  // base score offset (26 + 16pts = 42 initial)
 const scoreBreakdown = {
   photos: 9,        // 3 photos × 3 = 9 (max 15)
   price: 5,         // price provided = 5 (maxed)
@@ -2892,11 +2922,11 @@ function generateDescModal() {
   genArea.classList.add('generating');
 
   setTimeout(() => {
-    const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
+    const newText = `Spacious and well-maintained 2 BHK independent floor in a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
 
 Location highlights: DPS Dwarka and Ryan International School are within 1.5 km, making this ideal for families with school-going children.
 
-The apartment boasts a recently renovated modular kitchen with granite countertops, two well-sized bedrooms with ample storage, and two modern bathrooms. The society offers 24/7 security with CCTV, dedicated covered parking, power backup, and a beautifully maintained garden.
+The floor boasts a recently renovated modular kitchen with granite countertops, two well-sized bedrooms with ample storage, and two modern bathrooms. The society offers 24/7 security with CCTV, dedicated covered parking, power backup, and a beautifully maintained garden.
 
 Perfect for families seeking a peaceful, green, and well-connected neighbourhood in Delhi.`;
 
@@ -2981,11 +3011,11 @@ function generateDesc() {
     document.getElementById('descGenerating').classList.remove('show');
     document.getElementById('descCompare').style.opacity = '1';
 
-    const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
+    const newText = `Spacious and well-maintained 2 BHK independent floor in a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light throughout the day.
 
 Location highlights: Just 8-minute walk to Dwarka Sector 21 Metro Station. direct connectivity to Connaught Place (30 min), Rajiv Chowk, and IGI Airport. DPS Dwarka and Ryan International School are within 1.5 km, making this ideal for families with school-going children.
 
-The apartment boasts a recently renovated modular kitchen with granite countertops, two well-sized bedrooms with ample storage, and two modern bathrooms. The society offers 24/7 security with CCTV, dedicated covered parking, power backup, and a beautifully maintained garden.
+The floor boasts a recently renovated modular kitchen with granite countertops, two well-sized bedrooms with ample storage, and two modern bathrooms. The society offers 24/7 security with CCTV, dedicated covered parking, power backup, and a beautifully maintained garden.
 
 Perfect for families seeking a peaceful, green, and well-connected neighbourhood in Delhi.`;
 
@@ -3221,7 +3251,7 @@ function updateScore() {
 
   // ── Score ring ──
   const scoreNumEl = document.getElementById('scoreNum');
-  if (scoreNumEl) scoreNumEl.textContent = newScore;
+  if (scoreNumEl) scoreNumEl.textContent = newScore + '%';
   const fill = document.getElementById('scoreFill');
   if (fill) {
     const circumference = 263.9;
@@ -3231,7 +3261,7 @@ function updateScore() {
   const gradeEl = document.getElementById('scGrade');
   if (gradeEl) gradeEl.textContent = newScore >= 70 ? '🟢 Good' : newScore >= 58 ? '🟡 Average' : '🔴 Poor';
   const descEl = document.querySelector('.sc-desc');
-  if (descEl) descEl.innerHTML = 'Your listing scores <strong>' + newScore + '/100</strong>.' + (newScore < 72 ? ' Fix all issues to improve your score.' : ' All fixes applied! 🎉');
+  if (descEl) descEl.innerHTML = 'Your listing is <strong>' + newScore + '%</strong> optimized.' + (newScore < 72 ? ' Fix all issues to improve your score.' : ' All fixes applied! 🎉');
 
   // ── Photos dim card ──
   const photoColor = scoreBreakdown.photos >= 15 ? '#4ADE80' : scoreBreakdown.photos >= 9 ? '#FBBF24' : '#EF4444';
@@ -3280,7 +3310,7 @@ function updateScore() {
 
   // ── Market compare table ──
   const compScore = document.getElementById('compScoreYou');
-  if (compScore) compScore.textContent = newScore + ' / 100';
+  if (compScore) compScore.textContent = newScore + '%';
   const compPhotos = document.getElementById('compPhotosYou');
   if (compPhotos) compPhotos.textContent = photoCount;
   const compAmenities = document.getElementById('compAmenitiesYou');
@@ -3320,7 +3350,7 @@ function updateScore() {
 
   // ── Final CTA current score ──
   const fcCurrent = document.getElementById('fcScoreCurrent');
-  if (fcCurrent) fcCurrent.textContent = newScore;
+  if (fcCurrent) fcCurrent.textContent = newScore + '%';
   const fcSub = document.getElementById('fcCurrentScore');
   if (fcSub) fcSub.textContent = newScore;
 }
@@ -3330,12 +3360,12 @@ function applyAllFixes() {
   [1,2,3,4,5,6].forEach((n,i) => setTimeout(() => fixIssue(n, `Fix ${n} applied`), i*300));
   setTimeout(() => {
     generateDescSilent();
-    toast('🚀 All 6 improvements applied! Score: 84/100');
+    toast('🚀 All 6 improvements applied! Score: 63%');
   }, 2200);
 }
 
 function generateDescSilent() {
-  const newText = `Spacious and well-maintained 2 BHK apartment on the 4th floor of a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light. Just 8-minute walk to Dwarka Sector 21 Metro. direct connectivity to Connaught Place (30 min). DPS Dwarka and Ryan International within 1.5 km. Recently renovated modular kitchen, 24/7 security, covered parking, power backup.`;
+  const newText = `Spacious and well-maintained 2 BHK independent floor in a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light. Just 8-minute walk to Dwarka Sector 21 Metro. direct connectivity to Connaught Place (30 min). DPS Dwarka and Ryan International within 1.5 km. Recently renovated modular kitchen, 24/7 security, covered parking, power backup.`;
   document.getElementById('aiDescText').textContent = newText;
   document.getElementById('aiDescText').className = 'desc-text good';
   document.getElementById('aiDescText').style.fontStyle = 'normal';
@@ -3378,7 +3408,7 @@ function handlePhotoUpload(input) {
   const warnBadge = document.getElementById('photoWarningBadge');
   if (warnBadge) {
     if (newCount >= 5) warnBadge.style.display = 'none';
-    else warnBadge.textContent = '⚠ Only ' + newCount;
+    else warnBadge.textContent = newCount + ' / 5 photos';
   }
 
   // Update score card photos dim
@@ -3702,15 +3732,15 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
 })();
 
 function publishListing() {
-  const baseScore = 60;
+  const baseScore = 42;
   const currentScore = getTotalScore();
   const gain = currentScore - baseScore;
   const scoreLine = document.getElementById('publishScoreLine');
   if (gain > 0) {
-    scoreLine.innerHTML = 'Listing score improved: <span style="text-decoration:line-through;opacity:.6">' + baseScore + '</span> → <strong style="color:#16A34A">' + currentScore + '/100</strong> <span style="color:#16A34A">(+' + gain + ' pts 🎉)</span>';
+    scoreLine.innerHTML = 'Listing score improved: <span style="text-decoration:line-through;opacity:.6">' + baseScore + '%</span> → <strong style="color:#16A34A">' + currentScore + '%</strong> <span style="color:#16A34A">(+' + gain + ' pts 🎉)</span>';
     document.getElementById('publishScoreTip').textContent = 'Great progress! Fix remaining issues to rank even higher.';
   } else {
-    scoreLine.innerHTML = 'Listing score: <strong>' + currentScore + '/100</strong>';
+    scoreLine.innerHTML = 'Listing score: <strong>' + currentScore + '%</strong>';
     document.getElementById('publishScoreTip').textContent = 'Fix the issues above to rank higher and get faster enquiries.';
   }
   document.getElementById('publishModal').classList.add('open');
