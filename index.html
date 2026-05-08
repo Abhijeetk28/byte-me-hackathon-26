@@ -536,6 +536,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .issue-impact{font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px}
 .impact-red{color:#EF4444}
 .impact-orange{color:#F97316}
+.impact-green{color:#16A34A}
 .impact-yellow{color:#EAB308}
 .issue-action{flex-shrink:0;padding-top:2px}
 .fix-btn{background:none;border:1.5px solid var(--fix-btn-border);color:var(--fix-btn-c);padding:5px 12px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;white-space:nowrap}
@@ -1579,12 +1580,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div style="display:flex;flex-direction:column;gap:5px" id="missingInfoList">
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missPhotos"><span style="color:#EF4444">✗</span> <span>Only 3 of 5 photos added</span></div>
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missVerify"><span style="color:#EF4444">✗</span> Property not verified</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missAmenities"><span style="color:#EF4444">✗</span> Amenities (0 of 35 filled)</div>
+          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missAmenities"><span style="color:#EF4444">✗</span> Amenities (0 of 27 filled)</div>
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missFacing"><span style="color:#EF4444">✗</span> Property facing direction</div>
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missAge"><span style="color:#EF4444">✗</span> Age of property</div>
           <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missPrice"><span style="color:#EF4444">✗</span> Price above market range</div>
         </div>
       </div>
+
 
     </div>
   </div>
@@ -1602,19 +1604,19 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       </button>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;text-align:left;margin-top:28px">
         <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
-          <span style="font-size:20px">📸</span>
+          <span style="font-size:20px">📷</span>
           <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Photo Quality</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Count, coverage & brightness of your listing photos</div></div>
         </div>
         <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
-          <span style="font-size:20px">💰</span>
+          <span style="font-size:20px">💲</span>
           <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Price vs Market</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Compare your price to similar 2 BHKs in Sector 22</div></div>
         </div>
         <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
-          <span style="font-size:20px">✅</span>
+          <span style="font-size:20px">🛡️</span>
           <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Verified Badge</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Check verification status & trust score impact</div></div>
         </div>
         <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:flex-start;gap:10px">
-          <span style="font-size:20px">🛋️</span>
+          <span style="font-size:20px">🏠</span>
           <div><div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:2px">Amenities</div><div style="font-size:11px;color:var(--text3);line-height:1.4">Furnishings, society features & missing amenity fields</div></div>
         </div>
       </div>
@@ -1706,32 +1708,32 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div class="dim-grid">
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">📸 Photos Analysis</div>
-            <div class="dim-score" style="color:#EF4444">6<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span></div>
+            <div class="dim-label">📷 Photos Analysis</div>
+            <div class="dim-score" style="color:#EF4444">6%<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:40%;background:#EF4444" id="dimPhotos"></div></div>
           <div class="dim-status" id="photosDimStatus">3 photos × 3pts = 9/15</div>
         </div>
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">✅ Property Verified</div>
-            <div class="dim-score" id="verifyDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span></div>
+            <div class="dim-label">🛡️ Property Verified</div>
+            <div class="dim-score" id="verifyDimScore" style="color:#EF4444">0%<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimVerify"></div></div>
           <div class="dim-status" id="verifyDimStatus">Not verified · Get +10 pts</div>
         </div>
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">🏷️ Price</div>
-            <div class="dim-score" style="color:#4ADE80">5<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
+            <div class="dim-label">💲 Price</div>
+            <div class="dim-score" style="color:#4ADE80">5%<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:100%;background:#4ADE80" id="dimPrice"></div></div>
           <div class="dim-status">Price provided ✓ &nbsp;<span style="color:#FBBF24;font-weight:700">⚠ 13% above market avg</span></div>
         </div>
         <div class="dim-item">
           <div class="dim-head">
-            <div class="dim-label">🛋️ Amenities</div>
-            <div class="dim-score" id="amenitiesDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
+            <div class="dim-label">🏠 Amenities</div>
+            <div class="dim-score" id="amenitiesDimScore" style="color:#EF4444">0%<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
           </div>
           <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimComp"></div></div>
           <div class="dim-status" id="amenitiesDimStatus">0 amenities selected · Select any = +5 pts</div>
@@ -1742,10 +1744,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <!-- ── TABBED ANALYSIS SECTION ── -->
     <div class="analysis-tabs-wrap" id="analysisTabs">
       <div class="atab-bar">
-        <div class="atab on" id="atab0" onclick="setATab(0)">🔧 Recommendations</div>
-        <div class="atab" id="atab2" onclick="setATab(2)">📸 Photos Analysis</div>
-        <div class="atab" id="atab3" onclick="setATab(3)">📊 Market Compare</div>
-        <div class="atab" id="atab4" onclick="setATab(4)">🏘️ Community <span style="background:#EF4444;color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:5px;margin-left:3px">NEW</span></div>
+        <div class="atab on" id="atab0" onclick="setATab(0)">🎯 Recommendations</div>
+        <div class="atab" id="atab2" onclick="setATab(2)">📷 Photos Analysis</div>
+        <div class="atab" id="atab3" onclick="setATab(3)">📈 Market Compare</div>
+        <div class="atab" id="atab4" onclick="setATab(4)">👥 Community <span style="background:#EF4444;color:#fff;font-size:8px;font-weight:700;padding:1px 5px;border-radius:5px;margin-left:3px">NEW</span></div>
       </div>
 
       <!-- Tab 0: Recommendations -->
@@ -1754,7 +1756,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="issues-card show" id="issuesCard" style="border-radius:0;box-shadow:none;display:block">
       <div class="issues-head">
         <div class="issues-title">
-          🔧 AI Recommendations
+          🎯 AI Recommendations
           <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px">6 issues found</span>
         </div>
         
@@ -1762,7 +1764,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div class="issue-list">
 
         <div class="issue-item" id="issue1">
-          <div class="issue-icon ic-red">📸</div>
+          <div class="issue-icon ic-red">📷</div>
           <div class="issue-body">
             <div class="issue-title">
               <span id="issuePhotoTitle">Add 2 more photos</span>
@@ -1784,7 +1786,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue2">
-          <div class="issue-icon ic-orange">✅</div>
+          <div class="issue-icon ic-orange">🛡️</div>
           <div class="issue-body">
             <div class="issue-title">
               Property not verified
@@ -1806,13 +1808,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue4">
-          <div class="issue-icon ic-orange">🏷️</div>
+          <div class="issue-icon ic-orange">💲</div>
           <div class="issue-body">
             <div class="issue-title">
               Price above market
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Similar 2 BHKs in Sector 22 Dwarka are estimated at <strong>₹98.29L–1.20 Cr</strong>, but yours is listed at ₹1.35 Cr — that's <strong>₹15–37L (13–27%) more</strong> than the market range. <span id="activeDaysText">Active for <strong>9 days</strong> with less enquiries.</span> A small price drop can make a big difference.</div>
+            <div class="issue-desc" id="priceIssueDesc">Similar 2 BHKs in Sector 22 Dwarka are estimated at <strong>₹98.29L–1.20 Cr</strong>, but yours is listed at ₹1.35 Cr — that's <strong>₹15–37L (13–27%) more</strong> than the market range. <span id="activeDaysText">Active for <strong>9 days</strong> with less enquiries.</span> A small price drop can make a big difference.</div>
             <div class="issue-impact impact-orange">⏱ Overpriced listings take 3x longer to sell</div>
             <div class="preview-strip" id="prev4" onclick="togglePreview(4)">
               <div class="ptog"></div>
@@ -1858,10 +1860,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue6">
-          <div class="issue-icon ic-orange">🛋️</div>
+          <div class="issue-icon ic-orange">🏠</div>
           <div class="issue-body">
             <div class="issue-title">
-              0 of 35 amenities filled
+              <span id="amenitiesIssueTitle">0 of 27 amenities filled</span>
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
             <div class="issue-desc">Your flat in Sector 22 Dwarka likely has <strong>lift, parking, security, power backup</strong> and <strong>gas pipeline, fans, lights</strong> — but none are marked. Buyers filter by amenities, and your listing won't show up in those searches. Mark at least one to get <strong>+5 pts</strong>.</div>
@@ -1898,7 +1900,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue3">
-          <div class="issue-icon ic-red">📝</div>
+          <div class="issue-icon ic-red">✍️</div>
           <div class="issue-body">
             <div class="issue-title">
               Description too short
@@ -2023,7 +2025,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <!-- Cover Image analysis. GOOD -->
         <div class="pa-card">
           <div class="pa-header">
-            <div class="pa-icon">🖼️</div>
+            <div class="pa-icon">📷</div>
             <div class="pa-name">Cover Image</div>
             <div class="pa-status ok">✓ Good Quality</div>
           </div>
@@ -2110,13 +2112,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </tr>
           <tr>
             <td>Price / sq.ft</td>
-            <td class="you-cell">₹11,678</td>
+            <td class="you-cell" id="compPriceYou">₹11,678</td>
             <td class="mkt-cell">₹9,000</td>
           </tr>
           <tr>
             <td>Amenities filled</td>
-            <td class="you-cell">0 / 35</td>
-            <td class="mkt-cell">10 / 35</td>
+            <td class="you-cell" id="compAmenitiesYou">0 / 27</td>
+            <td class="mkt-cell">10 / 27</td>
           </tr>
           <tr>
             <td>Listing score</td>
@@ -2348,7 +2350,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           <div class="um-panel-title">Upload from computer</div>
           <div class="um-upload-area" onclick="toast('📁 File browser would open here')">
             <div style="position:relative;width:64px;height:64px">
-              <div style="font-size:40px;line-height:1">🖼️</div>
+              <div style="font-size:40px;line-height:1">📷</div>
               <div style="position:absolute;bottom:-4px;right:-4px;width:24px;height:24px;background:#5C2DD6;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;font-weight:900">↑</div>
             </div>
             <div class="um-drag-text">Drag and drop here</div>
@@ -2842,8 +2844,7 @@ function chooseAutoPrice() {
 
   setTimeout(() => {
     fixIssue(4, 'Price auto-corrected to ₹1.10 Cr — market rate for similar listings');
-    btn.textContent = '✓ Price Updated';
-    btn.className = 'fix-btn done';
+    _updatePriceDesc('₹1.10 Cr', 'auto');
   }, 1200);
 }
 function chooseManualPrice() {
@@ -2858,10 +2859,27 @@ function saveManualPrice() {
   const val = document.getElementById('priceInput').value.trim();
   if (!val) { toast('Please enter a price'); return; }
   document.getElementById('priceEditInline').classList.remove('open');
-  fixIssue(4, 'Price updated to ₹' + val + '. manually set');
-  const btn = document.getElementById('adjustPriceBtn');
-  btn.textContent = '✓ Price Updated';
-  btn.className = 'fix-btn done';
+  const modal = document.getElementById('priceEditModal');
+  if (modal) modal.classList.remove('open');
+  document.body.style.overflow = '';
+  fixIssue(4, 'Price updated to ₹' + val + ' — manually set');
+  _updatePriceDesc('₹' + val, 'manual');
+}
+
+function _updatePriceDesc(newPrice, mode) {
+  const priceDesc = document.getElementById('priceIssueDesc');
+  if (priceDesc) {
+    const insight = mode === 'auto'
+      ? 'Price updated to <strong>' + newPrice + '</strong> — now within the market range of ₹98.29L–1.20 Cr. Buyers comparing listings will now see yours as competitively priced. 🎯'
+      : 'Price updated to <strong>' + newPrice + '</strong>. Listings priced within market range get significantly more enquiries. Keep it competitive!';
+    priceDesc.innerHTML = insight;
+  }
+  // Update listing card price
+  const priceDisplay = document.querySelector('.prop-price');
+  if (priceDisplay) priceDisplay.textContent = newPrice;
+  // Update SERP card price
+  const serpPrice = document.querySelector('.ms-your-price');
+  if (serpPrice) serpPrice.textContent = newPrice + ' · 1156 sqft';
 }
 
 // ── Verify Modal ──
@@ -2957,14 +2975,21 @@ function applyDescription() {
     document.getElementById('descModal').classList.remove('open');
     document.body.style.overflow = '';
 
-    // Mark issue 2 fixed (score update)
-    markFixed(2);
-    updateScore();
+    // Mark issue 3 (description) fixed
+    fixIssue(3, 'AI description applied — 187 words added to your listing');
+
+    // Update description text in listing card
+    const descEl = document.querySelector('.prop-desc');
+    if (descEl) descEl.textContent = '"Spacious 2 BHK independent floor in Sector 22 Dwarka, 0.7 km from Sector 21 Metro. East-facing, natural light, modular kitchen, 24/7 security, covered parking, power backup. Mount Carmel School nearby. Ready to move."';
+    const descWarn = document.querySelector('.desc-warn');
+    if (descWarn) descWarn.textContent = '187 words · ✓ Good';
+
+    // Update issue desc text
+    const issueDescEl = document.querySelector('#issue3 .issue-desc');
+    if (issueDescEl) issueDescEl.innerHTML = 'Description updated to <strong>187 words</strong> with key highlights. Buyers can now find your listing.';
 
     // Reset modal state for next regeneration
     resetDescModal();
-
-    toast('✅ Description applied. 187 words, 9 keywords added to your listing');
   }, 600);
 }
 
@@ -3094,7 +3119,28 @@ function submitFacing() {
   if (!selectedFacing) return;
   document.getElementById('facingModal').classList.remove('open');
   document.body.style.overflow='';
-  fixIssue(5, selectedFacing+'-facing direction added to your listing');
+  fixIssue(5, selectedFacing + '-facing direction added to your listing');
+
+  // Update issue desc with insight about selected facing
+  const facingDesc = document.querySelector('#issue5 .issue-desc');
+  if (facingDesc) {
+    const insights = {
+      'North': 'North-facing properties are highly preferred — cool in summers and attract premium buyers.',
+      'East':  'East-facing properties get morning sunlight — one of the most sought-after directions in India.',
+      'South': 'South-facing properties have good afternoon light. Adding this helps you appear in filtered searches.',
+      'West':  'West-facing properties get evening light — popular with buyers who prefer sunsets.',
+      'North-East': 'North-East facing is considered auspicious — high demand from family buyers.',
+      'North-West': 'North-West facing gets good cross-ventilation — attractive to buyers who prioritise airflow.',
+      'South-East': 'South-East facing offers morning light and is considered positive — good for family buyers.',
+      'South-West': 'South-West facing is stable and well-lit in afternoons. Adding this boosts your search visibility.',
+    };
+    const insight = insights[selectedFacing] || 'Facing direction added — your listing now appears in filtered searches.';
+    facingDesc.innerHTML = '<strong>' + selectedFacing + '-facing</strong> added. ' + insight;
+  }
+
+  // Update facing button to show selected + allow change
+  const facingBtn = document.querySelector('#issue5 .fix-btn');
+  if (facingBtn) { facingBtn.textContent = '✓ ' + selectedFacing + ' · Change'; facingBtn.className = 'fix-btn ai'; facingBtn.disabled = false; facingBtn.onclick = openFacingModal; }
 }
 
 // ── Amenities Modal ──
@@ -3111,7 +3157,8 @@ function autoFillAmenities() {
   btn.innerHTML='<span style="animation:spin .6s linear infinite;display:inline-block">⚡</span> Filling...';
   setTimeout(()=>{
     fixIssue(6,'AI auto-filled 8 amenities based on society profile for Sector 22 Dwarka');
-    btn.textContent='✓ Auto-filled'; btn.className='fix-btn done';
+    _updateAmenitiesUI(8);
+    btn.textContent='✓ 8 Added · Edit ▾'; btn.className='fix-btn ai'; btn.disabled=false;
   }, 1400);
 }
 function openAmenitiesModal() {
@@ -3145,8 +3192,27 @@ function submitAmenities() {
   document.body.style.overflow='';
   if(total===0){toast('Please select at least one amenity');return;}
   fixIssue(6,total+' amenities added to your listing');
+  _updateAmenitiesUI(total);
   const btn=document.getElementById('amenitiesBtn');
-  if(btn){btn.textContent='✓ '+total+' Added';btn.className='fix-btn done';}
+  if(btn){btn.textContent='✓ '+total+' Added · Edit ▾'; btn.className='fix-btn ai'; btn.disabled=false;}
+}
+
+function _updateAmenitiesUI(count) {
+  // Issue title
+  const amenTitle = document.getElementById('amenitiesIssueTitle');
+  if (amenTitle) amenTitle.textContent = count + ' of 27 amenities filled';
+  // Issue desc
+  const amenDesc = document.querySelector('#issue6 .issue-desc');
+  if (amenDesc) amenDesc.innerHTML = '<strong>' + count + ' amenities added</strong> — your listing now shows up in filtered searches. Add more to further improve your score.';
+  // Issue impact
+  const amenImpact = document.querySelector('#issue6 .issue-impact');
+  if (amenImpact) { amenImpact.textContent = '✅ Listing now visible in amenity-filtered searches'; amenImpact.className = 'issue-impact impact-green'; }
+  // Missing info box
+  const missAmenities = document.getElementById('missAmenities');
+  if (missAmenities) missAmenities.style.display = 'none';
+  // Market compare
+  const compAmenities = document.getElementById('compAmenitiesYou');
+  if (compAmenities) { compAmenities.textContent = count + ' / 27'; compAmenities.className = 'mkt-cell'; compAmenities.style.color = '#16A34A'; }
 }
 
 // ── Price Modal ──
@@ -3157,12 +3223,6 @@ function togglePriceOptions(e) {
   if(pop.classList.contains('open')) setTimeout(()=>document.addEventListener('click',closePriceOptions,{once:true}),10);
 }
 function closePriceOptions(){const pop=document.getElementById('priceOptions');if(pop)pop.classList.remove('open');}
-function chooseAutoPrice(){
-  closePriceOptions();
-  const btn=document.getElementById('adjustPriceBtn');
-  btn.disabled=true; btn.textContent='⚡ Applying ₹1.10 Cr...';
-  setTimeout(()=>{ fixIssue(3,'Price auto-corrected to ₹1.10 Cr — market rate'); btn.textContent='✓ Price Updated'; btn.className='fix-btn done'; }, 1200);
-}
 function chooseManualPrice(){
   closePriceOptions();
   document.getElementById('priceEditModal').classList.add('open');
@@ -3173,15 +3233,6 @@ function closePriceEditModal(e){
   if(e&&e.target!==document.getElementById('priceEditModal'))return;
   document.getElementById('priceEditModal').classList.remove('open');
   document.body.style.overflow='';
-}
-function saveManualPrice(){
-  const val=document.getElementById('priceInput').value.trim();
-  if(!val){toast('Please enter a price');return;}
-  document.getElementById('priceEditModal').classList.remove('open');
-  document.body.style.overflow='';
-  fixIssue(3,'Price updated to ₹'+val+'. manually set');
-  const btn=document.getElementById('adjustPriceBtn');
-  if(btn){btn.textContent='✓ Price Updated';btn.className='fix-btn done';}
 }
 
 // ── Amenities score fix (issue 6) ──
@@ -3228,13 +3279,31 @@ function markFixed(num) {
     return;
   }
 
-  if (el.classList.contains('fixed')) return;
-  el.classList.add('fixed');
-  const btn = el.querySelector('.fix-btn');
-  if (btn) { btn.textContent = '✓ Fixed'; btn.className = 'fix-btn done'; }
+  if (num !== 6 && el.classList.contains('fixed')) return;
+  if (num !== 6) el.classList.add('fixed');
 
-  // Issue 6 = amenities
-  if(num===6 && scoreBreakdown && scoreBreakdown.amenities===0){scoreBreakdown.amenities=5;}
+  if (num === 1) {
+    // Photos — keep upload button active to add more
+    const btn = el.querySelector('.fix-btn');
+    if (btn) { btn.textContent = '📷 Add More Photos'; btn.className = 'fix-btn ai'; btn.onclick = openUploadModal; btn.disabled = false; }
+  } else if (num === 4) {
+    // Price — keep editable
+    const btn = document.getElementById('adjustPriceBtn');
+    if (btn) { btn.textContent = '✓ Updated · Change ▾'; btn.className = 'fix-btn ai'; btn.disabled = false; }
+  } else if (num === 5) {
+    // Facing — allow re-selection
+    const btn = el.querySelector('.fix-btn');
+    if (btn) { btn.className = 'fix-btn ai'; btn.disabled = false; btn.onclick = openFacingModal; }
+  } else if (num === 6) {
+    // Amenities — keep open for adding more
+    scoreBreakdown.amenities = 5;
+    const amenBtn = document.getElementById('amenitiesBtn');
+    if (amenBtn) { amenBtn.textContent = '✓ Added · Edit ▾'; amenBtn.className = 'fix-btn ai'; amenBtn.disabled = false; }
+    // _updateAmenitiesUI handles title/desc/market compare with real count
+  } else {
+    const btn = el.querySelector('.fix-btn');
+    if (btn) { btn.textContent = '✓ Fixed'; btn.className = 'fix-btn done'; }
+  }
 
   // Lock preview toggle
   const strip = document.getElementById('prev'+num);
@@ -3268,7 +3337,7 @@ function updateScore() {
   const dimPhotos = document.getElementById('dimPhotos');
   if (dimPhotos) { dimPhotos.style.width = (scoreBreakdown.photos / 15 * 100) + '%'; dimPhotos.style.background = photoColor; }
   const photoDimScore = document.querySelector('#dimPhotos')?.closest('.dim-item')?.querySelector('.dim-score');
-  if (photoDimScore) { photoDimScore.innerHTML = scoreBreakdown.photos + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span>'; photoDimScore.style.color = photoColor; }
+  if (photoDimScore) { photoDimScore.innerHTML = scoreBreakdown.photos + '%<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span>'; photoDimScore.style.color = photoColor; }
   const photosDimStatus = document.getElementById('photosDimStatus');
   if (photosDimStatus) photosDimStatus.textContent = photoCount + ' photos × 3pts = ' + scoreBreakdown.photos + '/15';
 
@@ -3296,7 +3365,7 @@ function updateScore() {
   const dimVerify = document.getElementById('dimVerify');
   if (dimVerify) { dimVerify.style.width = (scoreBreakdown.verify / 10 * 100) + '%'; dimVerify.style.background = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
   const verifyDimScore = document.getElementById('verifyDimScore');
-  if (verifyDimScore) { verifyDimScore.innerHTML = scoreBreakdown.verify + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span>'; verifyDimScore.style.color = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
+  if (verifyDimScore) { verifyDimScore.innerHTML = scoreBreakdown.verify + '%<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span>'; verifyDimScore.style.color = scoreBreakdown.verify >= 10 ? '#4ADE80' : '#EF4444'; }
   const verifyDimStatus = document.getElementById('verifyDimStatus');
   if (verifyDimStatus) verifyDimStatus.textContent = scoreBreakdown.verify >= 10 ? '✓ Verified · 10/10 pts' : 'Not verified · Get +10 pts';
 
@@ -3304,7 +3373,7 @@ function updateScore() {
   const dimComp = document.getElementById('dimComp');
   if (dimComp) { dimComp.style.width = (scoreBreakdown.amenities / 5 * 100) + '%'; dimComp.style.background = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
   const amenitiesDimScore = document.getElementById('amenitiesDimScore');
-  if (amenitiesDimScore) { amenitiesDimScore.innerHTML = scoreBreakdown.amenities + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span>'; amenitiesDimScore.style.color = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
+  if (amenitiesDimScore) { amenitiesDimScore.innerHTML = scoreBreakdown.amenities + '%<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span>'; amenitiesDimScore.style.color = scoreBreakdown.amenities >= 5 ? '#4ADE80' : '#EF4444'; }
   const amenitiesStatus = document.getElementById('amenitiesDimStatus');
   if (amenitiesStatus) amenitiesStatus.textContent = scoreBreakdown.amenities >= 5 ? 'Amenity selected ✓ · 5/5 pts' : '0 amenities selected · Select any = +5 pts';
 
@@ -3312,11 +3381,22 @@ function updateScore() {
   const compScore = document.getElementById('compScoreYou');
   if (compScore) compScore.textContent = newScore + '%';
   const compPhotos = document.getElementById('compPhotosYou');
-  if (compPhotos) compPhotos.textContent = photoCount;
+  if (compPhotos) {
+    compPhotos.textContent = photoCount;
+    compPhotos.className = photoCount >= 5 ? 'mkt-cell' : 'you-cell';
+  }
   const compAmenities = document.getElementById('compAmenitiesYou');
-  if (compAmenities) compAmenities.textContent = scoreBreakdown.amenities > 0 ? '1+ / 35' : '0 / 35';
+  if (compAmenities) {
+    const amFixed = scoreBreakdown.amenities > 0;
+    compAmenities.textContent = amFixed ? '1+ / 27' : '0 / 27';
+    compAmenities.className = amFixed ? 'mkt-cell' : 'you-cell';
+    compAmenities.style.color = amFixed ? '#16A34A' : '';
+    compAmenities.style.fontWeight = amFixed ? '600' : '';
+  }
   const compVerify = document.getElementById('compVerifyYou');
   if (compVerify) { compVerify.textContent = scoreBreakdown.verify >= 10 ? '✓ Verified' : '✗ Not verified'; compVerify.className = scoreBreakdown.verify >= 10 ? 'mkt-cell' : 'you-cell'; }
+  const compPrice = document.getElementById('compPriceYou');
+  if (compPrice) { const pFixed = fixedIssues[4]; compPrice.className = pFixed ? 'mkt-cell' : 'you-cell'; compPrice.textContent = pFixed ? '₹9,526' : '₹11,678'; compPrice.style.color = pFixed ? '#16A34A' : ''; }
 
   // ── Estimate box ──
   const estTitle = document.getElementById('estTitle');
@@ -3343,6 +3423,8 @@ function updateScore() {
   if (missVerify) missVerify.style.display = scoreBreakdown.verify >= 10 ? 'none' : 'flex';
   const missAmenities = document.getElementById('missAmenities');
   if (missAmenities) { missAmenities.style.display = scoreBreakdown.amenities > 0 ? 'none' : 'flex'; }
+  const amenitiesIssueTitle = document.getElementById('amenitiesIssueTitle');
+  if (amenitiesIssueTitle) amenitiesIssueTitle.textContent = scoreBreakdown.amenities > 0 ? '1+ of 27 amenities filled' : '0 of 27 amenities filled';
   const missFacing = document.getElementById('missFacing');
   if (missFacing) missFacing.style.display = (typeof fixedIssues !== 'undefined' && fixedIssues[5]) ? 'none' : 'flex';
   const missPrice = document.getElementById('missPrice');
@@ -3732,6 +3814,14 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
 })();
 
 function publishListing() {
+  const pubBtn = document.querySelector('button[onclick="publishListing()"]');
+  if (pubBtn) { pubBtn.disabled = true; pubBtn.innerHTML = '<span style="animation:spin .6s linear infinite;display:inline-block">⏳</span> Publishing...'; }
+  setTimeout(() => {
+    if (pubBtn) { pubBtn.disabled = false; pubBtn.innerHTML = 'Publish Listing'; }
+    _doPublish();
+  }, 2000);
+}
+function _doPublish() {
   const baseScore = 42;
   const currentScore = getTotalScore();
   const gain = currentScore - baseScore;
