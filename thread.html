@@ -7,6 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="community.css"/>
 <script src="community-shared.js"></script>
+<script src="community-particles.js" defer></script>
 <script>
 (function(){
   if(localStorage.getItem('loDarkMode')==='true') document.documentElement.setAttribute('data-theme','dark');
@@ -14,6 +15,12 @@
 </script>
 </head>
 <body>
+
+<div class="page-bg" aria-hidden="true">
+  <canvas id="particleCanvas" class="particle-canvas"></canvas>
+  <div class="page-bg-aurora"></div>
+  <div class="page-bg-shimmer"></div>
+</div>
 
 <header class="hdr">
   <a href="index.html" class="logo" style="display:flex;align-items:center">
@@ -29,7 +36,7 @@
   </div>
 </header>
 
-<div class="wrap thread-page">
+<div class="wrap thread-page wrap-elevated">
   <div class="back-row">
     <a class="back-link" href="community.html">← Back to discussions</a>
   </div>
