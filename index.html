@@ -94,14 +94,20 @@
 [data-theme="dark"] .prop-price-sub{color:var(--text3)}
 [data-theme="dark"] .prop-meta{color:var(--text3)}
 [data-theme="dark"] .desc-warn{color:#FCA5A5}
+[data-theme="dark"] .missing-info-box{background:#2D1515;border-color:#7F1D1D}
+[data-theme="dark"] .missing-info-box .missing-info-title{color:#FCA5A5}
+[data-theme="dark"] .missing-info-box .missing-info-row{color:#8B949E}
 [data-theme="dark"] .analyze-btn:hover{box-shadow:0 4px 12px rgba(124,58,237,.5)}
 [data-theme="dark"] .score-card{background:linear-gradient(135deg,#2A0A6B 0%,#4A1DAB 55%,#6D28D9 100%)}
 [data-theme="dark"] .issues-card,[data-theme="dark"] .desc-card,[data-theme="dark"] .photo-card,[data-theme="dark"] .comp-card,[data-theme="dark"] .listing-card,[data-theme="dark"] .empty-state,[data-theme="dark"] .analyzing{box-shadow:0 1px 6px rgba(0,0,0,.4)}
 [data-theme="dark"] .photo-thumb{filter:brightness(.85)}
 [data-theme="dark"] .apply-all-btn:hover{background:#6D28D9}
 [data-theme="dark"] .gen-btn:hover{opacity:.85}
-[data-theme="dark"] .final-cta{background:linear-gradient(100deg,#0F0640,#2D1195 40%,#5C2DD6 80%,#7B45E8)}
-[data-theme="dark"] .fc-btn{background:var(--surface);color:#7C3AED}
+[data-theme="dark"] #aiFixAllStrip{background:linear-gradient(135deg,#1A1040,#1E1B4B);border-color:#4C1D95}
+[data-theme="dark"] #aiFixAllStrip div:first-child div:first-child{color:#A78BFA}
+[data-theme="dark"] #aiFixAllStrip div:first-child div:last-child{color:#C4B5FD}
+[data-theme="dark"] .final-cta{background:linear-gradient(135deg,#1A0547 0%,#2D1080 30%,#3B0D8C 55%,#5C2DD6 75%,#7040DC 100%)}
+[data-theme="dark"] .fc-btn{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
 [data-theme="dark"] .estimate-box{background:linear-gradient(135deg,#2D1E0F,#1C1205);border-color:#92400E}
 [data-theme="dark"] .est-after{background:linear-gradient(135deg,#0D2018,#0A1A10);border-color:#14532D}
 [data-theme="dark"] .est-after .est-title{color:#4ADE80}
@@ -113,15 +119,74 @@
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-size:14px;min-height:100vh;transition:var(--transition)}
 
 /* ── HEADER ── */
-.hdr{background:var(--hdr-bg);border-bottom:1px solid var(--hdr-border);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;gap:20px;position:sticky;top:0;z-index:100;box-shadow:var(--hdr-shadow);transition:var(--transition)}
-.logo{display:flex;align-items:center;line-height:1;flex-shrink:0}
+.hdr{background:var(--hdr-bg);border-bottom:1px solid var(--hdr-border);height:56px;display:flex;align-items:center;padding:0 28px;gap:20px;position:sticky;top:0;z-index:100;box-shadow:var(--hdr-shadow);transition:var(--transition)}
+.logo{display:flex;align-items:center;line-height:1}
 .logo svg{display:block}
-.hdr-center{position:absolute;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;justify-content:center;pointer-events:none}
-.page-title{font-size:20px;font-weight:800;color:#fff;pointer-events:auto;white-space:nowrap}
+.hdr-center{flex:1;display:flex;align-items:center;gap:12px;justify-content:center}
+.page-title{font-size:20px;font-weight:800;color:#fff}
 .ai-badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;letter-spacing:.3px}
-.hdr-right{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.hdr-right{display:flex;gap:8px;align-items:center}
+/* Community header CTA — match reference: outlined chip, users icon, white NEW on orange pill */
+.comm-nav-btn{
+  display:inline-flex;
+  align-items:center;
+  box-sizing:border-box;
+  padding:8px 16px 8px 14px;
+  border-radius:14px;
+  text-decoration:none;
+  font-family:inherit;
+  -webkit-font-smoothing:antialiased;
+  color:#fff;
+  background:transparent;
+  border:1.5px solid rgba(255,255,255,.48);
+  transition:background .2s ease,border-color .2s ease;
+  white-space:nowrap;
+}
+.comm-nav-btn:hover{
+  background:rgba(255,255,255,.1);
+  border-color:rgba(255,255,255,.62);
+  text-decoration:none;
+}
+[data-theme="dark"] .comm-nav-btn{
+  border-color:rgba(255,255,255,.38);
+  background:rgba(255,255,255,.06);
+}
+[data-theme="dark"] .comm-nav-btn:hover{
+  background:rgba(255,255,255,.12);
+  border-color:rgba(255,255,255,.5);
+}
+.comm-nav-ico{
+  width:20px;
+  height:20px;
+  flex-shrink:0;
+  margin-right:11px;
+  color:#fff;
+}
+.comm-nav-label{
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:-.015em;
+  margin-right:12px;
+}
+.comm-new-pill{
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.55px;
+  text-transform:uppercase;
+  color:#fff;
+  padding:4px 11px;
+  border-radius:999px;
+  line-height:1;
+  background:linear-gradient(180deg,#FFB84D 0%,#FF9500 40%,#EA6A00 100%);
+  box-shadow:0 2px 5px rgba(0,0,0,.28),0 1px 2px rgba(0,0,0,.2);
+}
 .btn-sm{padding:6px 14px;border-radius:7px;font-size:12px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:var(--transition)}
-.btn-outline{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);color:#fff}
+.btn-outline{background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.35);color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+.btn-outline:hover{background:rgba(255,255,255,.2);text-decoration:none}
 .btn-red{background:#C0392B;color:#fff}
 
 /* ── DARK MODE TOGGLE ── */
@@ -495,6 +560,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .score-fill{fill:none;stroke-width:8;stroke-linecap:round;transition:stroke-dashoffset 1.5s ease}
 .score-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .score-num{font-size:26px;font-weight:900;line-height:1}
+.score-denom{font-size:11px;color:rgba(255,255,255,.6)}
 .sc-info{flex:1}
 .sc-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:rgba(255,255,255,.5);margin-bottom:4px}
 .sc-grade{font-size:20px;font-weight:800;margin-bottom:4px}
@@ -513,7 +579,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .dim-status{font-size:10px;color:rgba(255,255,255,.5);margin-top:5px}
 
 /* ── ISSUES ── */
-.issues-card{background:var(--surface);border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:hidden;display:none;transition:var(--transition)}
+.issues-card{background:var(--surface);border-radius:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);overflow:visible;display:none;transition:var(--transition)}
 .issues-card.show{display:block}
 .issues-head{padding:18px 24px;border-bottom:1px solid var(--border2);display:flex;align-items:center;justify-content:space-between}
 .issues-title{font-size:14px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px}
@@ -524,7 +590,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .issue-item{padding:16px 24px;border-bottom:1px solid var(--border2);display:flex;align-items:flex-start;gap:14px;transition:background .2s}
 .issue-item:last-child{border-bottom:none}
 .issue-item:hover{background:var(--issue-hover)}
-.issue-item.fixed{background:var(--issue-fixed);opacity:.7}
+.issue-item.fixed{background:var(--issue-fixed)}
 .issue-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .ic-red{background:var(--ic-red)}
 .ic-orange{background:var(--ic-orange)}
@@ -533,15 +599,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .issue-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;display:flex;align-items:center;gap:8px}
 .issue-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:6px}
 .issue-impact{font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px}
-.impact-red{color:#EF4444}
-.impact-orange{color:#F97316}
-.impact-green{color:#16A34A}
-.impact-yellow{color:#EAB308}
+.impact-red{color:#F87171}
+.impact-orange{color:#FB923C}
+.impact-green{color:#4ADE80}
+.impact-yellow{color:#FBBF24}
 .issue-action{flex-shrink:0;padding-top:2px}
 .fix-btn{background:none;border:1.5px solid var(--fix-btn-border);color:var(--fix-btn-c);padding:5px 12px;border-radius:7px;font-size:11px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Inter',sans-serif;white-space:nowrap}
 .fix-btn:hover{border-color:#7C3AED;color:#7C3AED;background:var(--fix-btn-hover-bg)}
-.fix-btn.ai{background:linear-gradient(135deg,#7C3AED,#4F46E5);color:#fff;border:none}
-.fix-btn.ai:hover{opacity:.9}
+.fix-btn.ai{background:none;color:var(--fix-btn-c);border:1.5px solid var(--fix-btn-border)}
+.fix-btn.ai:hover{border-color:#7C3AED;color:#7C3AED;background:var(--fix-btn-hover-bg)}
 .fix-btn.done{background:var(--issue-fixed);border-color:#86EFAC;color:#16A34A;cursor:default}
 .sev-pill{font-size:9px;font-weight:700;padding:2px 7px;border-radius:8px;flex-shrink:0}
 .sev-red{background:var(--sev-red-bg);color:var(--sev-red-c)}
@@ -614,17 +680,17 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .est-after .est-text{color:#166534}
 
 /* ── FINAL CTA ── */
-.final-cta{background:linear-gradient(100deg,#4A22B0 0%,#5C2DD6 50%,#7040DC 100%);border-radius:16px;padding:20px 24px;color:#fff;text-align:center;display:none;box-shadow:0 6px 28px rgba(92,45,214,.35)}
+.final-cta{background:linear-gradient(135deg,#2D0A7A 0%,#4A1DAB 30%,#5C2DD6 55%,#7C3AED 75%,#9B6FE8 100%);border-radius:16px;padding:20px 24px;color:#fff;text-align:center;display:none;box-shadow:0 8px 32px rgba(92,45,214,.4)}
 .final-cta.show{display:block}
-.fc-title{font-size:18px;font-weight:800;margin-bottom:8px}
+.fc-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:8px}
 .fc-sub{font-size:13px;color:rgba(255,255,255,.75);margin-bottom:20px;line-height:1.6}
-.fc-score-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:20px}
+.fc-score-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:14px}
 .fc-score{text-align:center}
-.fc-score-num{font-size:32px;font-weight:900}
-.fc-score-label{font-size:11px;color:rgba(255,255,255,.6)}
-.fc-arrow{font-size:24px;color:rgba(255,255,255,.5)}
-.fc-btn{background:#fff;color:#7C3AED;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
-.fc-btn:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.fc-score-num{font-size:24px;font-weight:800}
+.fc-score-label{font-size:10px;color:rgba(255,255,255,.6);margin-top:2px}
+.fc-arrow{font-size:16px;color:rgba(255,255,255,.45)}
+.fc-btn{background:rgba(255,255,255,.15);backdrop-filter:blur(8px);color:#fff;border:1.5px solid rgba(255,255,255,.3);padding:9px 22px;border-radius:9px;font-size:13px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+.fc-btn:hover{background:rgba(255,255,255,.25);transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
 
 /* ── UPLOAD MODAL ── */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:900;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(3px)}
@@ -695,7 +761,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .um-skip a:hover{color:#64748B}
 
 /* ── PRICE OPTIONS POPOVER ── */
-.price-options{display:none;position:absolute;right:0;top:calc(100% + 6px);background:var(--surface);border:1.5px solid var(--border);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:50;min-width:220px;overflow:hidden;animation:fadeUp .2s ease}
+.price-options{display:none;position:absolute;right:0;top:calc(100% + 6px);background:var(--surface);border:1.5px solid var(--border);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:500;min-width:220px;overflow:hidden;animation:fadeUp .2s ease}
 .price-options.open{display:block}
 [data-theme="dark"] .price-options{box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .po-option{display:flex;align-items:flex-start;gap:10px;padding:12px 14px;cursor:pointer;transition:.15s;border-bottom:1px solid var(--border2)}
@@ -823,7 +889,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .atab-panel.on{display:block}
 
 /* ── PREVIEW RANK TOGGLE ── */
-.preview-strip{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1.5px dashed var(--border);border-radius:8px;padding:8px 12px;margin-top:9px;cursor:pointer;transition:.2s;user-select:none;min-height:38px}
+.preview-strip{display:flex;align-items:center;gap:8px;background:var(--surface2);border:1.5px dashed var(--border);border-radius:8px;padding:0 12px;cursor:pointer;user-select:none;max-height:0;min-height:0;overflow:hidden;opacity:0;margin-top:0;pointer-events:none;transition:opacity .2s,max-height .25s ease,margin-top .2s,padding .2s,min-height .2s}
+.issue-item:hover .preview-strip,.preview-strip.on{opacity:1;max-height:60px;min-height:38px;margin-top:9px;padding:8px 12px;pointer-events:auto}
 .preview-strip:hover{border-color:#7C3AED;background:var(--surface3)}
 .preview-strip.on{background:#F5F3FF;border-color:#7C3AED;border-style:solid}
 [data-theme="dark"] .preview-strip.on{background:#1A1040}
@@ -857,7 +924,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 /* per-photo analysis cards */
 .photo-analysis-list{display:flex;flex-direction:column;gap:10px;padding:12px 24px 16px}
 .pa-card{border-radius:10px;border:1px solid var(--border);overflow:hidden;background:var(--surface2)}
-.pa-header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--border2)}
+.pa-header{display:flex;align-items:center;gap:10px;padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--border2);cursor:pointer;user-select:none}
+.pa-chevron{margin-left:auto;font-size:11px;color:var(--text3);transition:transform .25s;flex-shrink:0}
+.pa-card.collapsed .pa-chevron{transform:rotate(-90deg)}
+.pa-card.collapsed .pa-body{display:none}
+.pa-card.collapsed .pa-header{border-bottom:none}
 .pa-icon{font-size:18px}
 .pa-name{font-size:12.5px;font-weight:700;color:var(--text);flex:1}
 .pa-status{font-size:10px;font-weight:700;padding:2px 8px;border-radius:6px}
@@ -887,8 +958,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 
 /* ── PHONE FRAME. iPhone 14/15 aspect 390×844; height capped so tier caption stays in view ── */
 .phone-preview-device{
-  --phone-caption-reserve: clamp(100px, 17vh, 142px);
-  --phone-layout-chrome: 88px;
+  --phone-caption-reserve: 30px;
+  --phone-layout-chrome: 20px;
   --phone-max-h: calc(100svh - var(--phone-layout-chrome) - var(--phone-caption-reserve));
   width:100%;
   max-width:100%;
@@ -1106,6 +1177,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 .ms-your-photo{height:28px;background:linear-gradient(135deg,#E8ECF0,#D1D5DB);display:flex;align-items:center;justify-content:center;font-size:18px;position:relative}
 [data-theme="dark"] .ms-your-photo{background:linear-gradient(135deg,#21262D,#2D333B)}
 .ms-your-badge{position:absolute;top:3px;right:3px;background:#7C3AED;color:#fff;font-size:7px;font-weight:700;padding:1px 4px;border-radius:3px}
+.phone-frame-wrap{position:relative}
+.race-arrows{position:absolute;right:calc(100% + 5px);top:10%;bottom:10%;width:14px;overflow:hidden;pointer-events:none;border-radius:7px;transition:opacity .5s ease}
+.race-arr{position:absolute;bottom:-16px;left:2px;color:#7C3AED;font-size:14px;font-weight:900;line-height:1;animation:raceUp 1.6s ease-in-out infinite}
+.race-arr:nth-child(2){animation-delay:.4s}
+.race-arr:nth-child(3){animation-delay:.8s}
+.race-arr:nth-child(4){animation-delay:1.2s}
+[data-theme="dark"] .race-arr{color:#A78BFA}
+@keyframes raceUp{0%{bottom:-16px;opacity:0}20%{opacity:1}75%{opacity:.9}100%{bottom:110%;opacity:0}}
 .ms-your-body{padding:5px 8px;display:flex;flex-direction:column;gap:2px}
 .ms-your-title{font-size:9px;font-weight:700;color:var(--text);line-height:1.3}
 .ms-your-price{font-size:10px;font-weight:800;color:var(--text)}
@@ -1222,14 +1301,14 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 /* ── SIDE SLIDE PANEL (right) ── */
 .side-drawer-backdrop{position:fixed;inset:0;background:rgba(15,23,42,.45);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s;z-index:200;backdrop-filter:blur(2px)}
 .side-drawer-backdrop.is-open{opacity:1;visibility:visible}
-.side-drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100vw);max-width:100%;min-height:0;background:var(--surface);border-left:1px solid var(--border);box-shadow:-12px 0 40px rgba(15,23,42,.12);z-index:201;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.22,1,.36,1);will-change:transform}
+.side-drawer{position:fixed;top:0;right:0;bottom:0;width:min(500px,100vw);max-width:100%;min-height:0;background:var(--surface);border-left:1px solid var(--border);box-shadow:-12px 0 40px rgba(15,23,42,.12);z-index:201;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .35s cubic-bezier(.22,1,.36,1);will-change:transform}
 [data-theme="dark"] .side-drawer{box-shadow:-12px 0 40px rgba(0,0,0,.45)}
 .side-drawer.is-open{transform:translateX(0)}
 .side-drawer-head{flex-shrink:0;display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--border2);background:var(--surface2)}
 .side-drawer-title{font-size:15px;font-weight:700;color:var(--text)}
 .side-drawer-close{width:36px;height:36px;border-radius:9px;border:1px solid var(--border);background:var(--surface);color:var(--text2);font-size:20px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition)}
 .side-drawer-close:hover{background:var(--surface3);color:var(--text);border-color:var(--text4)}
-.side-drawer-body{flex:1;min-height:0;display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;padding:16px 18px 20px;color:var(--text2);font-size:13px;line-height:1.55;-webkit-overflow-scrolling:touch}
+.side-drawer-body{flex:1;min-height:0;display:flex;flex-direction:column;overflow-x:hidden;overflow-y:auto;padding:8px 10px 12px;color:var(--text2);font-size:13px;line-height:1.55;-webkit-overflow-scrolling:touch}
 .side-drawer-confetti-canvas{
   position:absolute;
   inset:0;
@@ -1376,25 +1455,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
   padding:16px 12px;
 }
 
-/* YOUR card slides up after drawer opens */
-#sideDrawerMiniSerp.side-drawer-mini-serp .ms-your.ms-your-rank-pending{
-  transform:translateY(var(--rank-pull, 0px));
-  z-index:2;
-  transition:none;
-}
-#sideDrawerMiniSerp.side-drawer-mini-serp .ms-your.ms-your-rank-pending.ms-your-rank-armed{
-  transition:transform .95s cubic-bezier(.34,1.45,.64,1);
-}
-#sideDrawerMiniSerp.side-drawer-mini-serp .ms-your.ms-your-rank-pending.ms-your-rank-run{
-  transform:translateY(0);
-}
+/* Ladder climb — cards use absolute top positioning, JS drives the animation */
+#sideDrawerMiniSerp .ms-your{border-radius:8px}
+#sideDrawerMiniSerp .ms-card{border-radius:8px}
 
 /* Phone mock in drawer: wins over generic #sideDrawerMiniSerp … tablet SERP rules */
 /* Drawer: extra chrome (panel header + body padding) so phone shortens and caption fits */
 #sideDrawerMiniSerp .phone-preview-device{
-  --phone-layout-chrome: 102px;
+  --phone-layout-chrome: 20px;
+  --phone-caption-reserve: 30px;
   margin-left:auto;
   margin-right:auto;
+  width:100%;
+}
+#sideDrawerMiniSerp .phone-frame{
+  width:min(480px,100%);
+  max-height:calc(100svh - 60px);
 }
 /* Phone in drawer: higher specificity beats #sideDrawerMiniSerp.side-drawer-mini-serp .ms-* tablet rules */
 #sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-cards{
@@ -1456,10 +1532,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
 #sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-contact{font-size:8px;padding:3px 10px;border-radius:4px;align-self:flex-end;width:auto;text-align:center;margin-top:1px;flex-shrink:0}
 #sideDrawerMiniSerp.side-drawer-mini-serp .phone-frame .ms-your-badge{font-size:7px;padding:1px 5px}
 
-.comm-nav-btn{display:inline-flex;align-items:center;gap:8px;padding:7px 14px 7px 12px;border-radius:9px;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.38);color:#fff;font-size:13px;font-weight:700;text-decoration:none;font-family:'Inter',sans-serif;transition:.2s}
-.comm-nav-btn:hover{background:rgba(255,255,255,.22);text-decoration:none;transform:translateY(-1px)}
-.comm-nav-btn svg{flex-shrink:0;opacity:.95}
-.comm-new-pill{font-size:9px;font-weight:800;letter-spacing:.5px;background:linear-gradient(135deg,#F59E0B,#EA580C);color:#fff;padding:3px 8px;border-radius:999px;box-shadow:0 1px 4px rgba(234,88,12,.45)}
 </style>
 </head>
 <body>
@@ -1482,10 +1554,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="page-title">✨ ListIQ</div>
   </div>
   <div class="hdr-right">
-    <a href="community.html" class="comm-nav-btn" title="Community Q&amp;A — new">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="2"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      <span>Community</span>
-      <span class="comm-new-pill">NEW</span>
+    <a href="community.html" class="comm-nav-btn" title="Community Q&amp;A" aria-label="Community — new">
+      <svg class="comm-nav-ico" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.433-2.554M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0z"/></svg>
+      <span class="comm-nav-label">Community</span><span class="comm-new-pill">NEW</span>
     </a>
     <button class="btn-sm" onclick="publishListing()" style="background:#16A34A;color:#fff">Publish Listing</button>
   </div>
@@ -1579,22 +1650,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div>
         <div style="font-size:11px;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px">About this property</div>
         <div class="prop-desc">"Well maintained 2BHK flat available in Sector 22 Dwarka. Good locality with nearby market. Suitable for families."</div>
-        <div class="desc-warn">22 words · recommended 100+</div>
+        <div class="desc-warn">⚠ Only 22 words — far below recommended 100+</div>
       </div>
 
-      <!-- Missing fields -->
-      <div style="background:#FEF2F2;border-radius:10px;padding:12px 14px;border:1px solid #FECACA" id="missingInfoBox">
-        <div style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">❌ Missing Information</div>
-        <div style="display:flex;flex-direction:column;gap:5px" id="missingInfoList">
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missPhotos"><span style="color:#EF4444">✗</span> <span>Only 3 of 5 photos added</span></div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missVerify"><span style="color:#EF4444">✗</span> Property not verified</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missAmenities"><span style="color:#EF4444">✗</span> Amenities (0 of 27 filled)</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missFacing"><span style="color:#EF4444">✗</span> Property facing direction</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missAge"><span style="color:#EF4444">✗</span> Age of property</div>
-          <div style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px" id="missPrice"><span style="color:#EF4444">✗</span> Price above market range</div>
+      <!-- Missing Information -->
+      <div class="missing-info-box" style="background:#FEF2F2;border-radius:10px;padding:12px 14px;border:1px solid #FECACA">
+        <div class="missing-info-title" style="font-size:11px;font-weight:700;color:#DC2626;margin-bottom:8px;text-transform:uppercase;letter-spacing:.4px">❌ Missing Information</div>
+        <div style="display:flex;flex-direction:column;gap:5px">
+          <div class="missing-info-row" style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Property facing direction</div>
+          <div class="missing-info-row" style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Age of property</div>
+          <div class="missing-info-row" style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Amenities (0 of 27 filled)</div>
+          <div class="missing-info-row" style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Floor plan / layout</div>
+          <div class="missing-info-row" style="font-size:12px;color:#64748B;display:flex;align-items:center;gap:7px"><span style="color:#EF4444">✗</span> Parking details</div>
         </div>
       </div>
-
 
     </div>
   </div>
@@ -1702,48 +1771,50 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               id="scoreFill"/>
           </svg>
           <div class="score-text">
-            <div class="score-num" id="scoreNum">42%</div>
+            <div class="score-num" id="scoreNum">42</div>
+            <div class="score-denom">/ 100</div>
           </div>
         </div>
         <div class="sc-info">
           <div class="sc-label">Listing Score</div>
-          <div class="sc-grade" id="scGrade">🟡 Average</div>
-          <div class="sc-desc">Your listing is in the <strong>bottom 15%</strong> of similar properties in Sector 22 Dwarka.<br/>Estimated time to first inquiry: <strong>5–7 days</strong></div>
+          <div class="sc-grade" id="scGrade">🔴 Poor</div>
+          <div class="sc-desc">Fix the issues below to reach <strong style="color:#A5F3FC">84/100</strong> and get more enquiries.</div>
         </div>
       </div>
 
-      <div class="dim-grid">
-        <div class="dim-item">
-          <div class="dim-head">
-            <div class="dim-label">📷 Photos Analysis</div>
-            <div class="dim-score" style="color:#EF4444">9<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span></div>
+      <!-- Compact dim badges -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:4px">
+        <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:8px 12px;flex:1;min-width:120px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <span style="font-size:11px;color:rgba(255,255,255,.7)">📷 Photos</span>
+            <span id="dimPhotosScore" style="font-size:12px;font-weight:700;color:#EF4444">6<span style="font-size:9px;opacity:.5">/15</span></span>
           </div>
-          <div class="dim-bar"><div class="dim-fill" style="width:60%;background:#EF4444" id="dimPhotos"></div></div>
-          <div class="dim-status" id="photosDimStatus">3 photos × 3pts = 9/15</div>
+          <div style="height:4px;background:rgba(255,255,255,.15);border-radius:2px"><div id="dimPhotos" style="height:100%;width:40%;background:#EF4444;border-radius:2px;transition:width .5s,background .3s"></div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:4px" id="photosDimStatus">3 photos added</div>
         </div>
-        <div class="dim-item">
-          <div class="dim-head">
-            <div class="dim-label">🛡️ Property Verified</div>
-            <div class="dim-score" id="verifyDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/10</span></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:8px 12px;flex:1;min-width:120px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <span style="font-size:11px;color:rgba(255,255,255,.7)">🛡️ Verified</span>
+            <span id="verifyDimScore" style="font-size:12px;font-weight:700;color:#EF4444">0<span style="font-size:9px;opacity:.5">/10</span></span>
           </div>
-          <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimVerify"></div></div>
-          <div class="dim-status" id="verifyDimStatus">Not verified · Get +10 pts</div>
+          <div style="height:4px;background:rgba(255,255,255,.15);border-radius:2px"><div id="dimVerify" style="height:100%;width:0%;background:#EF4444;border-radius:2px;transition:width .5s,background .3s"></div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:4px" id="verifyDimStatus">Not verified</div>
         </div>
-        <div class="dim-item">
-          <div class="dim-head">
-            <div class="dim-label">💲 Price</div>
-            <div class="dim-score" style="color:#4ADE80">5<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:8px 12px;flex:1;min-width:120px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <span style="font-size:11px;color:rgba(255,255,255,.7)">💲 Price</span>
+            <span style="font-size:12px;font-weight:700;color:#4ADE80">5<span style="font-size:9px;opacity:.5">/5</span></span>
           </div>
-          <div class="dim-bar"><div class="dim-fill" style="width:100%;background:#4ADE80" id="dimPrice"></div></div>
-          <div class="dim-status">Price provided ✓ &nbsp;<span style="color:#FBBF24;font-weight:700">⚠ 13% above market avg</span></div>
+          <div style="height:4px;background:rgba(255,255,255,.15);border-radius:2px"><div id="dimPrice" style="height:100%;width:100%;background:#4ADE80;border-radius:2px;transition:width .5s,background .3s"></div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:4px">⚠ 13% above avg</div>
         </div>
-        <div class="dim-item">
-          <div class="dim-head">
-            <div class="dim-label">🏠 Amenities</div>
-            <div class="dim-score" id="amenitiesDimScore" style="color:#EF4444">0<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span></div>
+        <div style="background:rgba(255,255,255,.1);border-radius:8px;padding:8px 12px;flex:1;min-width:120px">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px">
+            <span style="font-size:11px;color:rgba(255,255,255,.7)">🏠 Amenities</span>
+            <span id="amenitiesDimScore" style="font-size:12px;font-weight:700;color:#EF4444">0<span style="font-size:9px;opacity:.5">/5</span></span>
           </div>
-          <div class="dim-bar"><div class="dim-fill" style="width:0%;background:#EF4444" id="dimComp"></div></div>
-          <div class="dim-status" id="amenitiesDimStatus">0 amenities selected · Select any = +5 pts</div>
+          <div style="height:4px;background:rgba(255,255,255,.15);border-radius:2px"><div id="dimComp" style="height:100%;width:0%;background:#EF4444;border-radius:2px;transition:width .5s,background .3s"></div></div>
+          <div style="font-size:10px;color:rgba(255,255,255,.5);margin-top:4px" id="amenitiesDimStatus">None selected</div>
         </div>
       </div>
     </div>
@@ -1763,7 +1834,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <div class="issues-card show" id="issuesCard" style="border-radius:0;box-shadow:none;display:block">
       <div class="issues-head">
         <div class="issues-title">
-          🎯 AI Recommendations
+          🎯 Improve your listing
           <span style="background:#FEE2E2;color:#DC2626;font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px">6 issues found</span>
         </div>
         
@@ -1777,12 +1848,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               <span id="issuePhotoTitle">Add 2 more photos</span>
               <span class="sev-pill sev-red">CRITICAL</span>
             </div>
-            <div class="issue-desc" id="issuePhotoDesc">You have 3 photos. Minimum recommended is <strong>5 photos</strong>. Missing: <strong>kitchen, bathroom, bedroom 2</strong> — add these to reach the minimum of 5 photos.</div>
-            <div class="issue-impact impact-red" id="photoIssueImpact">📉 Missing photos = 68% fewer leads</div>
+            <div class="issue-desc" id="issuePhotoDesc">Only <strong>3 of 5</strong> photos added. Missing: kitchen, bathroom & bedroom 2.</div>
+            <div class="issue-impact impact-red">📉 Missing photos = 68% fewer leads</div>
             <div class="preview-strip" id="prev1" onclick="togglePreview(1)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">+9%</div>
+              <div class="prev-label">↑ How this affects your rank</div>
               <div class="prev-rank-change" id="prank1"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp1"><div class="mini-serp" id="mserp1"></div></div>
@@ -1799,12 +1869,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               Property not verified
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Verified listings appear <strong>higher in search results</strong> and build tenant trust. Verification adds a <strong>✓ Verified</strong> badge to your listing. tenants prefer verified properties.</div>
-            <div class="issue-impact impact-orange">🏆 Verified listings get 2x more enquiries</div>
+            <div class="issue-desc">Unverified listings get far fewer enquiries. A <strong>✓ Verified</strong> badge builds buyer trust and improves search ranking.</div>
+            <div class="issue-impact impact-orange">📉 Unverified listings get 3x fewer enquiries</div>
             <div class="preview-strip" id="prev2" onclick="togglePreview(2)">
               <div class="ptog"></div>
-              <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">+10%</div>
+              <div class="prev-label">↑ How this affects your rank</div>
               <div class="prev-rank-change" id="prank2"><span></span><span class="prev-arrow">↑</span></div>
             </div>
             <div class="preview-expand" id="pexp2"><div class="mini-serp" id="mserp2"></div></div>
@@ -1814,6 +1883,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </div>
         </div>
 
+        <!-- More issues (collapsed by default) -->
+        <div id="moreIssuesWrap" style="display:none;flex-direction:column">
+        <div class="issue-item" id="issue5">
+          <div class="issue-icon ic-red">🧭</div>
+          <div class="issue-body">
+            <div class="issue-title">
+              Facing direction missing
+              <span class="sev-pill sev-red">CRITICAL</span>
+            </div>
+            <div class="issue-desc">Facing direction not added. <strong>42% of buyers</strong> use this filter — your listing won't appear for them.</div>
+            <div class="issue-impact impact-red">👻 Invisible to 42% of searchers</div>
+          </div>
+          <div class="issue-action">
+            <button class="fix-btn" onclick="openFacingModal()">Add Facing</button>
+          </div>
+        </div>
         <div class="issue-item" id="issue4">
           <div class="issue-icon ic-orange">💲</div>
           <div class="issue-body">
@@ -1821,15 +1906,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               Price above market
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc" id="priceIssueDesc">Similar 2 BHKs in Sector 22 Dwarka are estimated at <strong>₹98.29L–1.20 Cr</strong>, but yours is listed at ₹1.35 Cr — that's <strong>₹15–37L (13–27%) more</strong> than the market range. <span id="activeDaysText">Active for <strong>9 days</strong> with less enquiries.</span> A small price drop can make a big difference.</div>
+            <div class="issue-desc" id="priceIssueDesc">Your price ₹1.35 Cr is <strong>₹15–37L above</strong> similar listings in Sector 22. <span id="activeDaysText">Active <strong>9 days</strong> with low enquiries.</span></div>
             <div class="issue-impact impact-orange">⏱ Overpriced listings take 3x longer to sell</div>
-            <div class="preview-strip" id="prev4" onclick="togglePreview(4)">
-              <div class="ptog"></div>
-              <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">Visibility ↑</div>
-              <div class="prev-rank-change" id="prank4"><span></span><span class="prev-arrow">↑</span></div>
-            </div>
-            <div class="preview-expand" id="pexp4"><div class="mini-serp" id="mserp4"></div></div>
 
             <!-- Manual price edit (shown when "Edit manually" chosen) -->
             <div class="price-edit-inline" id="priceEditInline">
@@ -1873,15 +1951,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               <span id="amenitiesIssueTitle">0 of 27 amenities filled</span>
               <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Your flat in Sector 22 Dwarka likely has <strong>lift, parking, security, power backup</strong> and <strong>gas pipeline, fans, lights</strong> — but none are marked. Buyers filter by amenities, and your listing won't show up in those searches. Mark at least one to get <strong>+5 pts</strong>.</div>
+            <div class="issue-desc">No amenities marked. Buyers filter by amenities — your listing won't show up in those searches.</div>
             <div class="issue-impact impact-orange">🔽 Drops search ranking by ~40%</div>
-            <div class="preview-strip" id="prev6" onclick="togglePreview(6)">
-              <div class="ptog"></div>
-              <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">+5%</div>
-              <div class="prev-rank-change" id="prank6"><span></span><span class="prev-arrow">↑</span></div>
-            </div>
-            <div class="preview-expand" id="pexp6"><div class="mini-serp" id="mserp6"></div></div>
+
           </div>
           <div class="issue-action">
             <div style="position:relative">
@@ -1907,21 +1979,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         </div>
 
         <div class="issue-item" id="issue3">
-          <div class="issue-icon ic-red">✍️</div>
+          <div class="issue-icon ic-orange">✍️</div>
           <div class="issue-body">
             <div class="issue-title">
               Description too short
-              <span class="sev-pill sev-red">CRITICAL</span>
+              <span class="sev-pill sev-orange">HIGH</span>
             </div>
-            <div class="issue-desc">Your description is only <strong>22 words</strong>. Market average is 156 words. Buyers skip listings without proper descriptions.</div>
-            <div class="issue-impact impact-red">📉 Buyers skip listings without a proper description</div>
-            <div class="preview-strip" id="prev3" onclick="togglePreview(3)">
-              <div class="ptog"></div>
-              <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">Search Rank ↑</div>
-              <div class="prev-rank-change" id="prank3"><span></span><span class="prev-arrow">↑</span></div>
-            </div>
-            <div class="preview-expand" id="pexp3"><div class="mini-serp" id="mserp3"></div></div>
+            <div class="issue-desc">Only <strong>22 words</strong> — market average is 156. A longer description gets more buyer attention.</div>
+            <div class="issue-impact impact-orange">📉 Short descriptions get 5x fewer saves</div>
+
           </div>
           <div class="issue-action" style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
             <div id="issue3FixedBadge" style="display:none;align-items:center;gap:4px;background:#DCFCE7;color:#15803D;font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;border:1px solid #86EFAC">
@@ -1931,28 +1997,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </div>
         </div>
 
-        <div class="issue-item" id="issue5">
-          <div class="issue-icon ic-orange">🧭</div>
-          <div class="issue-body">
-            <div class="issue-title">
-              Facing direction missing
-              <span class="sev-pill sev-orange">HIGH</span>
-            </div>
-            <div class="issue-desc"><strong>42% of buyers</strong> filter by property facing direction. Properties with a listed facing direction get <strong>more visibility and enquiries</strong>.</div>
-            <div class="issue-impact impact-orange">👁 Invisible to buyers filtering by facing</div>
-            <div class="preview-strip" id="prev5" onclick="togglePreview(5)">
-              <div class="ptog"></div>
-              <div class="prev-label">🔍 Check listing boost</div>
-              <div class="prev-gain-tag">Visibility ↑</div>
-              <div class="prev-rank-change" id="prank5"><span></span><span class="prev-arrow">↑</span></div>
-            </div>
-            <div class="preview-expand" id="pexp5"><div class="mini-serp" id="mserp5"></div></div>
+        <!-- AI Fix All strip -->
+        <div id="aiFixAllStrip" style="margin:4px 16px 14px;background:linear-gradient(135deg,#F5F3FF,#EEF2FF);border:1.5px solid #C4B5FD;border-radius:12px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:#5C2DD6;margin-bottom:3px">✨ 3 issues can be fixed instantly with AI</div>
+            <div style="font-size:11px;color:#7C3AED;opacity:.85;line-height:1.5">Auto-correct price to ₹1.10 Cr &nbsp;·&nbsp; Fill amenities &nbsp;·&nbsp; Generate description</div>
           </div>
-          <div class="issue-action">
-            <button class="fix-btn" onclick="openFacingModal()">Add Facing</button>
-          </div>
+          <button onclick="fixAllWithAI()" style="background:#7C3AED;color:#fff;border:none;padding:9px 16px;border-radius:9px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:.2s;flex-shrink:0" onmouseover="this.style.background='#6D28D9'" onmouseout="this.style.background='#7C3AED'">✨ Auto-fix 3 issues</button>
         </div>
+        </div><!-- /moreIssuesWrap -->
 
+        <!-- Show more toggle -->
+        <div id="showMoreBtn" onclick="toggleMoreIssues()" style="display:flex;align-items:center;justify-content:center;gap:6px;padding:10px;cursor:pointer;color:#7C3AED;font-size:12px;font-weight:600;border-top:1px solid var(--border);margin-top:4px">
+          <span id="showMoreText">Show more recommendations ▾</span>
+        </div>
 
       </div>
     </div>
@@ -2029,31 +2087,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <!-- Per-photo AI analysis -->
       <div class="photo-analysis-list">
 
-        <!-- Cover Image analysis. GOOD -->
+        <!-- Living Room analysis. BAD — top since needs improvement -->
         <div class="pa-card">
-          <div class="pa-header">
-            <div class="pa-icon">📷</div>
-            <div class="pa-name">Cover Image</div>
-            <div class="pa-status ok">✓ Good Quality</div>
-          </div>
-          <div class="pa-body">
-            <div class="pa-points">
-              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Clear shot of the building. Good first impression of the society</div>
-              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Good natural lighting. Building details are clearly visible</div>
-              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Well-framed with surrounding greenery. Looks well-maintained</div>
-            </div>
-            <div style="background:#F0FDF4;border-radius:8px;padding:9px 12px;font-size:12px;color:#15803D;font-weight:500;display:flex;align-items:center;gap:7px;border:1px solid #BBF7D0">
-              ✅ Great cover photo. no enhancement needed
-            </div>
-          </div>
-        </div>
-
-        <!-- Living Room analysis. BAD -->
-        <div class="pa-card">
-          <div class="pa-header">
+          <div class="pa-header" onclick="this.closest('.pa-card').classList.toggle('collapsed')">
             <div class="pa-icon">🛋️</div>
             <div class="pa-name">Living Room</div>
             <div class="pa-status bad" id="pa-status-living">⚠ Needs Enhancement</div>
+            <span class="pa-chevron">▾</span>
           </div>
           <div class="pa-body">
             <div class="pa-points">
@@ -2070,12 +2110,33 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </div>
         </div>
 
+        <!-- Cover Image analysis. GOOD -->
+        <div class="pa-card collapsed">
+          <div class="pa-header" onclick="this.closest('.pa-card').classList.toggle('collapsed')">
+            <div class="pa-icon">📷</div>
+            <div class="pa-name">Cover Image</div>
+            <div class="pa-status ok">✓ Good Quality</div>
+            <span class="pa-chevron">▾</span>
+          </div>
+          <div class="pa-body">
+            <div class="pa-points">
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Clear shot of the building. Good first impression of the society</div>
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Good natural lighting. Building details are clearly visible</div>
+              <div class="pa-pt"><span class="bul" style="color:#16A34A">✓</span>Well-framed with surrounding greenery. Looks well-maintained</div>
+            </div>
+            <div style="background:#F0FDF4;border-radius:8px;padding:9px 12px;font-size:12px;color:#15803D;font-weight:500;display:flex;align-items:center;gap:7px;border:1px solid #BBF7D0">
+              ✅ Great cover photo. no enhancement needed
+            </div>
+          </div>
+        </div>
+
         <!-- Bedroom analysis. GOOD, no enhance -->
-        <div class="pa-card">
-          <div class="pa-header">
+        <div class="pa-card collapsed">
+          <div class="pa-header" onclick="this.closest('.pa-card').classList.toggle('collapsed')">
             <div class="pa-icon">🛏️</div>
             <div class="pa-name">Bedroom</div>
             <div class="pa-status ok">✓ Good Quality</div>
+            <span class="pa-chevron">▾</span>
           </div>
           <div class="pa-body">
             <div class="pa-points">
@@ -2120,7 +2181,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           <tr>
             <td>Price / sq.ft</td>
             <td class="you-cell" id="compPriceYou">₹11,678</td>
-            <td class="mkt-cell">₹9,000</td>
+            <td class="mkt-cell">₹9,600</td>
           </tr>
           <tr>
             <td>Amenities filled</td>
@@ -2129,8 +2190,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
           </tr>
           <tr>
             <td>Listing score</td>
-            <td class="you-cell" id="compScoreYou">42%</td>
-            <td class="mkt-cell">60%</td>
+            <td class="you-cell" id="compScoreYou">42</td>
+            <td class="mkt-cell">60</td>
           </tr>
         </table>
 
@@ -2144,8 +2205,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
         <div class="estimate-box est-after" id="estimateAfter" style="display:none">
           <div class="est-icon">🚀</div>
           <div>
-            <div class="est-title" id="estTitle">After AI improvements: ~11 days to first inquiry</div>
-            <div class="est-text" id="estText">Optimized listings with 80+ score get 4x more inquiries and sell 3x faster. Apply all AI suggestions to unlock this estimate.</div>
+            <div class="est-title" id="estTitleAfter">After improvements: 3–4 days to first enquiry</div>
+            <div class="est-text" id="estTextAfter">Optimized listings in Sector 22 Dwarka get their first lead in 3–4 days and sell 3× faster.</div>
           </div>
         </div>
       </div>
@@ -2169,7 +2230,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             </div>
           </div>
           <div>
-            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">Top questions by buyers<a href="community.html" style="font-size:11px;font-weight:700;color:#7C3AED;cursor:pointer;text-transform:none;letter-spacing:0;text-decoration:none">View all 89 →</a></div>
+            <div style="font-size:11px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">Top questions by buyers<span style="font-size:11px;font-weight:700;color:#7C3AED;cursor:pointer;text-transform:none;letter-spacing:0">View all 89 →</span></div>
             <div class="buyer-q-list" style="display:flex;flex-direction:column;gap:7px;margin-bottom:14px">
               <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#E74C3C;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">P</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">How far is Sector 21 metro from this area? Is it walkable?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Priya S. · 2h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Connectivity</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 12</div><div style="font-size:10px;color:var(--text3)">👍 34</div></div></div>
               <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:10px 12px;display:flex;gap:10px;align-items:flex-start"><div style="width:26px;height:26px;border-radius:50%;background:#3B82F6;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;flex-shrink:0">A</div><div style="flex:1"><div style="font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:3px">Are Mount Carmel or Paramount school easy to reach from Sector 22?</div><div style="font-size:11px;color:var(--text3);display:flex;align-items:center;gap:6px"><span>Arjun M. · 5h ago</span><span style="background:#EDE9FE;color:#7C3AED;font-size:10px;padding:1px 6px;border-radius:4px;font-weight:600">Schools</span></div></div><div style="display:flex;flex-direction:column;gap:3px;align-items:flex-end;flex-shrink:0"><div style="font-size:10px;color:var(--text3)">💬 8</div><div style="font-size:10px;color:var(--text3)">👍 21</div></div></div>
@@ -2196,7 +2257,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
               </div>
               <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:9px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">
                 <div style="font-size:16px;flex-shrink:0;margin-top:1px">🏫</div>
-                <div><div style="font-size:12px;font-weight:700;color:#991B1B">Schools Nearby</div><div style="font-size:10.5px;color:#B91C1C;line-height:1.45;margin-top:2px">Mount Carmel & Paramount International nearby — not mentioned.</div><div style="font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;padding:2px 7px;border-radius:5px;margin-top:5px;display:inline-flex;align-items:center;gap:3px">✗ Not mentioned</div></div>
+                <div><div style="font-size:12px;font-weight:700;color:#991B1B">Schools Nearby</div><div style="font-size:10.5px;color:#B91C1C;line-height:1.45;margin-top:2px">Mount Carmel &amp; Paramount International nearby — not mentioned.</div><div style="font-size:10px;font-weight:700;background:#FEE2E2;color:#DC2626;padding:2px 7px;border-radius:5px;margin-top:5px;display:inline-flex;align-items:center;gap:3px">✗ Not mentioned</div></div>
               </div>
               <div style="background:#FFFBEB;border:1px solid #FDE68A;border-radius:9px;padding:10px 12px;display:flex;align-items:flex-start;gap:8px">
                 <div style="font-size:16px;flex-shrink:0;margin-top:1px">🅿️</div>
@@ -2218,7 +2279,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
             </div>
             <div style="display:flex;flex-direction:column;gap:6px">
               <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#16A34A;font-size:14px;flex-shrink:0;margin-top:-1px">+</span><span>Add <strong>"0.7 km from Sector 21 Metro — 9-min walk"</strong> — #1 question buyers ask (34 upvotes)</span></div>
-              <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#16A34A;font-size:14px;flex-shrink:0;margin-top:-1px">+</span><span>Mention <strong>"Mount Carmel & Paramount International School nearby"</strong> — drives 80% of family buyer decisions</span></div>
+              <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#16A34A;font-size:14px;flex-shrink:0;margin-top:-1px">+</span><span>Mention <strong>"Mount Carmel &amp; Paramount International School nearby"</strong> — drives 80% of family buyer decisions</span></div>
               <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#16A34A;font-size:14px;flex-shrink:0;margin-top:-1px">+</span><span>Clarify <strong>"dedicated covered parking included"</strong> — parking shortage is #1 complaint in Dwarka</span></div>
               <div style="display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);line-height:1.45"><span style="color:#F59E0B;font-size:14px;flex-shrink:0;margin-top:-1px">⚠</span><span>Pre-empt traffic concern: <strong>"metro + airport expressway makes daily commute easy"</strong></span></div>
             </div>
@@ -2241,15 +2302,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
     <!-- Final CTA -->
     <div class="final-cta" id="finalCta">
       <div class="fc-title">⏰ Buyers are choosing other listings over yours</div>
-      <div class="fc-sub">While your listing sits at <span id="fcCurrentScore">42</span>%, better-listed 2 BHKs in Sector 22 Dwarka are getting the enquiries you're missing.</div>
+      <div class="fc-sub">While your listing sits at <span id="fcCurrentScore">42</span>, better-listed 2 BHKs in Sector 22 Dwarka are getting the enquiries you're missing.</div>
       <div class="fc-score-row">
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#EF4444" id="fcScoreCurrent">42%</div>
+          <div class="fc-score-num" style="color:#F87171" id="fcScoreCurrent">42</div>
           <div class="fc-score-label">Current score</div>
         </div>
         <div class="fc-arrow">→</div>
         <div class="fc-score">
-          <div class="fc-score-num" style="color:#4ADE80">63%</div>
+          <div class="fc-score-num" style="color:#4ADE80" id="fcScoreAfter">100</div>
           <div class="fc-score-label">After all fixes</div>
         </div>
       </div>
@@ -2620,7 +2681,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);font-
       <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px;text-align:left">
         <div style="width:32px;height:32px;border-radius:8px;background:#EDE9FE;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:15px">📊</div>
         <div>
-          <div style="font-size:12px;font-weight:700;color:#5C2DD6" id="publishScoreLine">Listing score: 42%</div>
+          <div style="font-size:12px;font-weight:700;color:#5C2DD6" id="publishScoreLine">Listing score: 42/100</div>
           <div style="font-size:11px;color:#7C3AED" id="publishScoreTip">Fix the remaining issues to rank higher</div>
         </div>
       </div>
@@ -2642,7 +2703,7 @@ const MAX_SCORE = 100;
 const DISPLAY_OFFSET = 26;  // base score offset (26 + 16pts = 42 initial)
 const scoreBreakdown = {
   photos: 9,        // 3 photos × 3 = 9 (max 15)
-  price: 5,         // price provided = 5 (maxed)
+  price: 5,         // price is set = full 5 pts (market correctness is a separate recommendation)
   description: 2,   // buy listing = 2 (maxed)
   amenities: 0,     // not filled yet (max 5)
   verify: 0         // not verified yet (max 10)
@@ -2821,6 +2882,7 @@ function showResults() {
   });
 
   analysisComplete = true;
+  updateScore();
   // Show Re-analyze in listing card
   const reBtn = document.getElementById('reanalyzeBtn');
   if (reBtn) reBtn.style.display = 'flex';
@@ -2888,6 +2950,24 @@ function _updatePriceDesc(newPrice, mode) {
   // Update SERP card price
   const serpPrice = document.querySelector('.ms-your-price');
   if (serpPrice) serpPrice.textContent = newPrice + ' · 1156 sqft';
+
+  // Update market compare price/sqft
+  const compPriceEl = document.getElementById('compPriceYou');
+  if (compPriceEl) {
+    const raw = newPrice.replace('₹', '').trim();
+    let priceNum = 0;
+    if (raw.toLowerCase().includes('cr')) priceNum = parseFloat(raw) * 10000000;
+    else if (raw.toLowerCase().includes('l'))  priceNum = parseFloat(raw) * 100000;
+    else priceNum = parseFloat(raw.replace(/,/g, ''));
+    const sqft = 1156;
+    if (priceNum > 0) {
+      const perSqft = Math.round(priceNum / sqft);
+      const mktSqft = 9600;
+      compPriceEl.textContent = '₹' + perSqft.toLocaleString('en-IN');
+      compPriceEl.className = perSqft <= mktSqft ? 'mkt-cell' : 'you-cell';
+      compPriceEl.style.color = '';
+    }
+  }
 }
 
 // ── Verify Modal ──
@@ -3214,8 +3294,6 @@ function _updateAmenitiesUI(count) {
   const amenDesc = document.querySelector('#issue6 .issue-desc');
   if (amenDesc) amenDesc.innerHTML = '<strong>' + count + ' amenities added</strong> — your listing now shows up in filtered searches. Add more to further improve your score.';
   // Issue impact
-  const amenImpact = document.querySelector('#issue6 .issue-impact');
-  if (amenImpact) { amenImpact.textContent = '✅ Listing now visible in amenity-filtered searches'; amenImpact.className = 'issue-impact impact-green'; }
   // Missing info box
   const missAmenities = document.getElementById('missAmenities');
   if (missAmenities) missAmenities.style.display = 'none';
@@ -3289,7 +3367,7 @@ function markFixed(num) {
   }
 
   if (num !== 6 && el.classList.contains('fixed')) return;
-  if (num !== 6) el.classList.add('fixed');
+  el.classList.add('fixed');
 
   if (num === 1) {
     // Photos — keep upload button active to add more
@@ -3318,6 +3396,21 @@ function markFixed(num) {
   const strip = document.getElementById('prev'+num);
   if (strip) { strip.classList.remove('on'); }
 
+  // Update impact line to success state (generic for all issues)
+  const fixedImpactMessages = {
+    1: '✅ Minimum photos reached — more leads expected',
+    2: '✅ Verified — buyers trust verified listings more',
+    3: '✅ Description optimized — more buyer attention',
+    4: '✅ Price adjusted — within market range',
+    5: '✅ Facing added — visible to all buyers',
+    6: '✅ Listing will reflect if filtered by your added amenities'
+  };
+  const impactEl = document.querySelector('#issue' + num + ' .issue-impact');
+  if (impactEl) {
+    impactEl.textContent = fixedImpactMessages[num] || '✅ Improvement applied';
+    impactEl.className = 'issue-impact impact-green';
+  }
+
   fixesApplied++;
   updateScore();
 }
@@ -3329,24 +3422,24 @@ function updateScore() {
 
   // ── Score ring ──
   const scoreNumEl = document.getElementById('scoreNum');
-  if (scoreNumEl) scoreNumEl.textContent = newScore + '%';
+  if (scoreNumEl) scoreNumEl.textContent = newScore;
   const fill = document.getElementById('scoreFill');
   if (fill) {
     const circumference = 263.9;
     fill.setAttribute('stroke-dashoffset', circumference - (newScore / 100) * circumference);
-    fill.setAttribute('stroke', newScore >= 70 ? '#4ADE80' : newScore >= 58 ? '#FBBF24' : '#EF4444');
+    fill.setAttribute('stroke', newScore >= 80 ? '#4ADE80' : newScore >= 50 ? '#FBBF24' : '#EF4444');
   }
   const gradeEl = document.getElementById('scGrade');
-  if (gradeEl) gradeEl.textContent = newScore >= 70 ? '🟢 Good' : newScore >= 58 ? '🟡 Average' : '🔴 Poor';
+  if (gradeEl) gradeEl.textContent = newScore >= 80 ? '🟢 Good' : newScore >= 50 ? '🟡 Average' : '🔴 Poor';
   const descEl = document.querySelector('.sc-desc');
-  if (descEl) descEl.innerHTML = 'Your listing is <strong>' + newScore + '%</strong> optimized.' + (newScore < 72 ? ' Fix all issues to improve your score.' : ' All fixes applied! 🎉');
+  if (descEl) descEl.innerHTML = 'Your listing scores <strong>' + newScore + '/100</strong>.' + (newScore >= 63 ? ' All fixes applied! 🎉' : ' Fix all issues to reach <strong>100/100</strong>.');
 
   // ── Photos dim card ──
   const photoColor = scoreBreakdown.photos >= 15 ? '#4ADE80' : scoreBreakdown.photos >= 9 ? '#FBBF24' : '#EF4444';
   const dimPhotos = document.getElementById('dimPhotos');
   if (dimPhotos) { dimPhotos.style.width = (scoreBreakdown.photos / 15 * 100) + '%'; dimPhotos.style.background = photoColor; }
-  const photoDimScore = document.querySelector('#dimPhotos')?.closest('.dim-item')?.querySelector('.dim-score');
-  if (photoDimScore) { photoDimScore.innerHTML = scoreBreakdown.photos + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/15</span>'; photoDimScore.style.color = photoColor; }
+  const photoDimScore = document.getElementById('dimPhotosScore');
+  if (photoDimScore) { photoDimScore.innerHTML = scoreBreakdown.photos + '<span style="font-size:9px;opacity:.5">/15</span>'; photoDimScore.style.color = photoColor; }
   const photosDimStatus = document.getElementById('photosDimStatus');
   if (photosDimStatus) photosDimStatus.textContent = photoCount + ' photos × 3pts = ' + scoreBreakdown.photos + '/15';
 
@@ -3372,11 +3465,6 @@ function updateScore() {
     if (needed === 0) issueDesc.innerHTML = 'You have <strong>' + photoCount + ' photos</strong> — minimum reached! Add more for even better visibility.';
     else issueDesc.innerHTML = 'You have <strong>' + photoCount + ' photos</strong>. Minimum recommended is <strong>5 photos</strong>. Missing: <strong>kitchen, bathroom, bedroom 2</strong>.';
   }
-  const photoImpact = document.getElementById('photoIssueImpact');
-  if (photoImpact) {
-    if (needed === 0) { photoImpact.textContent = '✅ Minimum photos reached — listing now fully visible'; photoImpact.className = 'issue-impact impact-green'; }
-    else { photoImpact.textContent = '📉 Missing photos = 68% fewer leads'; photoImpact.className = 'issue-impact impact-red'; }
-  }
 
   // ── Verify dim card ──
   const dimVerify = document.getElementById('dimVerify');
@@ -3394,20 +3482,9 @@ function updateScore() {
   const amenitiesStatus = document.getElementById('amenitiesDimStatus');
   if (amenitiesStatus) amenitiesStatus.textContent = scoreBreakdown.amenities >= 5 ? 'Amenity selected ✓ · 5/5 pts' : '0 amenities selected · Select any = +5 pts';
 
-  const dimPriceBar = document.getElementById('dimPrice');
-  if (dimPriceBar) {
-    dimPriceBar.style.width = (scoreBreakdown.price / 5 * 100) + '%';
-    dimPriceBar.style.background = scoreBreakdown.price >= 5 ? '#4ADE80' : '#EF4444';
-  }
-  const priceDimScore = document.querySelector('#dimPrice')?.closest('.dim-item')?.querySelector('.dim-score');
-  if (priceDimScore) {
-    priceDimScore.innerHTML = scoreBreakdown.price + '<span style="font-size:10px;color:rgba(255,255,255,.4)">/5</span>';
-    priceDimScore.style.color = scoreBreakdown.price >= 5 ? '#4ADE80' : '#EF4444';
-  }
-
   // ── Market compare table ──
   const compScore = document.getElementById('compScoreYou');
-  if (compScore) compScore.textContent = newScore + '%';
+  if (compScore) { compScore.textContent = newScore; compScore.className = newScore >= 60 ? 'mkt-cell' : 'you-cell'; }
   const compPhotos = document.getElementById('compPhotosYou');
   if (compPhotos) {
     compPhotos.textContent = photoCount;
@@ -3424,15 +3501,15 @@ function updateScore() {
   const compVerify = document.getElementById('compVerifyYou');
   if (compVerify) { compVerify.textContent = scoreBreakdown.verify >= 10 ? '✓ Verified' : '✗ Not verified'; compVerify.className = scoreBreakdown.verify >= 10 ? 'mkt-cell' : 'you-cell'; }
   const compPrice = document.getElementById('compPriceYou');
-  if (compPrice) { const pFixed = fixedIssues[4]; compPrice.className = pFixed ? 'mkt-cell' : 'you-cell'; compPrice.textContent = pFixed ? '₹9,526' : '₹11,678'; compPrice.style.color = pFixed ? '#16A34A' : ''; }
+  if (compPrice && !fixedIssues[4]) { compPrice.className = 'you-cell'; compPrice.textContent = '₹11,678'; compPrice.style.color = ''; }
 
   // ── Estimate box ──
   const estTitle = document.getElementById('estTitle');
   const estText = document.getElementById('estText');
   if (estTitle && estText) {
-    const days = newScore >= 70 ? '5–7 days' : newScore >= 62 ? '8–12 days' : newScore >= 55 ? '12–18 days' : '5–7 days';
+    const days = newScore >= 55 ? '3–4 days' : '5–7 days';
     estTitle.textContent = 'Current estimate: ' + days + ' to first enquiry';
-    estText.textContent = 'Listings with this quality score in Sector 22 Dwarka get their first lead in ' + days + '. Improve your listing score to get faster leads.';
+    estText.textContent = 'Listings with this quality score in Sector 22 Dwarka get their first lead in ' + days + '.';
   }
 
   // ── Issues badge ──
@@ -3460,9 +3537,24 @@ function updateScore() {
 
   // ── Final CTA current score ──
   const fcCurrent = document.getElementById('fcScoreCurrent');
-  if (fcCurrent) fcCurrent.textContent = newScore + '%';
+  if (fcCurrent) { fcCurrent.textContent = newScore; fcCurrent.style.color = newScore >= 80 ? '#4ADE80' : newScore >= 50 ? '#FBBF24' : '#EF4444'; }
   const fcSub = document.getElementById('fcCurrentScore');
   if (fcSub) fcSub.textContent = newScore;
+  const fcAfterEl = document.getElementById('fcScoreAfter');
+  if (fcAfterEl) fcAfterEl.textContent = 100;
+}
+
+function fixAllWithAI() {
+  if (!analysisComplete) { toast('Analyze your listing first'); return; }
+  // Auto-correct price
+  if (!fixedIssues[4]) { _updatePriceDesc('₹1.10 Cr', 'auto'); fixIssue(4, 'Price auto-corrected to ₹1.10 Cr'); }
+  // Auto-fill amenities
+  setTimeout(() => { if (!fixedIssues[6]) autoFillAmenities(); }, 300);
+  // Generate description
+  setTimeout(() => { if (!fixedIssues[3]) { generateDescSilent(); fixIssue(3, 'AI description applied — 187 words added'); } }, 600);
+  toast('✨ Fixing 3 issues with AI...');
+  // Hide strip after firing
+  setTimeout(() => { const s = document.getElementById('aiFixAllStrip'); if (s) s.style.display = 'none'; }, 700);
 }
 
 function applyAllFixes() {
@@ -3470,24 +3562,34 @@ function applyAllFixes() {
   [1,2,3,4,5,6].forEach((n,i) => setTimeout(() => fixIssue(n, `Fix ${n} applied`), i*300));
   setTimeout(() => {
     generateDescSilent();
-    toast('🚀 All 6 improvements applied! Score: 63%');
+    toast('🚀 All 6 improvements applied! Score: 63/100');
   }, 2200);
 }
 
 function generateDescSilent() {
   const newText = `Spacious and well-maintained 2 BHK independent floor in a prestigious society in Sector 22 Dwarka. The flat features excellent cross-ventilation with east-facing living room, offering abundant natural light. Just 8-minute walk to Dwarka Sector 21 Metro. direct connectivity to Connaught Place (30 min). DPS Dwarka and Ryan International within 1.5 km. Recently renovated modular kitchen, 24/7 security, covered parking, power backup.`;
-  document.getElementById('aiDescText').textContent = newText;
-  document.getElementById('aiDescText').className = 'desc-text good';
-  document.getElementById('aiDescText').style.fontStyle = 'normal';
-  document.getElementById('afterLabel').style.display = 'flex';
-  document.getElementById('afterPlaceholder').style.display = 'none';
-  document.getElementById('afterStats').style.display = 'flex';
-  document.getElementById('descBadge').textContent = '✅ Optimized';
-  document.getElementById('descBadge').style.background = '#DCFCE7';
-  document.getElementById('descBadge').style.color = '#16A34A';
-  document.getElementById('genBtn').innerHTML = '✓ Generated';
-  document.getElementById('genBtn').style.background = '#16A34A';
-  document.getElementById('estimateAfter').style.display = 'flex';
+
+  // Update desc modal UI
+  const aiDescEl = document.getElementById('aiDescText');
+  if (aiDescEl) { aiDescEl.textContent = newText; aiDescEl.className = 'desc-text good'; aiDescEl.style.fontStyle = 'normal'; }
+  const afterLabel = document.getElementById('afterLabel'); if (afterLabel) afterLabel.style.display = 'flex';
+  const afterPlaceholder = document.getElementById('afterPlaceholder'); if (afterPlaceholder) afterPlaceholder.style.display = 'none';
+  const afterStats = document.getElementById('afterStats'); if (afterStats) afterStats.style.display = 'flex';
+  const descBadge = document.getElementById('descBadge');
+  if (descBadge) { descBadge.textContent = '✅ Optimized'; descBadge.style.background = '#DCFCE7'; descBadge.style.color = '#16A34A'; }
+  const genBtn = document.getElementById('genBtn');
+  if (genBtn) { genBtn.innerHTML = '✓ Generated'; genBtn.style.background = '#16A34A'; }
+  const estimateAfter = document.getElementById('estimateAfter'); if (estimateAfter) estimateAfter.style.display = 'flex';
+
+  // Update listing card description
+  const descEl = document.querySelector('.prop-desc');
+  if (descEl) descEl.textContent = '"' + newText + '"';
+  const descWarn = document.querySelector('.desc-warn');
+  if (descWarn) { descWarn.textContent = '187 words · ✓ Good'; descWarn.style.color = '#16A34A'; }
+
+  // Update issue 3 desc text
+  const issueDescEl = document.querySelector('#issue3 .issue-desc');
+  if (issueDescEl) issueDescEl.innerHTML = 'Description updated to <strong>187 words</strong> with key highlights. Buyers can now find your listing.';
 }
 
 // ── Analysis Tabs ──
@@ -3551,19 +3653,21 @@ function enhancePhoto(id) {
   btn.classList.add('loading');
   btn.innerHTML = '<span style="animation:spin .6s linear infinite;display:inline-block">⚡</span> Enhancing...';
 
-  // Phase 1: Scan beam
+  // Phase 1: Scan beam (1s delay)
   const beam = document.getElementById('scan-' + id);
   const flash = document.getElementById('flash-' + id);
-  if (beam) { beam.classList.remove('active'); void beam.offsetWidth; beam.classList.add('active'); }
-
-  // Phase 2: Partial filter (500ms)
   const img = document.getElementById('pt-' + id);
+  setTimeout(() => {
+    if (beam) { beam.classList.remove('active'); void beam.offsetWidth; beam.classList.add('active'); }
+  }, 1000);
+
+  // Phase 2: Partial filter (1500ms)
   setTimeout(() => {
     if (img && img.tagName === 'IMG') img.style.filter = id === 'living' ? 'brightness(0.9) saturate(0.9)' : 'brightness(1.05)';
     if (btn) btn.innerHTML = '<span style="animation:spin .6s linear infinite;display:inline-block">⚡</span> Sharpening...';
-  }, 500);
+  }, 1500);
 
-  // Phase 3: Flash + full filter (1100ms)
+  // Phase 3: Flash + full filter (2100ms)
   setTimeout(() => {
     if (flash) { flash.classList.remove('active'); void flash.offsetWidth; flash.classList.add('active'); }
     if (img && img.tagName === 'IMG') {
@@ -3571,9 +3675,9 @@ function enhancePhoto(id) {
         ? 'brightness(1.35) contrast(1.15) saturate(1.35)'
         : 'brightness(1.12) contrast(1.08) saturate(1.15)';
     }
-  }, 1100);
+  }, 2100);
 
-  // Phase 4: Done (1800ms)
+  // Phase 4: Done (2800ms)
   setTimeout(() => {
     enhancedState[id] = true;
     const tag = document.getElementById('aitag-' + id);
@@ -3592,7 +3696,7 @@ function enhancePhoto(id) {
       }
     });
     toast('✨ ' + (id === 'living' ? 'Living Room' : 'Bedroom') + ' photo enhanced. AI boosted brightness, contrast and sharpness');
-  }, 1800);
+  }, 2800);
 }
 
 function enhancePhotoCard(id) {
@@ -3635,7 +3739,7 @@ function scheduleDrawerRankAnimation(wasAlreadyOpen){
   };
 
   const afterOpenDelay = () => {
-    drawerRankAnimTimers.delayed = setTimeout(runRankSlide, 500);
+    drawerRankAnimTimers.delayed = setTimeout(runRankSlide, 900);
   };
 
   if (wasAlreadyOpen) {
@@ -3676,7 +3780,13 @@ function togglePreview(n) {
 
   [1,2,3,4,5,6].forEach(k => {
     const s = document.getElementById('prev' + k);
-    if (s) s.classList.toggle('on', k === n);
+    if (!s) return;
+    if (s.classList.contains('preview-strip')) {
+      s.classList.toggle('on', k === n);
+    } else {
+      // compact pill button
+      s.style.background = k === n ? '#C4B5FD' : '#EDE9FE';
+    }
   });
 
   const ranks = previewRanks[n] || [getPreviewRank(getBaseScore()), getPreviewRank(Math.min(getBaseScore() + previewGains[n], 84))];
@@ -3687,11 +3797,10 @@ function togglePreview(n) {
   if (rankEl) rankEl.querySelector('span').textContent = '#' + fromR + ' → #' + toR;
 
   const titleEl = document.getElementById('sideDrawerTitle');
-  if (titleEl) titleEl.textContent = 'Check listing boost';
+  if (titleEl) titleEl.textContent = 'How this affects your rank';
 
   buildMiniSerp(n, fromR, toR);
   openSideDrawer();
-  scheduleDrawerRankAnimation(wasAlreadyOpen);
 }
 
 function getVisibilityTier(rank){
@@ -3705,39 +3814,21 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
   const container = containerEl || document.getElementById('sideDrawerMiniSerp');
   if (!container) return;
 
-  const NUM_CARDS = 12;
-  const yourSlot = 1;
-  const SLOT_FROM_STORY = 8;
-  const CARD_STEP = 90;
-  let pullPx = fromRank > toRank ? (SLOT_FROM_STORY - yourSlot) * CARD_STEP : 0;
-
-  const slots = [];
-  for (let i = 0; i < NUM_CARDS; i++) {
-    slots.push({ rank: toRank - yourSlot + i, isYou: i === yourSlot });
-  }
+  const CARD_H = 48;
+  const CARD_GAP = 5;
+  const CARD_STEP = CARD_H + CARD_GAP;
+  const NUM_SLOTS = 10;
+  const shouldAnimate = fromRank > toRank;
 
   const fromTier = getVisibilityTier(fromRank);
   const toTier   = getVisibilityTier(toRank);
   const diff     = fromRank - toRank;
   const sameT    = fromTier.label === toTier.label;
 
-  const cards = slots.map(s => {
-    if (s.isYou) {
-      const useAnim = Math.abs(pullPx) >= 1;
-      const pullAttr = useAnim ? `--rank-pull:${pullPx}px;` : '';
-      const pend = useAnim ? ' ms-your-rank-pending' : '';
-      return `<div class="ms-card ms-your${pend}" style="${pullAttr}position:relative;z-index:2">
-        <span class="ms-dot ms-dot-you"></span>
-        <div class="ms-your-photo">🏠<div class="ms-your-badge">YOU</div></div>
-        <div class="ms-your-body">
-          <div class="ms-your-title">2 BHK in Sector 22 Dwarka</div>
-          <div class="ms-your-price">₹1.35 Cr · 1156 sqft</div>
-          <button class="ms-contact">Contact</button>
-        </div>
-      </div>`;
-    }
-    const w = 50 + (s.rank % 5) * 8;
-    return `<div class="ms-card" style="position:relative">
+  // Build 4 competitor skeleton cards
+  const compCards = Array.from({length: NUM_SLOTS - 1}, (_, i) => {
+    const w = 45 + (i * 11) % 40;
+    return `<div class="ms-card" id="msc-comp-${i}" style="position:absolute;top:${i * CARD_STEP}px;left:6px;right:6px">
       <span class="ms-dot"></span>
       <div class="ms-photo"><div class="sk" style="width:100%;height:100%;border-radius:0"></div></div>
       <div class="ms-body">
@@ -3752,21 +3843,46 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
     </div>`;
   }).join('');
 
+  // YOUR card starts at slot 4 (bottom) if animating, else at slot 1
+  const yourTop = shouldAnimate ? (NUM_SLOTS - 2) * CARD_STEP : 1 * CARD_STEP;
+  const yourInitialOpacity = shouldAnimate ? '0' : '1';
+  const yourCard = `<div class="ms-card ms-your" id="msc-your" style="position:absolute;top:${yourTop}px;left:6px;right:6px;z-index:3;border:1.5px solid rgba(124,58,237,.35);opacity:${yourInitialOpacity};transition:opacity .4s ease">
+    <span class="ms-dot ms-dot-you"></span>
+    <div class="ms-your-photo">🏠<div class="ms-your-badge">YOU</div></div>
+    <div class="ms-your-body">
+      <div class="ms-your-title">2 BHK in Sector 22 Dwarka</div>
+      <div class="ms-your-price">₹1.35 Cr · 1156 sqft</div>
+      <button class="ms-contact">Contact</button>
+    </div>
+  </div>`;
+
+  const totalH = NUM_SLOTS * CARD_STEP - CARD_GAP;
+  const cards = `<div style="position:relative;height:${totalH}px">${compCards}${yourCard}</div>`;
+
+  const gain = (function() {
+    const cur = getTotalScore();
+    // For issues that add score points, use actual score improvement %
+    const scorePts = {
+      1: Math.max(0, 15 - scoreBreakdown.photos),
+      2: Math.max(0, 10 - scoreBreakdown.verify),
+      6: Math.max(0, 5 - scoreBreakdown.amenities)
+    }[n];
+    if (scorePts !== undefined) {
+      return Math.max(1, Math.round(scorePts / cur * 100));
+    }
+    // For issues with no score impact, use rank improvement %
+    const ranks = previewRanks[n];
+    if (ranks) return Math.max(1, Math.round((ranks[0] - ranks[1]) / ranks[0] * 100));
+    return previewGains[n] || 5;
+  })();
   const captionText = diff > 0
-    ? sameT
-      ? `Your listing moves up within <b style="color:var(--text2)">${toTier.label}</b> visibility on the search page`
-      : `Your listing visibility improves from <b style="color:${fromTier.color}">${fromTier.label}</b> to <b style="color:${toTier.color}">${toTier.label}</b> on the search page`
-    : `This fix improves listing quality. Visibility tier stays at <b style="color:${toTier.color}">${toTier.label}</b>`;
+    ? `Your listing moves up in relevance ranking by ${gain}%`
+    : `Your listing gains relevance in search ranking by ${gain}%`;
 
   container.innerHTML = `
     <div class="phone-preview-device">
-    <div class="ms-header" style="margin-bottom:8px">
-      <span class="ms-head-label">Visibility if fixed:</span>
-      <span style="font-size:12px;font-weight:700;color:${fromTier.color}">${fromTier.emoji} ${fromTier.label}</span>
-      <span class="ms-rank-arrow">→</span>
-      <span style="font-size:12px;font-weight:700;color:${toTier.color}">${toTier.emoji} ${toTier.label}</span>
-      <span class="ms-rank-up">${diff > 0 ? '↑' : '─'}</span>
-    </div>
+    <div class="phone-frame-wrap">
+    <div class="race-arrows"><div class="race-arr">↑</div><div class="race-arr">↑</div><div class="race-arr">↑</div><div class="race-arr">↑</div></div>
     <div class="phone-frame">
       <div class="phone-statusbar">
         <span class="psb-time" style="font-size:11px;font-weight:600;color:#fff;letter-spacing:.2px">9:41</span>
@@ -3785,19 +3901,63 @@ function buildMiniSerp(n, fromRank, toRank, containerEl) {
           <span>Search results</span>
           <span style="color:#7C3AED;font-weight:600">Housing.com</span>
         </div>
-        <div class="phone-cards ms-cards">${cards}</div>
+        <div class="phone-cards" style="overflow:visible">${cards}</div>
       </div>
       <div class="phone-home-bar"><div class="phb-line"></div></div>
     </div>
+    </div>
     <div class="phone-tier-caption">
-      <div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:5px">
-        <span style="font-size:12px;font-weight:700;color:${fromTier.color}">${fromTier.emoji} ${fromTier.label}</span>
-        <span style="font-size:14px;color:var(--text3)">→</span>
-        <span style="font-size:12px;font-weight:700;color:${toTier.color}">${toTier.emoji} ${toTier.label}</span>
-      </div>
-      <div style="font-size:10px;color:var(--text3);line-height:1.45">${captionText}</div>
+      <div style="font-size:12px;font-weight:600;color:var(--text2);line-height:1.45;text-align:center;padding:8px 12px;background:var(--surface2);border-radius:8px;border:1px solid var(--border)">${captionText}</div>
     </div>
     </div>`;
+
+  // Ladder animation: YOUR card climbs from slot 4 → slot 1, competitors 1-3 push down
+  // Hide arrows if no rank change
+  if (!shouldAnimate) {
+    const arrowsEl = container.querySelector('.race-arrows');
+    if (arrowsEl) arrowsEl.style.display = 'none';
+  }
+
+  if (shouldAnimate) {
+    // Phase 1: fade card in at bottom slot
+    setTimeout(() => {
+      const yourEl = container.querySelector('#msc-your');
+      if (yourEl) yourEl.style.opacity = '1';
+    }, 400);
+
+    setTimeout(() => {
+      const el = container;
+      const yourEl  = el.querySelector('#msc-your');
+      const easing  = 'cubic-bezier(0.22,1,0.36,1)';
+      const dur     = '1.3s';
+      if (!yourEl) return;
+
+      // YOUR card climbs from bottom slot to slot 1
+      yourEl.style.transition = `top ${dur} ${easing}, opacity .4s ease, box-shadow .4s ease`;
+      yourEl.style.top = `${1 * CARD_STEP}px`;
+      yourEl.style.boxShadow = '0 4px 18px rgba(124,58,237,.35)';
+
+      // Competitors shift down one slot
+      [1, 2, 3, 4, 5, 6, 7, 8].forEach((slot, i) => {
+        const comp = el.querySelector(`#msc-comp-${slot}`);
+        if (comp) {
+          comp.style.transition = `top ${dur} ${easing}`;
+          comp.style.top = `${(slot + 1) * CARD_STEP}px`;
+        }
+      });
+
+      // Glow after arrival
+      setTimeout(() => {
+        if (yourEl) yourEl.style.boxShadow = '0 0 0 3px rgba(124,58,237,.2), 0 4px 18px rgba(124,58,237,.25)';
+      }, 1400);
+
+      // Fade out race arrows once card has landed
+      setTimeout(() => {
+        const arrowsEl = container.querySelector('.race-arrows');
+        if (arrowsEl) arrowsEl.style.opacity = '0';
+      }, 1700);
+    }, 900);
+  }
 }
 
 
@@ -3821,10 +3981,10 @@ function _doPublish() {
   const gain = currentScore - baseScore;
   const scoreLine = document.getElementById('publishScoreLine');
   if (gain > 0) {
-    scoreLine.innerHTML = 'Listing score improved: <span style="text-decoration:line-through;opacity:.6">' + baseScore + '%</span> → <strong style="color:#16A34A">' + currentScore + '%</strong> <span style="color:#16A34A">(+' + gain + ' pts 🎉)</span>';
+    scoreLine.innerHTML = 'Listing score improved: <span style="text-decoration:line-through;opacity:.6">' + baseScore + '</span> → <strong style="color:#16A34A">' + currentScore + '/100</strong> <span style="color:#16A34A">(+' + gain + ' pts 🎉)</span>';
     document.getElementById('publishScoreTip').textContent = 'Great progress! Fix remaining issues to rank even higher.';
   } else {
-    scoreLine.innerHTML = 'Listing score: <strong>' + currentScore + '%</strong>';
+    scoreLine.innerHTML = 'Listing score: <strong>' + currentScore + '/100</strong>';
     document.getElementById('publishScoreTip').textContent = 'Fix the issues above to rank higher and get faster enquiries.';
   }
   document.getElementById('publishModal').classList.add('open');
@@ -3834,6 +3994,15 @@ function closePublishModal(e) {
   if (e && e.target !== document.getElementById('publishModal')) return;
   document.getElementById('publishModal').classList.remove('open');
   document.body.style.overflow = '';
+}
+
+function toggleMoreIssues() {
+  const wrap = document.getElementById('moreIssuesWrap');
+  const btn = document.getElementById('showMoreText');
+  const open = wrap.style.display === 'flex';
+  wrap.style.display = open ? 'none' : 'flex';
+  wrap.style.flexDirection = 'column';
+  btn.textContent = open ? 'Show more recommendations ▾' : 'Hide recommendations ▴';
 }
 
 function toggleDark(){
